@@ -2,6 +2,12 @@ serverless-space
 
 ---
 
+## Console
+
+- url: https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions
+- login: jie.tian@live.cn
+
+## Local development
 
 ```powershell
 node_modules/.bin/serverless create -t aws-nodejs

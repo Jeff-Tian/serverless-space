@@ -62,17 +62,18 @@ functions:
     handler: handler.hello
     events:
       - http:
-          path: users/create  
+          path: users/create
           method: get
-  api:  
+  api:
     handler: handler.api
     events:
       - http:
           path: /api/{proxy+}
           method: ANY
+          cors: true
 
 plugins:
-  - serverless-express 
+  - serverless-express
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
