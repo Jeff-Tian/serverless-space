@@ -68,7 +68,11 @@ functions:
     handler: handler.api
     events:
       - http:
-          path: /api/{proxy+}
+          path: api/
+          method: ANY
+          cors: true
+      - http:
+          path: api/{proxy+}
           method: ANY
           cors: true
 
