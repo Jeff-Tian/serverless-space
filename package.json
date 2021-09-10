@@ -4,9 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prebuild": "rimraf dist",
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serverless": "node_modules/.bin/serverless"
+    "test": "jest",
+    "serverless": "node_modules/.bin/serverless",
+    "build": "nest build",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./e2e/jest-e2e.json"
   },
   "repository": {
     "type": "git",
@@ -19,8 +25,42 @@
   },
   "homepage": "https://github.com/Jeff-Tian/serverless-space#readme",
   "dependencies": {
+    "@nestjs/cli": "^8.1.1",
+    "@nestjs/common": "^8.0.6",
+    "@nestjs/core": "^8.0.6",
+    "@nestjs/platform-express": "^8.0.6",
+    "@types/aws-lambda": "^8.10.83",
+    "@vendia/serverless-express": "^4.3.11",
+    "aws-lambda": "^1.0.6",
+    "class-validator": "^0.13.1",
     "express": "^4.17.1",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
     "serverless": "^2.55.0",
-    "serverless-express": "^2.0.11"
+    "serverless-express": "^2.0.11",
+    "serverless-offline": "^8.1.0"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^8.0.6",
+    "@types/jest": "^27.0.1",
+    "jest": "^27.1.1",
+    "ts-jest": "^27.0.5"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
   }
 }

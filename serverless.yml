@@ -76,8 +76,20 @@ functions:
           method: ANY
           cors: true
 
+  nest:
+    handler: dist/main.handler
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'
+
 plugins:
   - serverless-express
+  - serverless-offline
+
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
