@@ -57,6 +57,11 @@ provider:
 #    - include-me.js
 #    - include-me-dir/**
 
+package:
+  exclude:
+    - node_modules/**
+    - venv/**
+
 functions:
   hello:
     handler: handler.hello
@@ -75,16 +80,12 @@ functions:
           path: api/{proxy+}
           method: ANY
           cors: true
-
-  nest:
-    handler: dist/main.handler
-    events:
       - http:
           method: ANY
-          path: /
+          path: nest/
       - http:
           method: ANY
-          path: '{proxy+}'
+          path: 'nest/{proxy+}'
 
 plugins:
   - serverless-express
