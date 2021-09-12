@@ -80,6 +80,9 @@ functions:
           path: api/{proxy+}
           method: ANY
           cors: true
+  nest:
+    handler: dist/main.handler
+    events:
       - http:
           method: ANY
           path: nest/
