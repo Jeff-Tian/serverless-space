@@ -6378,6 +6378,11 @@ parseurl@~1.3.3:
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
   integrity sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==
 
+pascalcase@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/pascalcase/-/pascalcase-1.0.0.tgz#d2fd7d73f2969606d2b56e17f5261be41c43c381"
+  integrity sha512-BSExi0rRnCHReJys6NocaK+cfTXNinAegfWBvr0JD3hiaEG7Nuc7r0CIdOJunXrs8gU/sbHQ9dxVAtiVQisjmg==
+
 path-exists@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/path-exists/-/path-exists-4.0.0.tgz#513bdbe2d3b95d7762e8c1137efa195c6c61b5b3"
@@ -7171,6 +7176,13 @@ serverless-offline@^8.1.0:
     update-notifier "^5.0.1"
     velocityjs "^2.0.3"
     ws "^7.4.2"
+
+serverless-plugin-layer-manager@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/serverless-plugin-layer-manager/-/serverless-plugin-layer-manager-1.0.6.tgz#13eb2de11751bb19afe591ec7bc6dea3d70c96ac"
+  integrity sha512-oZVYWNhp60FRnJ965YX/4mRzU9reaC9H5zA1GLLgxmlblUyH0qcNoecd5OGHtuUPwPsc2OWMb5YzJGYAnY9gvQ==
+  dependencies:
+    pascalcase "^1.0.0"
 
 serverless@^2.55.0:
   version "2.55.0"

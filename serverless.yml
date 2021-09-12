@@ -82,6 +82,8 @@ functions:
           cors: true
   nest:
     handler: dist/main.handler
+    layers:
+      - {Ref: LibLambdaLayer}
     events:
       - http:
           method: ANY
@@ -93,6 +95,14 @@ functions:
 plugins:
   - serverless-express
   - serverless-offline
+  - serverless-plugin-layer-manager
+
+layers:
+  lib: 
+    path: lib
+    name: space-lib
+    description: My dependencies
+    retain: true
 
 
 #    The following are a few example events you can configure
