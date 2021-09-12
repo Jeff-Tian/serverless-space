@@ -99,7 +99,7 @@ plugins:
 
 layers:
   lib: 
-    path: lib
+    path: node_modules
     name: space-lib
     description: My dependencies
     retain: true
