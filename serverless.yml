@@ -50,27 +50,34 @@ provider:
 #    variable1: value1
 
 # you can add packaging information here
-#package:
-#  patterns:
-#    - '!exclude-me.js'
-#    - '!exclude-me-dir/**'
+package:
+  patterns:
+    - '!node_modules/**'
+    - '!layers/**'
 #    - include-me.js
 #    - include-me-dir/**
 
-package:
-  exclude:
-    - node_modules/**
-    - venv/**
+#package:
+#  exclude:
+#    - node_modules/**
+#    - venv/**
+#    - layers/**
 
 functions:
   hello:
     handler: handler.hello
+    layers:
+      - {Ref: LibLambdaLayer}
     events:
       - http:
           path: users/create
           method: get
+    environment:
+      SERVERLESS_EXPRESS_PLATFORM: aws
   api:
     handler: handler.api
+    layers:
+      - {Ref: LibLambdaLayer}
     events:
       - http:
           path: api/
@@ -80,6 +87,8 @@ functions:
           path: api/{proxy+}
           method: ANY
           cors: true
+    environment:
+      SERVERLESS_EXPRESS_PLATFORM: aws
   nest:
     handler: dist/main.handler
     layers:
@@ -91,15 +100,15 @@ functions:
       - http:
           method: ANY
           path: 'nest/{proxy+}'
+    environment:
+      SERVERLESS_EXPRESS_PLATFORM: aws
 
 plugins:
-  - serverless-express
-  - serverless-offline
   - serverless-plugin-layer-manager
 
 layers:
-  lib: 
-    path: node_modules
+  lib:
+    path: layers
     name: space-lib
     description: My dependencies
     retain: true
