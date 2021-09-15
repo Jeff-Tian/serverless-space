@@ -105,6 +105,8 @@ functions:
 
 plugins:
   - serverless-plugin-layer-manager
+  - serverless-offline
+  - serverless-express
 
 layers:
   lib:
