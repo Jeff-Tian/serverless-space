@@ -38,6 +38,7 @@
     "aws-lambda": "^1.0.6",
     "class-validator": "^0.13.1",
     "express": "^4.17.1",
+    "gatsby-recipes": "0.9.3",
     "graphql": "^15.5.3",
     "graphql-query-complexity": "^0.9.0",
     "graphql-subscriptions": "^1.2.1",
