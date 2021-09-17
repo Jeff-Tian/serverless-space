@@ -12,9 +12,12 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowJs": true,
+    "jsx": "react-jsx",
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "node_modules/gatsby-recipes/src/**/*"
   ]
 }

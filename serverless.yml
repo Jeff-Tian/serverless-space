@@ -90,7 +90,7 @@ functions:
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
   nest:
-    handler: dist/main.handler
+    handler: dist/src/main.handler
     layers:
       - {Ref: LibLambdaLayer}
     events:
