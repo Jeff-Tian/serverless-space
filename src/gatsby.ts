@@ -1,5 +1,5 @@
 import * as path from "path"
-import express from "express"
+import express from 'serverless-express/express'
 import {graphqlHTTP} from "express-graphql"
 import chokidar from "chokidar"
 import {GraphQLBoolean, GraphQLObjectType, GraphQLSchema, GraphQLString} from "graphql"
@@ -9,6 +9,8 @@ import createTypes from "./create-types"
 import {PubSub} from "graphql-subscriptions"
 import {v4 as uuidv4} from "uuid"
 import recipeMachine from "gatsby-recipes/src/recipe-machine"
+import serverlessExpress from '@vendia/serverless-express'
+import {Callback, Context, Handler} from "aws-lambda"
 
 const pubsub = new PubSub()
 
@@ -182,5 +184,31 @@ app.use(`/service`, (req, res) => {
     res.json(service)
 })
 
+const port = 3000
+
+if (require.main === module) {
+    console.log('called directly')
+
+    app.listen(port, () => {
+        console.log(`Example gatsby serverless app listening at http://localhost:${port}`)
+    })
+}
 
 console.log('exiting...')
+
+export default app
+
+const bootstrap = async () => {
+    return serverlessExpress({app})
+}
+
+let server
+
+export const handler: Handler = async (
+    event: any,
+    context: Context,
+    callback: Callback,
+) => {
+    server = server ?? (await bootstrap())
+    return server(event, context, callback)
+}

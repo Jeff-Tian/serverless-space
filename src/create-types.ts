@@ -3,7 +3,7 @@ import * as Joi from "@hapi/joi"
 import _ from "lodash"
 import {ObjectTypeComposer, schemaComposer} from "graphql-compose"
 import * as Joi2GQL from "./joi-to-graphql"
-import * as resources from "gatsby-recipes/src/resources"
+import * as resources from "./resources"
 
 const typeNameToHumanName = name => {
     if (name.endsWith(`Connection`)) {
@@ -14,7 +14,9 @@ const typeNameToHumanName = name => {
 }
 
 export default function createTypes() {
-    const resourceTypes = Object.entries(resources).map(([resourceName, resource]: [string, any]) => {
+    const resourceTypes = Object.entries(resources).filter(([resourceName, resource]) => ['NPMPackage'].indexOf(resourceName) < 0).map(([resourceName, resource]: [string, any]) => {
+        console.log('resource = ', resourceName)
+
         if (!resource.schema) {
             return undefined
         }

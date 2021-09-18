@@ -103,6 +103,20 @@ functions:
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
 
+  gatsby:
+    handler: dist/src/gatsby.handler
+    layers:
+      - {Ref: LibLambdaLayer}
+    events:
+      - http:
+          method: ANY
+          path: gatsby/
+      - http:
+          method: ANY
+          path: 'gatsby/{proxy+}'
+    environment:
+      SERVERLESS_EXPRESS_PLATFORM: aws
+
 plugins:
   - serverless-plugin-layer-manager
   - serverless-offline
