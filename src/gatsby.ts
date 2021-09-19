@@ -11,6 +11,8 @@ import {v4 as uuidv4} from "uuid"
 import recipeMachine from "./gatsby-recipes/src/recipe-machine"
 import serverlessExpress from '@vendia/serverless-express'
 import {Callback, Context, Handler} from "aws-lambda"
+import cors from "cors"
+import bodyParser from "body-parser"
 
 const pubsub = new PubSub()
 
@@ -169,6 +171,9 @@ const schema = new GraphQLSchema({
     subscription: rootSubscriptionType
 })
 
+app.use(cors())
+app.use(bodyParser.json())
+
 app.use(`/graphql`, graphqlHTTP({
     schema,
     graphiql: true,
@@ -193,8 +198,6 @@ if (require.main === module) {
         console.log(`Example gatsby serverless app listening at http://localhost:${port}`)
     })
 }
-
-console.log('exiting...')
 
 export default app
 
