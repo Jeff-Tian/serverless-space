@@ -8,7 +8,7 @@ import lodash from "lodash"
 import createTypes from "./create-types"
 import {PubSub} from "graphql-subscriptions"
 import {v4 as uuidv4} from "uuid"
-import recipeMachine from "gatsby-recipes/src/recipe-machine"
+import recipeMachine from "./gatsby-recipes/src/recipe-machine"
 import serverlessExpress from '@vendia/serverless-express'
 import {Callback, Context, Handler} from "aws-lambda"
 

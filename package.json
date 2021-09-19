@@ -43,7 +43,6 @@
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "fs-extra": "^10.0.0",
-    "gatsby-recipes": "0.9.3",
     "graphql": "14.7.0",
     "graphql-compose": "^9.0.3",
     "graphql-query-complexity": "^0.9.0",
@@ -58,6 +57,7 @@
     "serverless-express": "^2.0.11"
   },
   "devDependencies": {
+    "gatsby-recipes": "0.9.3",
     "@nestjs/cli": "^8.1.1",
     "@nestjs/testing": "^8.0.6",
     "@types/jest": "^27.0.1",
