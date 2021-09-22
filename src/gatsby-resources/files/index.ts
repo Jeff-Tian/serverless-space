@@ -1,7 +1,15 @@
 import * as Joi from "@hapi/joi"
 
 const schema = {
-    path: Joi.string()
+    path: Joi.string(),
+    id: Joi.string(),
+    content: Joi.string(),
 }
 
-export  {schema}
+const read = async (context, id) => {
+    return {
+        id, path: id, content: JSON.stringify(context)
+    }
+}
+
+export {schema, read}
