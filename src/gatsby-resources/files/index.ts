@@ -1,5 +1,5 @@
 import * as Joi from "@hapi/joi"
-import {sourceNodes} from "gatsby-source-filesystem/gatsby-node"
+import {sourceNodes} from "@jeff-tian/gatsby-source-yuque/gatsby-node"
 
 const schema = {
     path: Joi.string(),
@@ -16,7 +16,8 @@ const read = async (context, id) => {
 const all = async (context) => {
     sourceNodes({
         reporter: {
-            panic: console.error
+            panic: console.error,
+            info: console.log
         },
         actions: {
             createNode: () => ({})
@@ -24,8 +25,9 @@ const all = async (context) => {
         emitter: {
             on: console.log
         },
-        createNodeId: () => 'abcd'
-    }, {path: 'src'})
+        createNodeId: () => 'abcd',
+        createContentDigest: () => 'aaaa'
+    }, {login: 'tian-jie', repo: `blog`})
     return []
 }
 
