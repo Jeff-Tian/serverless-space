@@ -12,4 +12,6 @@ const read = async (context, id) => {
     }
 }
 
-export {schema, read}
+const all = async (context) => [{id: JSON.stringify(context), name: 'whatever'}]
+
+export {schema, read, all}
