@@ -9,21 +9,22 @@ const lazyLoadQueue = []
 
 export default function joiToGraphql(constructor) {
     let target
-    const {name, args, resolve, description} = constructor._meta[0]
+    const {name, args, resolve, description} = constructor.$_terms.metas[0]
+    //
+    // Hoek.assert(
+    //     Hoek.reach(constructor, `_inner.children.length`) > 0,
+    //     `Joi object must have at least 1 key`
+    // )
 
-    Hoek.assert(
-        Hoek.reach(constructor, `_inner.children.length`) > 0,
-        `Joi object must have at least 1 key`
-    )
-
-    const compiledFields = internals.buildFields(constructor._inner.children)
+    // const compiledFields = internals.buildFields(constructor._inner.children)
 
     if (lazyLoadQueue.length) {
         target = new GraphQLObjectType({
             name,
             description,
             fields: function () {
-                return compiledFields(target)
+                // return compiledFields(target)
+                return {};
             },
             args: internals.buildArgs(args),
             resolve,
@@ -32,7 +33,8 @@ export default function joiToGraphql(constructor) {
         target = new GraphQLObjectType({
             name,
             description,
-            fields: compiledFields(),
+            // fields: compiledFields(),
+            fields: {},
             args: internals.buildArgs(args),
             resolve,
         } as any)

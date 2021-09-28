@@ -2,7 +2,6 @@ import unified from "unified"
 import remarkMdx from "remark-mdx"
 import remarkMdxjs from "remark-mdxjs"
 import remarkParse from "remark-parse"
-import remarkStringify from "remark-stringify"
 import visit from "unist-util-visit"
 import remove from "unist-util-remove"
 import transformMdx from "../transform-recipe-mdx"
@@ -49,7 +48,7 @@ const applyUuid = tree => {
 
 const u = unified()
   .use(remarkParse)
-  .use(remarkStringify)
+  // .use(remarkStringify)
   .use(remarkMdx)
   .use(remarkMdxjs)
 

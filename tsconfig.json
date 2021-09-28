@@ -19,6 +19,5 @@
   "include": [
     "src/**/*",
     "node_modules/gatsby-recipes/src/**/*",
-    "node_modules/strip-ansi/src/**/*",
   ]
 }

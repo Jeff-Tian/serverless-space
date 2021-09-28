@@ -1,6 +1,14 @@
 import diff from "jest-diff"
 import chalk from "chalk"
-import stripAnsi from "strip-ansi"
+import ansiRegex from 'ansi-regex';
+
+export function stripAnsi(string) {
+  if (typeof string !== 'string') {
+    throw new TypeError(`Expected a \`string\`, got \`${typeof string}\``);
+  }
+
+  return string.replace(ansiRegex(), '');
+}
 
 export default function getDiff(oldVal, newVal) {
   const options = {
