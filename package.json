@@ -28,6 +28,7 @@
   "homepage": "https://github.com/Jeff-Tian/serverless-space#readme",
   "dependencies": {
     "@hapi/hoek": "^9.2.0",
+    "@hapi/joi": "^17.1.1",
     "@jeff-tian/gatsby-source-yuque": "^1.4.16",
     "@mdx-js/mdx": "^1.6.22",
     "@nestjs/common": "^8.0.6",
@@ -44,13 +45,12 @@
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "fs-extra": "^10.0.0",
-    "gatsby": "^3.14.0",
-    "gatsby-source-filesystem": "^3.14.0",
     "graphql": "14.7.0",
     "graphql-compose": "^9.0.3",
     "graphql-query-complexity": "^0.9.0",
     "graphql-subscriptions": "^1.2.1",
     "graphql-tools": "4.x",
+    "is-url": "^1.2.4",
     "jest-diff": "^27.2.0",
     "react": "^17.0.2",
     "react-reconciler": "^0.26.2",
@@ -58,6 +58,7 @@
     "resolve-from": "^5.0.0",
     "rxjs": "*",
     "serverless-express": "^2.0.11",
+    "strip-ansi": "^7.0.1",
     "xstate": "^4.25.0"
   },
   "devDependencies": {
