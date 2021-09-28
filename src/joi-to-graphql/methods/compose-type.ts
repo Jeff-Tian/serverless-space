@@ -19,7 +19,7 @@ export default function composeType(schema, config = {}) {
     const typeConstructor = schema.meta(config)
 
     Hoek.assert(
-        typeConstructor.type === `object`,
+        typeConstructor._type === `object`,
         `schema must be a Joi Object type.`
     )
 
