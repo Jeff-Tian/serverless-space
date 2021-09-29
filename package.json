@@ -63,6 +63,7 @@
     "lock": "^1.1.0",
     "mitt": "^3.0.0",
     "prettier": "^2.4.1",
+    "ramda": "^0.27.1",
     "react": "^17.0.2",
     "react-reconciler": "^0.26.2",
     "reflect-metadata": "^0.1.13",

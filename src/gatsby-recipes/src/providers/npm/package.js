@@ -150,10 +150,6 @@ const read = async ({ root }, id) => {
   }
 }
 
-console.log('Joi = ', Joi)
-console.log('string = ', Joi.string())
-console.log('resourceSchema = ', resourceSchema)
-
 const schema = {
   name: Joi.string().required(),
   version: Joi.string(),

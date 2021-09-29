@@ -4,3 +4,4 @@ node_modules
 layers/nodejs/package-lock.json
 layers/nodejs/package.json
 dist
+yuque.json

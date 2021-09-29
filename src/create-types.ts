@@ -69,7 +69,9 @@ export default function createTypes() {
             queryTypes.push(connectionType)
         }
 
+        console.log('type = ', type)
         const camelCasedResourceName = _.camelCase(resourceName)
+        console.log('camelCasedResourceName = ', camelCasedResourceName)
         const inputType = ObjectTypeComposer.create(
             type,
             schemaComposer
