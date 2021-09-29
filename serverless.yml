@@ -116,11 +116,13 @@ functions:
           path: 'gatsby/{proxy+}'
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
+      YUQUE_TOKEN: ${env:YUQUE_TOKEN}
 
 plugins:
   - serverless-plugin-layer-manager
   - serverless-offline
   - serverless-express
+  - serverless-dotenv-plugin
 
 layers:
   lib:
