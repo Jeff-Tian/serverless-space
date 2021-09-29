@@ -1,17 +1,17 @@
 import * as Joi from "@hapi/joi"
-import {sourceNodes} from "../../gatsby-source-yuque/src/gatsby-node"
+import {sourceNodes} from "@jeff-tian/gatsby-source-yuque/gatsby-node"
 
 const schema = {
     id: Joi.number(),
     title: Joi.string(),
-    // description: Joi.string(),
-    // custom_description: Joi.string(),
-    // updated_at: Joi.date(),
-    // created_at: Joi.date(),
-    // slug: Joi.string(),
-    // word_count: Joi.number(),
-    // cover: Joi.string(),
-    // body: Joi.string(),
+    description: Joi.string(),
+    custom_description: Joi.string(),
+    updated_at: Joi.string(),
+    created_at: Joi.string(),
+    slug: Joi.string(),
+    word_count: Joi.number(),
+    cover: Joi.string(),
+    body: Joi.string(),
 }
 
 let articles = null

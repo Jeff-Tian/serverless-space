@@ -1,7 +1,0 @@
-node_modules
-/utils
-tests
-yarn.lock
-yarn-error.log
-/*.js
-!index.js

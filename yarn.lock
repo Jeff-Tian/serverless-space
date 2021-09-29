@@ -980,15 +980,16 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jeff-tian/gatsby-source-yuque@^1.4.16":
-  version "1.4.16"
-  resolved "https://registry.yarnpkg.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-1.4.16.tgz#86452d076838dea126472efd6d914874c91beb64"
-  integrity sha512-A1B5x77buNYLO0ZtrDZQPMZCbMC3KYJw7Ajc1I6U24qoZKifTfV4kcMBmUD+sGPl4VG07ULui5QvxkKZa2hwAA==
+"@jeff-tian/gatsby-source-yuque@^1.4.17":
+  version "1.4.17"
+  resolved "https://registry.yarnpkg.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-1.4.17.tgz#c490eaeb63a3b9cdd4f6d3352fb6db58fd314621"
+  integrity sha512-m3ttk90anqegn9qUt0DVb3XTG/nbqws6byhrHfEey40Wvs01g3htAJBJ/ysEwX/9ajKsUEO0nv7kY9d4RhpP7Q==
   dependencies:
     "@babel/runtime" "^7.8.7"
     axios "^0.19.2"
     dayjs "^1.8.22"
     debug "^4.1.1"
+    gatsby-source-filesystem latest
     gray-matter "^4.0.2"
     html-entities "^1.2.1"
     queue "^6.0.1"
@@ -5086,7 +5087,7 @@ gatsby-recipes@0.9.3:
     xstate "^4.9.1"
     yoga-layout-prebuilt "^1.9.6"
 
-gatsby-source-filesystem@^3.14.0:
+gatsby-source-filesystem@^3.14.0, gatsby-source-filesystem@latest:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-3.14.0.tgz#ae2b930091a932b33270cb9cc2d9caaf0abc1742"
   integrity sha512-Gg5GGxiWXhjapWMYdXOGk7zp+ajYowS+xNmaDUkL1gH+IQLvE18XbvKh00B/HiFaHm4azJfS2QRrRI/mPTZX+w==

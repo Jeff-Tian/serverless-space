@@ -1,1 +1,1 @@
-export * as Files from "./files";
+export * as Yuque from "./yuque";
