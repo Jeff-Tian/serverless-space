@@ -105,6 +105,7 @@ functions:
 
   gatsby:
     handler: dist/src/gatsby.handler
+    timeout: 30
     layers:
       - {Ref: LibLambdaLayer}
     events:
@@ -117,6 +118,7 @@ functions:
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
       YUQUE_TOKEN: ${env:YUQUE_TOKEN}
+      YUQUE_PATH: /tmp/yuque.json
 
 plugins:
   - serverless-plugin-layer-manager
