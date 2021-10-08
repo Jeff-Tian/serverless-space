@@ -5,7 +5,7 @@ import {read, all} from '../gatsby-resources/yuque/index'
 @Injectable()
 export class YuqueService {
     async findOneById(id: string): Promise<YuQue> {
-        return (await all()).filter(yuque => String(yuque.id) === String(id))[0]
+        return read({}, id)
     }
 
     async findAll(): Promise<YuQue[]> {
