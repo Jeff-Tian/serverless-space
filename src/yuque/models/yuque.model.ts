@@ -15,10 +15,10 @@ export class YuQue {
     custom_description: string
 
     @Field()
-    updated_at: Date
+    updated_at: string
 
     @Field()
-    created_at: Date
+    created_at: string
 
     @Field(type => ID)
     slug: string
@@ -26,8 +26,8 @@ export class YuQue {
     @Field()
     word_count: number
 
-    @Field()
-    cover: string
+    @Field({nullable: true})
+    cover?: string
 
     @Field()
     body: string
