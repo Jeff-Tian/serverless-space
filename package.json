@@ -14,7 +14,8 @@
     "test:e2e": "jest --config ./e2e/jest-e2e.json",
     "offline": "yarn build && serverless offline",
     "deploy": "serverless deploy",
-    "pre-deploy": "cp package.json layers/nodejs/package.json && cd layers/nodejs && npm i --production"
+    "pre-deploy": "cp package.json layers/nodejs/package.json && cd layers/nodejs && npm i --production",
+    "pre-deploy:windows": "copy package.json layers\\nodejs\\package.json && cd layers\\nodejs && npm i --production"
   },
   "repository": {
     "type": "git",
