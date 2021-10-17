@@ -9,6 +9,10 @@ async function bootstrap(): Promise<Handler> {
     const app = await NestFactory.create(AppModule);
     await app.init();
 
+    app.enableCors({
+        maxAge: 86400
+    })
+
     const expressApp = app.getHttpAdapter().getInstance();
     return serverlessExpress({ app: expressApp });
 }
