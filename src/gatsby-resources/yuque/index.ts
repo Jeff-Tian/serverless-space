@@ -46,8 +46,6 @@ const read = async (context, id) => {
     return articles.filter(a => String(a.id) === String(id))[0]
 }
 
-const all = async () => {
-    return await readArticles()
-}
+const all = readArticles
 
 export {schema, read, all}

@@ -8,6 +8,8 @@ import * as customizedResources from "./gatsby-resources"
 
 const resources = {...builtInResources, ...customizedResources}
 
+console.log('resources = ', resources)
+
 const typeNameToHumanName = name => {
     if (name.endsWith(`Connection`)) {
         return `all` + name.replace(/Connection$/, ``)
