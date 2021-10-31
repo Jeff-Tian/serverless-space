@@ -15,7 +15,9 @@
     "offline": "yarn build && serverless offline",
     "deploy": "serverless deploy",
     "pre-deploy": "cp package.json layers/nodejs/package.json && cd layers/nodejs && npm i --production",
-    "pre-deploy:windows": "copy package.json layers\\nodejs\\package.json && cd layers\\nodejs && npm i --production"
+    "pre-deploy:windows": "copy package.json layers\\nodejs\\package.json && cd layers\\nodejs && npm i --production",
+    "aws-console:windows": "start https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
+    "studio:windows": "start https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/gatsby/graphql"
   },
   "repository": {
     "type": "git",

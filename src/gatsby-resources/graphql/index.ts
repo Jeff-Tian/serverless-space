@@ -5,12 +5,19 @@ const schema = {
     id: Joi.number()
 }
 
+const nodes = []
+
 const all = async () => {
-    return await sourceNodes({
-        actions: {createNode: () => ({})},
+    await sourceNodes({
+        actions: {createNode: () => {
+            const node = {id:"1234"}
+            nodes.push(node);
+        }},
         createNodeId: () => "1234",
         createContentDigest: () => "568"
     }, {})
+
+    return nodes;
 }
 
 const read = async (context, id) => {

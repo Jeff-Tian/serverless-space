@@ -54,6 +54,7 @@ package:
   patterns:
     - '!node_modules/**'
     - '!layers/**'
+    - '!gatsby/**'
 #    - include-me.js
 #    - include-me-dir/**
 
@@ -91,9 +92,10 @@ functions:
       SERVERLESS_EXPRESS_PLATFORM: aws
   nest:
     handler: dist/src/main.handler
-    timeout: 60
+    timeout: 30
     layers:
       - {Ref: LibLambdaLayer}
+      - {Ref: GatsbyLambdaLayer}
     events:
       - http:
           method: ANY
@@ -109,9 +111,10 @@ functions:
 
   gatsby:
     handler: dist/src/gatsby.handler
-    timeout: 60
+    timeout: 30
     layers:
       - {Ref: LibLambdaLayer}
+      - {Ref: GatsbyLambdaLayer}
     events:
       - http:
           method: ANY
@@ -135,6 +138,11 @@ layers:
     path: layers
     name: space-lib
     description: My dependencies
+    retain: true
+  gatsby:
+    path: gatsby
+    name: gatsby-lib
+    description: gatsby
     retain: true
 
 
