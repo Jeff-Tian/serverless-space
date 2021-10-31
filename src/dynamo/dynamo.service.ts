@@ -34,6 +34,7 @@ export class DynamoService {
         }
 
         try {
+            console.log('saving to cache: ', params)
             const res = await this.ddb.putItem(params).promise()
             console.log('saving cache result = ', res)
             return res

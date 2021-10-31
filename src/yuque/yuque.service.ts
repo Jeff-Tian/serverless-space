@@ -1,6 +1,6 @@
 import {Injectable} from '@nestjs/common'
 import {YuQue} from './models/yuque.model'
-import {readBySlug, pluginOptions, context, sourceNodes} from '../gatsby-resources/yuque'
+import {readBySlug, pluginOptions, context, sourceNodes, sourceAllNodes} from '../gatsby-resources/yuque'
 import {DynamoService} from "../dynamo/dynamo.service";
 
 const yuqueCacheKeyPrefix = 'yuque'
@@ -45,8 +45,11 @@ export class YuqueService {
             return JSON.parse(res)
         }
 
-        sourceNodes(context, this.cachedPluginOptions).then(({data}) => {
+        sourceAllNodes(context, this.cachedPluginOptions).then(({data}) => {
             this.articles = data
+            console.log('articles = ', this.articles)
+
+            this.articles.map(article => this.dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article)))
         })
 
         return undefined
