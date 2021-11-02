@@ -8,6 +8,7 @@ import responseCachePlugin from 'apollo-server-plugin-response-cache'
 import {BaseRedisCache} from 'apollo-server-cache-redis'
 import Redis from 'ioredis'
 import {GraphqlPluginModule} from "./graphql/graphql.plugin.module"
+import { ZhihuModule } from './zhihu/zhihu.module'
 
 const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
@@ -29,7 +30,7 @@ if (process.env['CACHE_URL']) {
 }
 
 @Module({
-    imports: [CatsModule, RecipesModule, YuqueModule, GraphqlPluginModule, GraphQLModule.forRoot(graphqlOptions)],
+    imports: [CatsModule, RecipesModule, YuqueModule, ZhihuModule, GraphqlPluginModule, GraphQLModule.forRoot(graphqlOptions)],
 })
 export class AppModule {
 }
