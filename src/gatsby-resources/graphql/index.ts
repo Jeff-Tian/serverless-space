@@ -2,7 +2,12 @@ import * as Joi from "@hapi/joi"
 import {sourceNodes} from "gatsby-source-graphql/gatsby-node"
 
 const schema = {
-    id: Joi.number()
+    id: Joi.number(),
+    typeName: Joi.string(),
+    fieldName: Joi.string(),
+    parent: Joi.any(),
+    children: Joi.array(),
+    internal: Joi.object(),
 }
 
 const nodes = []
