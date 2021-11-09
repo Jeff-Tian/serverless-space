@@ -1,8 +1,6 @@
 node_modules
 .serverless
 .idea
-layers/nodejs/package-lock.json
-layers/nodejs/package.json
 dist
 yuque.json
 yuque-*.json

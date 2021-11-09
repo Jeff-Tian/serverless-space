@@ -1,0 +1,64 @@
+{
+  "name": "serverless-space",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "start": "node index.js",
+    "test": "jest",
+    "build": "nest build",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./e2e/jest-e2e.json",
+    "offline": "yarn build && serverless offline",
+    "deploy": "serverless deploy&&./smoke",
+    "pre-deploy": "cp package.json layers/nodejs/package.json && cd layers/nodejs && npm i --production&&cd ../../gatsby/nodejs&&npm v gatsby dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby",
+    "pre-deploy:windows": "copy package.json layers\\nodejs\\package.json && cd layers\\nodejs && npm i --production",
+    "aws-console:windows": "start https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
+    "studio:windows": "start https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/gatsby/graphql",
+    "install-yuque": "npm v @jeff-tian/gatsby-source-yuque dist.tarball | xargs curl | tar -xz&&mv package node_modules/@jeff-tian",
+    "install-core": "npm v gatsby-core-utils dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby-core-utils",
+    "install-filesystem": "npm v gatsby-source-filesystem dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby-source-filesystem",
+    "install-graphql": "npm v gatsby-source-graphql dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby-source-graphql",
+    "install": "npm run install-yuque&&npm run install-core&&npm run install-filesystem&&npm run install-graphql",
+    "i": "exit i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeff-Tian/serverless-space.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeff-Tian/serverless-space/issues"
+  },
+  "homepage": "https://github.com/Jeff-Tian/serverless-space#readme",
+  "dependencies": {
+    "@jeff-tian/gatsby-source-yuque": "1.4.21",
+    "gatsby-core-utils": "^2.14.0",
+    "gatsby-source-filesystem": "^3.14.0",
+    "gatsby-source-graphql": "^4.0.0"
+  },
+  "devDependencies": {
+    "gatsby-recipes": "0.9.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}

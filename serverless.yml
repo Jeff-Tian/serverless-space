@@ -96,6 +96,7 @@ functions:
     layers:
       - {Ref: LibLambdaLayer}
       - {Ref: GatsbyLambdaLayer}
+      - {Ref: GatsbypluginsLambdaLayer}
     events:
       - http:
           method: ANY
@@ -115,6 +116,7 @@ functions:
     layers:
       - {Ref: LibLambdaLayer}
       - {Ref: GatsbyLambdaLayer}
+      - { Ref: GatsbypluginsLambdaLayer }
     events:
       - http:
           method: ANY
@@ -143,6 +145,11 @@ layers:
     path: gatsby
     name: gatsby-lib
     description: gatsby
+    retain: true
+  gatsbyplugins:
+    path: gatsby-plugins
+    name: gatsby-plugins-lib
+    description: gatsby plugins
     retain: true
 
 

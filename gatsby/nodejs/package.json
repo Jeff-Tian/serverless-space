@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "echo exit install",
+    "install": "echo exit install && npm v gatsby dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby",
     "i": "exit i"
   },
   "keywords": [],
