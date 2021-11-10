@@ -95,7 +95,6 @@ functions:
     timeout: 30
     layers:
       - {Ref: LibLambdaLayer}
-      - {Ref: GatsbyLambdaLayer}
       - {Ref: GatsbypluginsLambdaLayer}
     events:
       - http:
@@ -115,7 +114,6 @@ functions:
     timeout: 30
     layers:
       - {Ref: LibLambdaLayer}
-      - {Ref: GatsbyLambdaLayer}
       - { Ref: GatsbypluginsLambdaLayer }
     events:
       - http:
@@ -140,11 +138,6 @@ layers:
     path: layers
     name: space-lib
     description: My dependencies
-    retain: true
-  gatsby:
-    path: gatsby
-    name: gatsby-lib
-    description: gatsby
     retain: true
   gatsbyplugins:
     path: gatsby-plugins
