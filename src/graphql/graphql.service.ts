@@ -5,7 +5,7 @@ import {all, read} from "../gatsby-resources/graphql"
 @Injectable()
 export class GraphqlService {
     async findOneById(id: string): Promise<GraphQLResource> {
-        return read({}, id)[0] as GraphQLResource
+        return await read({}, id)[0] as GraphQLResource
     }
 
     async findAll(): Promise<GraphQLResource[]> {

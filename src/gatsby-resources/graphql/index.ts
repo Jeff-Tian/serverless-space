@@ -1,10 +1,10 @@
 import * as Joi from "@hapi/joi"
-import {sourceNodes} from "gatsby-source-graphql/gatsby-node"
+import {sourceNodes, createSchemaCustomization} from "gatsby-source-graphql/gatsby-node"
 
 const schema = {
     id: Joi.number(),
-    // typeName: Joi.string(),
-    // fieldName: Joi.string(),
+    typeName: Joi.string(),
+    fieldName: Joi.string(),
     // parent: Joi.any(),
     // children: Joi.array(),
     // internal: Joi.object(),
@@ -13,12 +13,40 @@ const schema = {
 const nodes = []
 
 const all = async () => {
-    await sourceNodes({
-        actions: {createNode: () => {
-            const node = {id:"1234"}
+    const actions = {
+        createNode: () => {
+            const node = {id: "1234", fieldName: "test", typeName: "again"}
             nodes.push(node);
-        }},
-        createNodeId: () => "1234",
+        },
+        addThirdPartySchema: () => ({})
+    }
+
+    const createNodeId = () => "1234"
+
+    const innerCache = {}
+    const cache = {
+        get: async (key) => innerCache[key],
+        set: async (key, value) => {
+            innerCache[key] = value
+        }
+    }
+
+    await createSchemaCustomization({actions, createNodeId, cache}, {
+        typeName: "GitHub",
+        fieldName: "github",
+        url: "https://api.github.com/graphql",
+        // HTTP headers
+        headers: {
+            // Learn about environment variables: https://gatsby.dev/env-vars
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        },
+        // Additional options to pass to node-fetch
+        fetchOptions: {},
+    })
+
+    await sourceNodes({
+        actions,
+        createNodeId,
         createContentDigest: () => "568"
     }, {})
 

@@ -1,5 +1,4 @@
 import unified from "unified"
-import remarkMdx from "remark-mdx"
 import remarkMdxjs from "remark-mdxjs"
 import remarkParse from "remark-parse"
 import visit from "unist-util-visit"
@@ -49,7 +48,7 @@ const applyUuid = tree => {
 const u = unified()
   .use(remarkParse)
   // .use(remarkStringify)
-  .use(remarkMdx)
+  // .use(remarkMdx)
   .use(remarkMdxjs)
 
 const partitionSteps = ast => {
