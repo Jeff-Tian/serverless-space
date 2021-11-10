@@ -108,6 +108,7 @@ functions:
       YUQUE_TOKEN: ${env:YUQUE_TOKEN}
       YUQUE_PATH: /tmp/yuque.json
       CACHE_URL: ${env:CACHE_URL}
+      GITHUB_TOKEN: ${env:GITHUB_TOKEN}
 
   gatsby:
     handler: dist/src/gatsby.handler
@@ -126,6 +127,7 @@ functions:
       SERVERLESS_EXPRESS_PLATFORM: aws
       YUQUE_TOKEN: ${env:YUQUE_TOKEN}
       YUQUE_PATH: /tmp/yuque.json
+      GITHUB_TOKEN: ${env:GITHUB_TOKEN}
 
 plugins:
   - serverless-plugin-layer-manager
