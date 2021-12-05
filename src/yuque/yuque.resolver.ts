@@ -1,7 +1,7 @@
-import {NotFoundException} from '@nestjs/common'
-import {Args, Query, Resolver} from '@nestjs/graphql'
-import {YuQue} from "./models/yuque.model"
-import {YuqueService} from "./yuque.service"
+import { NotFoundException } from '@nestjs/common'
+import { Args, Query, Resolver } from '@nestjs/graphql'
+import { YuQue } from "./models/yuque.model"
+import { YuqueService } from "./yuque.service"
 
 @Resolver(of => YuQue)
 export class YuqueResolver {
@@ -9,12 +9,15 @@ export class YuqueResolver {
     }
 
     @Query(returns => YuQue)
-    async yuque(@Args('id') id: string): Promise<YuQue> {
-        const recipe = await this.yuqueService.findOneById(id)
-        if (!recipe) {
+    async yuque(@Args('id', { nullable: true }) id?: string, @Args('slug', { nullable: true }) slug?: string): Promise<YuQue> {
+        const article = (id && await this.yuqueService.findOneById(id)) || (slug && await this.yuqueService.findOneBySlug(slug)) || null
+
+        if (!article) {
             throw new NotFoundException(id)
         }
-        return recipe
+
+        console.log('article = ', article)
+        return article
     }
 
     @Query(returns => [YuQue])

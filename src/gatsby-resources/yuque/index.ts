@@ -1,5 +1,5 @@
 import * as Joi from "@hapi/joi"
-import {sourceNodes} from "@jeff-tian/gatsby-source-yuque/gatsby-node"
+import { sourceNodes, sourceNode } from "@jeff-tian/gatsby-source-yuque/gatsby-node"
 
 const schema = {
     id: Joi.number(),
@@ -16,26 +16,30 @@ const schema = {
 
 let articles = null
 
+const context = {
+    reporter: {
+        panic: console.error,
+        info: console.log,
+        error: console.error
+    },
+    actions: {
+        createNode: () => ({})
+    },
+    emitter: {
+        on: console.log
+    },
+    createNodeId: () => 'abcd',
+    createContentDigest: () => 'aaaa'
+}
+
+const pluginOptions = { login: 'tian-jie', repo: `blog` }
+
 const readArticles = async () => {
     if (articles) {
         return articles
     }
 
-    articles = await sourceNodes({
-        reporter: {
-            panic: console.error,
-            info: console.log,
-            error: console.error
-        },
-        actions: {
-            createNode: () => ({})
-        },
-        emitter: {
-            on: console.log
-        },
-        createNodeId: () => 'abcd',
-        createContentDigest: () => 'aaaa'
-    }, {login: 'tian-jie', repo: `blog`})
+    articles = await sourceNodes(context, pluginOptions)
 
     return articles
 }
@@ -48,4 +52,8 @@ const read = async (context, id) => {
 
 const all = readArticles
 
-export {schema, read, all}
+const readBySlug = async (slug) => {
+    return sourceNode(context, pluginOptions, slug)
+}
+
+export { schema, read, all, readBySlug }

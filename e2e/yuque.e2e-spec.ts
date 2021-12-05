@@ -3,7 +3,7 @@ import {Test} from "@nestjs/testing"
 import request from "supertest"
 import {AppModule} from "../src/app.module"
 
-describe.skip('Zhihu', () => {
+describe('Zhihu', () => {
     let app: INestApplication
 
     beforeAll(async () => {
@@ -16,14 +16,16 @@ describe.skip('Zhihu', () => {
         await app.init()
     })
 
-    it('create zhihu column article', async () => {
+    it('get article by hash', async () => {
         return request(app.getHttpServer())
             .post('/graphql')
-            .send({query: `mutation createArticle {
-                draftColumnArticle {
+            .send({query: `query yuqueQuery {
+                yuque(slug: "1234") {
                     id
+                    title
                 }
             }`})
+            .expect({})
             .expect(200)
     })
 })
