@@ -3,7 +3,7 @@ import {Test} from "@nestjs/testing"
 import request from "supertest"
 import {AppModule} from "../src/app.module"
 
-describe('Zhihu', () => {
+describe.skip('Zhihu', () => {
     let app: INestApplication
 
     beforeAll(async () => {
