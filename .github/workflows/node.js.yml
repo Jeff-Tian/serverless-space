@@ -28,6 +28,6 @@ jobs:
         cache: 'npm'
     - run: npm install yarn -g 
     - run: yarn && yarn test && yarn test:e2e
-    - run: apt install aws-shell
+    - run: sudo apt install aws-shell
     - run: printf "${AWS_API_KEY}\n${AWS_API_SECRET}\nus-east-1\njson" | aws configure
     - run: yarn deploy
