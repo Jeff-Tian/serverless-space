@@ -31,4 +31,4 @@ jobs:
     - run: yarn build
     - run: sudo apt install aws-shell
     - run: printf "${{secrets.AWS_API_KEY}}\n${{secrets.AWS_API_SECRET}}\nus-east-1\njson\n" | aws configure
-    - run: ls ~/.aws && yarn deploy
+    - run: ls ~/.aws && GITHUB_TOKEN="${{secrets.GITHUB_TOKEN}}" CACHE_URL="${{secrets.CACHE_URL}}" YUQUE_TOKEN="${{secrets.YUQUE_TOKEN}}" yarn deploy
