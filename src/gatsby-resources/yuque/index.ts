@@ -41,7 +41,7 @@ const readArticles = async () => {
 
     articles = await sourceAllNodes(context, pluginOptions)
 
-    return articles
+    return articles.data
 }
 
 const read = async (context, id) => {
