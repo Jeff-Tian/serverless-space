@@ -16,7 +16,6 @@ export class YuqueResolver {
             throw new NotFoundException(id)
         }
 
-        console.log('article = ', article)
         return article
     }
 
