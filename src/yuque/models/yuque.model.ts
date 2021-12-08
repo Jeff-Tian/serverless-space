@@ -31,4 +31,7 @@ export class YuQue {
 
     @Field()
     body: string
+
+    @Field({nullable: true})
+    body_html?: string
 }
