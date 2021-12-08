@@ -11,13 +11,14 @@ import {GraphqlPluginModule} from "./graphql/graphql.plugin.module"
 import { ZhihuModule } from './zhihu/zhihu.module'
 
 const ONE_DAY_IN_SECONDS = 60 * 60 * 24
+const ONE_HOUR_IN_SECONDS = 60 * 60
 
 let graphqlOptions: GqlModuleOptions = {
     autoSchemaFile: true,
     sortSchema: true,
     playground: false,
     persistedQueries: {
-        ttl: ONE_DAY_IN_SECONDS
+        ttl: ONE_HOUR_IN_SECONDS
     },
     plugins: [ApolloServerPluginLandingPageLocalDefault(), ApolloServerPluginCacheControl({defaultMaxAge: ONE_DAY_IN_SECONDS}), responseCachePlugin({}),
     ],
