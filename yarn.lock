@@ -1842,10 +1842,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jeff-tian/gatsby-source-yuque@1.5.2":
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-1.5.2.tgz#8969dfc9c816e6bca0c36b8e5b6a9e50cb1614c1"
-  integrity sha512-OBAXzdI5faXFzOP2Mlh+yf+UiuG/V3xklQuUJIxIq3Z40Zjomex8Vsh5g3y739SJEkzqB09eBXNU12452Y1W6g==
+"@jeff-tian/gatsby-source-yuque@1.5.3":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-1.5.3.tgz#02a558f1a9c623f9d9102d58fea4857784fb3dbe"
+  integrity sha512-rcdkeu2aguD8Eb+qkoQgKyG3wHuQ3sNpkRLkIdPmeXfsA34+sVrh6agyrtS1zxd/WdxxwvkwPe8w2Y78zyWBgg==
   dependencies:
     "@babel/runtime" "^7.8.7"
     axios "^0.19.2"
