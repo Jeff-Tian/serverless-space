@@ -22,7 +22,7 @@ frameworkVersion: '2'
 
 provider:
   name: aws
-  runtime: nodejs16.x
+  runtime: nodejs14.x
   lambdaHashingVersion: 20201221
 
 # you can overwrite defaults here
@@ -96,6 +96,7 @@ functions:
     layers:
       - {Ref: LibLambdaLayer}
       - {Ref: GatsbypluginsLambdaLayer}
+      - {Ref: AwsLambdaLayer}
     events:
       - http:
           method: ANY
@@ -145,6 +146,11 @@ layers:
     path: gatsby-plugins
     name: gatsby-plugins-lib
     description: gatsby plugins
+    retain: true
+  aws:
+    path: aws
+    name: aws-lib
+    description: aws lib
     retain: true
 
 
