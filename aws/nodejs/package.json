@@ -19,7 +19,7 @@
     "aws-console:windows": "start https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
     "studio:windows": "start https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/gatsby/graphql",
     "install": "exit 0 && npm v aws-sdk dist.tarball | xargs curl | tar -xz&&mv package node_modules/aws-sdk",
-    "postinstall": "npm v aws-sdk dist.tarball | xargs curl | tar -xz&&mv package node_modules/aws-sdk",
+    "postinstall": "npm v aws-sdk dist.tarball | xargs curl | tar -xz&&(mv package node_modules/aws-sdk || echo 'skipped mv')",
     "i": "exit 0"
   },
   "repository": {
@@ -35,8 +35,7 @@
   "dependencies": {
     "aws-sdk": "^2.1046.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "jest": {
     "moduleFileExtensions": [
       "js",
