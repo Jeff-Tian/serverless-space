@@ -1,9 +1,10 @@
 import {Injectable} from '@nestjs/common'
 import {YuQue} from './models/yuque.model'
-import {readBySlug, pluginOptions, context, sourceAllNodes} from '../gatsby-resources/yuque'
+import {readBySlug, pluginOptions, context, sourceNodes} from '../gatsby-resources/yuque'
 import {DynamoService} from "../dynamo/dynamo.service";
 
-const yuqueCacheKey = 'yuque'
+const yuqueCacheKeyPrefix = 'yuque'
+const getYuqueCacheKey = id => `${yuqueCacheKeyPrefix}-${id}`
 
 @Injectable()
 export class YuqueService {
@@ -13,13 +14,18 @@ export class YuqueService {
     constructor(private readonly dynamoService: DynamoService) {
         this.cachedPluginOptions = {
             ...pluginOptions, readCache: async () => {
-                const json = await dynamoService.getCache(yuqueCacheKey)
-                return JSON.parse(json)
+                const items = await dynamoService.getAllCaches()
+                return items.map(item => item?.cacheValue?.S).filter(Boolean).map(s => JSON.parse(s))
             }, writeCache: async (articles) => {
-                await dynamoService.saveCache(yuqueCacheKey, JSON.stringify(articles))
+                await Promise.all(articles.map(article => dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article))))
             }
         }
+
         this.articles = null
+
+        // sourceNodes(context, this.cachedPluginOptions).then(({data}) => {
+        //     this.articles = data
+        // })
     }
 
     async findOneBySlug(slug: string): Promise<YuQue> {
@@ -28,21 +34,42 @@ export class YuqueService {
     }
 
     async findOneById(id: string): Promise<YuQue> {
-        if(this.articles === null) {
-            this.articles = await this.findAll()
+        // if (this.articles === null) {
+        //     sourceNodes(context, this.cachedPluginOptions).then(({data}) => {
+        //         this.articles = data
+        //     })
+        // }
+
+        const res = await this.dynamoService.getCache(getYuqueCacheKey(id))
+        if (res) {
+            return JSON.parse(res)
         }
 
-        if(!this.articles){
-            return undefined
-        }
+        sourceNodes(context, this.cachedPluginOptions).then(({data}) => {
+            this.articles = data
+        })
 
-        const [a] = this.articles.filter(article => String(article.id) === String(id))
-
-        return a
+        return undefined
     }
 
     async findAll(): Promise<YuQue[]> {
-        this.articles = (await sourceAllNodes(context, this.cachedPluginOptions)).data;
-        return this.articles as YuQue[]
+        // if (this.articles === null) {
+        //     sourceNodes(context, this.cachedPluginOptions).then(({data}) => {
+        //         this.articles = data
+        //     })
+        // }
+
+        const all = await this.dynamoService.getAllCaches()
+        console.log('all = ', all)
+
+        if(all && all.length > 0) {
+            return all.map(item => item?.cacheValue?.S).filter(Boolean).map(s => JSON.parse(s))
+        }
+
+        sourceNodes(context, this.cachedPluginOptions).then(({data}) => {
+            this.articles = data
+        })
+
+        return []
     }
 }

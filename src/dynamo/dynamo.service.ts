@@ -1,5 +1,5 @@
 import {Injectable} from "@nestjs/common";
-import {DynamoDB} from "aws-sdk";
+import {DynamoDB, Endpoint} from "aws-sdk";
 import util from "util";
 import {CreateTableInput} from "aws-sdk/clients/dynamodb";
 
@@ -10,6 +10,16 @@ export class DynamoService {
     private ddb: DynamoDB;
 
     constructor() {
+        if (process.env.NODE_ENV === 'local') {
+            console.log('connecting to local dynamodb !')
+
+            this.ddb = new DynamoDB({
+                endpoint: new Endpoint('http://localhost:8000'),
+            })
+
+            return
+        }
+
         this.ddb = new DynamoDB({apiVersion: '2012-08-10'})
     }
 
@@ -59,6 +69,16 @@ export class DynamoService {
 
             return Promise.resolve()
         }
+    }
+
+    async getAllCaches() {
+        await this.ensureCacheTable()
+
+        const itemWrapper = await this.ddb.scan({
+            TableName: cacheTable
+        }).promise()
+
+        return itemWrapper.Items
     }
 
     async getCache(key: string) {

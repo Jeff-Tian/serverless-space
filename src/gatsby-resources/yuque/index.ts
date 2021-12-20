@@ -1,5 +1,5 @@
 import * as Joi from "@hapi/joi"
-import { sourceAllNodes, sourceNode } from "@jeff-tian/gatsby-source-yuque/gatsby-node"
+import { sourceAllNodes, sourceNode, sourceNodes } from "@jeff-tian/gatsby-source-yuque/gatsby-node"
 
 const schema = {
     id: Joi.number(),
@@ -56,4 +56,4 @@ const readBySlug = async (slug) => {
     return sourceNode(context, pluginOptions, slug)
 }
 
-export { schema, read, all, readBySlug, context, sourceAllNodes, pluginOptions }
+export { schema, read, all, readBySlug, context, sourceAllNodes, pluginOptions, sourceNodes }
