@@ -29,8 +29,8 @@ export class YuQue {
     @Field({nullable: true})
     cover?: string
 
-    @Field()
-    body: string
+    @Field({nullable: true})
+    body?: string
 
     @Field({nullable: true})
     body_html?: string
