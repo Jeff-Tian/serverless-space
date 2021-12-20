@@ -24,7 +24,9 @@ export class DynamoService {
         }
 
         try {
-            await this.ddb.putItem(params).promise()
+            const res = await this.ddb.putItem(params).promise()
+            console.log('saving cache result = ', res)
+            return res
         } catch (ex) {
             console.error(ex)
         }
@@ -49,7 +51,9 @@ export class DynamoService {
                 BillingMode: 'PAY_PER_REQUEST',
             }
 
-            return await this.ddb.createTable(params).promise()
+            const res = await this.ddb.createTable(params).promise()
+            console.log('table created: ', res)
+            return res
         } catch (ex) {
             console.error(`大概率是表已存在，这个错误可以忽略： ${util.inspect(ex)}`)
 
@@ -58,6 +62,8 @@ export class DynamoService {
     }
 
     async getCache(key: string) {
+        await this.ensureCacheTable()
+        console.log('getting cache by ', key)
         const params = {
             TableName: cacheTable,
             Key: {
