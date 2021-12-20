@@ -4,7 +4,7 @@ import request from "supertest"
 import { AppModule } from "../src/app.module"
 import nock from 'nock'
 
-describe('Zhihu', () => {
+describe('Yuque', () => {
     let app: INestApplication
 
     beforeAll(async () => {
