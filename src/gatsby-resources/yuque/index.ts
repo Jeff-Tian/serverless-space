@@ -56,4 +56,4 @@ const readBySlug = async (slug) => {
     return sourceNode(context, pluginOptions, slug)
 }
 
-export { schema, read, all, readBySlug }
+export { schema, read, all, readBySlug, context, sourceAllNodes, pluginOptions }
