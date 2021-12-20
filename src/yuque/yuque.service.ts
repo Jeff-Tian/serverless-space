@@ -36,7 +36,7 @@ export class YuqueService {
             return undefined
         }
 
-        const [a] = this.articles.filter(article => article.id === id)
+        const [a] = this.articles.filter(article => String(article.id) === String(id))
 
         return a
     }
