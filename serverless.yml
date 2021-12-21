@@ -29,6 +29,15 @@ provider:
 #  stage: dev
 #  region: us-east-1
 
+  iamRoleStatements:
+    -  Effect: "Allow"
+       Action:
+         - "dynamodb:Scan"
+         - "dynamodb:CreateTable"
+         - "dynamodb:PutItem"
+         - "dynamodb:GetItem"
+       Resource: "arn:aws:dynamodb:us-east-1:443862765029:table/cache-table"
+
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
 #    - Effect: "Allow"
