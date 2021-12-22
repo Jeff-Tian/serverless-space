@@ -4,6 +4,8 @@ import request from "supertest"
 import { AppModule } from "../src/app.module"
 import nock from 'nock'
 
+jest.mock('aws-sdk')
+
 describe('Yuque', () => {
     let app: INestApplication
 
