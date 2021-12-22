@@ -1,7 +1,7 @@
-import {Injectable} from '@nestjs/common'
-import {YuQue} from './models/yuque.model'
-import {readBySlug, pluginOptions, context, sourceNodes, sourceAllNodes} from '../gatsby-resources/yuque'
-import {DynamoService} from "../dynamo/dynamo.service";
+import { Injectable } from '@nestjs/common'
+import { YuQue } from './models/yuque.model'
+import { readBySlug, pluginOptions, context, sourceAllNodes } from '../gatsby-resources/yuque'
+import { DynamoService } from "../dynamo/dynamo.service";
 
 const yuqueCacheKeyPrefix = 'yuque'
 const getYuqueCacheKey = id => `${yuqueCacheKeyPrefix}-${id}`
@@ -9,7 +9,6 @@ const getYuqueCacheKey = id => `${yuqueCacheKeyPrefix}-${id}`
 @Injectable()
 export class YuqueService {
     private cachedPluginOptions: { writeCache: (articles) => Promise<void>; readCache: () => Promise<any>; repo: string; login: string };
-    private articles: YuQue[];
 
     constructor(private readonly dynamoService: DynamoService) {
         this.cachedPluginOptions = {
@@ -21,15 +20,15 @@ export class YuqueService {
             }
         }
 
-        sourceAllNodes(context, this.cachedPluginOptions).then(({data: articles}) => {
-            articles.forEach(article => {
+        sourceAllNodes(context, this.cachedPluginOptions).then(({ data }) => {
+            (data ?? []).forEach(article => {
                 this.dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article))
             })
         })
     }
 
     async findOneBySlug(slug: string): Promise<YuQue> {
-        const {data} = await readBySlug(slug)
+        const { data } = await readBySlug(slug)
         return data
     }
 
@@ -46,7 +45,7 @@ export class YuqueService {
         const all = await this.dynamoService.getAllCaches()
         console.log('all = ', all)
 
-        if(all && all.length > 0) {
+        if (all && all.length > 0) {
             return all.map(item => item?.cacheValue?.S).filter(Boolean).map(s => JSON.parse(s))
         }
 
