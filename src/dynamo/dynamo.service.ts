@@ -73,8 +73,6 @@ export class DynamoService {
     }
 
     async getAllCaches() {
-        await this.ensureCacheTable()
-
         const itemWrapper = await this.ddb.scan({
             TableName: cacheTable
         }).promise()
@@ -83,7 +81,6 @@ export class DynamoService {
     }
 
     async getCache(key: string) {
-        await this.ensureCacheTable()
         console.log('getting cache by ', key)
         const params = {
             TableName: cacheTable,

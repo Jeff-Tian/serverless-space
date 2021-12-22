@@ -21,11 +21,11 @@ export class YuqueService {
             }
         }
 
-        this.articles = null
-
-        // sourceNodes(context, this.cachedPluginOptions).then(({data}) => {
-        //     this.articles = data
-        // })
+        sourceAllNodes(context, this.cachedPluginOptions).then(({data: articles}) => {
+            articles.forEach(article => {
+                this.dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article))
+            })
+        })
     }
 
     async findOneBySlug(slug: string): Promise<YuQue> {
@@ -34,44 +34,21 @@ export class YuqueService {
     }
 
     async findOneById(id: string): Promise<YuQue> {
-        // if (this.articles === null) {
-        //     sourceNodes(context, this.cachedPluginOptions).then(({data}) => {
-        //         this.articles = data
-        //     })
-        // }
-
         const res = await this.dynamoService.getCache(getYuqueCacheKey(id))
         if (res) {
             return JSON.parse(res)
         }
 
-        sourceAllNodes(context, this.cachedPluginOptions).then(({data}) => {
-            this.articles = data
-            console.log('articles = ', this.articles)
-
-            this.articles.map(article => this.dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article)))
-        })
-
         return undefined
     }
 
     async findAll(): Promise<YuQue[]> {
-        // if (this.articles === null) {
-        //     sourceNodes(context, this.cachedPluginOptions).then(({data}) => {
-        //         this.articles = data
-        //     })
-        // }
-
         const all = await this.dynamoService.getAllCaches()
         console.log('all = ', all)
 
         if(all && all.length > 0) {
             return all.map(item => item?.cacheValue?.S).filter(Boolean).map(s => JSON.parse(s))
         }
-
-        sourceNodes(context, this.cachedPluginOptions).then(({data}) => {
-            this.articles = data
-        })
 
         return []
     }
