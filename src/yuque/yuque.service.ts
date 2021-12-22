@@ -31,7 +31,7 @@ export class YuqueService {
         const { data } = await readBySlug(slug)
 
         this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data)).then()
-        
+
         console.log('cache saving ', data)
 
         return data
@@ -45,9 +45,11 @@ export class YuqueService {
             if((!yuqueArticle.body || ! yuqueArticle.body_html) && yuqueArticle.slug) {
                 console.log('saving cache...', yuqueArticle)
 
-                readBySlug(yuqueArticle.slug).then(({data})=>{
-                    this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data))
-                })
+                const {data} = await readBySlug(yuqueArticle.slug)
+                
+                this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data))
+
+                return data
             }
 
             return yuqueArticle
