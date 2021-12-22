@@ -35,7 +35,15 @@ export class YuqueService {
     async findOneById(id: string): Promise<YuQue> {
         const res = await this.dynamoService.getCache(getYuqueCacheKey(id))
         if (res) {
-            return JSON.parse(res)
+            const yuqueArticle = JSON.parse(res)
+
+            if((!yuqueArticle.body || ! yuqueArticle.body_html) && yuqueArticle.slug) {
+                readBySlug(yuqueArticle.slug).then(({data})=>{
+                    this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data))
+                })
+            }
+
+            return yuqueArticle
         }
 
         return undefined
