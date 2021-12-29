@@ -4,7 +4,7 @@ import request from "supertest"
 import {AppModule} from "../src/app.module"
 import {testTargetUrl, transformedText} from '../src/test/constants'
 
-jest.setTimeout(20000)
+jest.setTimeout(50000)
 
 describe('Babel', () => {
     let app: INestApplication
