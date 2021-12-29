@@ -22,8 +22,6 @@ describe('babel', () => {
   it('transform from url with extra', async () => {
     const res = await sut.transformFromUrl(testTargetUrl, "ReactDOM.render(<Game />, document.getElementById('root'))")
 
-    console.log('res = ', res)
-
     expect(res).toMatch(/"use strict";/)
   })
 })
