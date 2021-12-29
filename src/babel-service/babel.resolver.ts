@@ -10,13 +10,13 @@ export class BabelResolver {
     }
 
     @Query(() => BabelResult)
-    async transform(@Args('sourceCode', { nullable: true }) sourceCode?: string, @Args('url', { nullable: true }) url?: string): Promise<BabelResult> {
+    async transform(@Args('sourceCode', { nullable: true }) sourceCode?: string, @Args('url', { nullable: true }) url?: string, @Args('extra', { nullable: true }) extra?: string): Promise<BabelResult> {
         assert.ok(sourceCode || url, 'sourceCode or url must one of them be specified');
 
         if (sourceCode) {
             return { text: await this.babelService.transform(sourceCode) }
         }
 
-        return { text: await this.babelService.transformFromUrl(url) }
+        return { text: await this.babelService.transformFromUrl(url, extra) }
     }
 }
