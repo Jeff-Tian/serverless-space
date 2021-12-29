@@ -10,5 +10,5 @@ export const transformedText = '"use strict";\n' +
     '  _classCallCheck(this, A);\n' +
     '});'
 
-export const testTargetUrl = 'https://gitee.com/zizhujy/TicTacToeTs/raw/main/src/Game.tsx'
-// export const testTargetUrl = 'https://raw.githubusercontent.com/Jeff-Tian/TicTacToeTs/main/src/Game.tsx'
+// export const testTargetUrl = 'https://gitee.com/zizhujy/TicTacToeTs/raw/main/src/Game.tsx'
+export const testTargetUrl = 'https://raw.githubusercontent.com/Jeff-Tian/TicTacToeTs/main/src/Game.tsx'
