@@ -12,7 +12,7 @@ export class BabelService {
         return Babel.transform(code.replace(/import.+;/g, '').replace(/export/g, ''), {
             presets: ['env', 'react'],
             plugins: []
-        })?.code?.replace(/"div"/g, '"view"').replace(/"ol"/g, '"view"')
+        })?.code?.replace(/"div"/g, '"view"').replace(/"ol"/g, '"view"').replace(/"li"/g, '"view"')
     }
 
     async transformFromUrl(url, extra = '') {

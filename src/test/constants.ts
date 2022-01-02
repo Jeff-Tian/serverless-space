@@ -12,3 +12,4 @@ export const transformedText = '"use strict";\n' +
 
 // export const testTargetUrl = 'https://gitee.com/zizhujy/TicTacToeTs/raw/main/src/Game.tsx'
 export const testTargetUrl = 'https://raw.githubusercontent.com/Jeff-Tian/TicTacToeTs/main/src/Game.tsx'
+export const testTargetUrl2 = 'https://raw.githubusercontent.com/Jeff-Tian/TicTacToeTs/main/src/Game2.tsx'

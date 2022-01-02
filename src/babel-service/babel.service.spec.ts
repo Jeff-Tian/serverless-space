@@ -1,5 +1,5 @@
 import { BabelService } from "./babel.service";
-import { testTargetUrl, transformedText } from "../test/constants";
+import { testTargetUrl, testTargetUrl2, transformedText } from "../test/constants";
 import axios from 'axios'
 
 describe('babel', () => {
@@ -21,6 +21,12 @@ describe('babel', () => {
 
   it('transform from url with extra', async () => {
     const res = await sut.transformFromUrl(testTargetUrl, "ReactDOM.render(<Game />, document.getElementById('root'))")
+
+    expect(res).toMatch(/"use strict";/)
+  })
+
+  it('transform from url case 2', async() => {
+    const res = await sut.transformFromUrl(testTargetUrl2, "ReactDOM.render(<Game />, document.getElementById('root'))")
 
     expect(res).toMatch(/"use strict";/)
   })
