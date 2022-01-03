@@ -19,15 +19,29 @@ describe('babel', () => {
     expect(res).toMatch(/"use strict";/)
   })
 
-  it('transform from url with extra', async () => {
+  it('transforms from url with extra', async () => {
     const res = await sut.transformFromUrl(testTargetUrl, "ReactDOM.render(<Game />, document.getElementById('root'))")
 
     expect(res).toMatch(/"use strict";/)
   })
 
-  it('transform from url case 2', async() => {
+  it('transforms from url case 2', async() => {
     const res = await sut.transformFromUrl(testTargetUrl2, "ReactDOM.render(<Game />, document.getElementById('root'))")
 
     expect(res).toMatch(/"use strict";/)
+  })
+
+  it('transforms simple express', async()=>{
+    const res = await sut.transform('const s = "s";')
+    expect(res).toEqual(`"use strict";
+
+var s = "s";`)
+  })
+
+  it('transforms typescript', async()=>{
+    const res = await sut.transform('const s: string = "s";')
+    expect(res).toEqual(`"use strict";
+
+var s = "s";`)
   })
 })

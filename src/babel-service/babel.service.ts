@@ -10,8 +10,9 @@ export class BabelService {
 
     async transform(code) {
         return Babel.transform(code.replace(/import.+;/g, '').replace(/export/g, ''), {
-            presets: ['env', 'react'],
-            plugins: []
+            presets: ['env', 'react', 'typescript'],
+            plugins: [],
+            "filename": "example.ts"
         })?.code?.replace(/"div"/g, '"view"').replace(/"ol"/g, '"view"').replace(/"li"/g, '"view"')
     }
 
