@@ -9,7 +9,7 @@ export class BabelService {
     }
 
     async transform(code) {
-        return Babel.transform(code.replace(/import.+;/g, '').replace(/export/g, ''), {
+        return Babel.transform(code.replace(/import.+"react.*";/g, '').replace(/export/g, ''), {
             presets: ['env', 'react', 'typescript'],
             plugins: [],
             "filename": "example.ts"
