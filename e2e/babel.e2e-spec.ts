@@ -3,8 +3,7 @@ import {Test} from "@nestjs/testing"
 import request from "supertest"
 import {AppModule} from "../src/app.module"
 import {testTargetUrl, transformedText} from '../src/test/constants'
-
-jest.setTimeout(50000)
+import {nockIt} from "../src/babel-service/babel.service.spec";
 
 describe('Babel', () => {
     let app: INestApplication
@@ -17,6 +16,7 @@ describe('Babel', () => {
 
         app = moduleRef.createNestApplication()
         await app.init()
+        nockIt(testTargetUrl)
     })
 
     it('transforms', async () => {

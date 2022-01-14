@@ -1,47 +1,60 @@
-import { BabelService } from "./babel.service";
-import { testTargetUrl, testTargetUrl2, transformedText } from "../test/constants";
+import {BabelService} from "./babel.service";
+import {testTargetUrl, testTargetUrl2, transformedText} from "../test/constants";
 import axios from 'axios'
+import {URL} from 'url'
+import nock from "nock"
+import fs from 'fs'
+import path from 'path'
+
+export const nockIt = (testTargetUrl: string, s: string = fs.readFileSync(path.resolve(__dirname, "../test/game.tsx"), "utf-8")) => {
+    const testURL = new URL(testTargetUrl)
+    nock(testURL.origin).get(testURL.pathname).reply(200, s)
+};
 
 describe('babel', () => {
-  const mockHttpService = {
-    get: (url) => ({ toPromise: () => axios.get(url) })
-  } as any
+    const mockHttpService = {
+        get: (url) => ({toPromise: () => axios.get(url)})
+    } as any
 
-  const sut = new BabelService(mockHttpService);
+    const sut = new BabelService(mockHttpService);
 
-  it('transforms', async () => {
-    const res = await sut.transform('class A {}')
-    expect(res).toStrictEqual(transformedText)
-  })
+    it('transforms', async () => {
+        const res = await sut.transform('class A {}')
+        expect(res).toStrictEqual(transformedText)
+    })
 
-  it('transforms from url', async () => {
-    const res = await sut.transformFromUrl(testTargetUrl)
-    expect(res).toMatch(/"use strict";/)
-  })
+    it('transforms from url', async () => {
+        nockIt(testTargetUrl,);
 
-  it('transforms from url with extra', async () => {
-    const res = await sut.transformFromUrl(testTargetUrl, "ReactDOM.render(<Game />, document.getElementById('root'))")
+        const res = await sut.transformFromUrl(testTargetUrl)
+        expect(res).toMatch(/"use strict";/)
+    })
 
-    expect(res).toMatch(/"use strict";/)
-  })
+    it('transforms from url with extra', async () => {
+        nockIt(testTargetUrl, fs.readFileSync(path.resolve(__dirname, '../test/game.tsx'), 'utf-8'))
+        const res = await sut.transformFromUrl(testTargetUrl, "ReactDOM.render(<Game />, document.getElementById('root'))")
 
-  it('transforms from url case 2', async() => {
-    const res = await sut.transformFromUrl(testTargetUrl2, "ReactDOM.render(<Game />, document.getElementById('root'))")
+        expect(res).toMatch(/"use strict";/)
+    })
 
-    expect(res).toMatch(/"use strict";/)
-  })
+    it('transforms from url case 2', async () => {
+        nockIt(testTargetUrl2, fs.readFileSync(path.resolve(__dirname, "../test/game.tsx"), "utf-8"))
+        const res = await sut.transformFromUrl(testTargetUrl2, "ReactDOM.render(<Game />, document.getElementById('root'))")
 
-  it('transforms simple express', async()=>{
-    const res = await sut.transform('const s = "s";')
-    expect(res).toEqual(`"use strict";
+        expect(res).toMatch(/"use strict";/)
+    })
 
-var s = "s";`)
-  })
-
-  it('transforms typescript', async()=>{
-    const res = await sut.transform('const s: string = "s";')
-    expect(res).toEqual(`"use strict";
+    it('transforms simple express', async () => {
+        const res = await sut.transform('const s = "s";')
+        expect(res).toEqual(`"use strict";
 
 var s = "s";`)
-  })
+    })
+
+    it('transforms typescript', async () => {
+        const res = await sut.transform('const s: string = "s";', ['typescript'])
+        expect(res).toEqual(`"use strict";
+
+var s = "s";`)
+    })
 })
