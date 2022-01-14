@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common'
-import { YuQue } from './models/yuque.model'
-import { readBySlug, pluginOptions, context, sourceAllNodes } from '../gatsby-resources/yuque'
-import { DynamoService } from "../dynamo/dynamo.service";
+import {Injectable} from '@nestjs/common'
+import {YuQue} from './models/yuque.model'
+import {readBySlug, pluginOptions, context, sourceAllNodes} from '../gatsby-resources/yuque'
+import {DynamoService} from "../dynamo/dynamo.service";
 
 const yuqueCacheKeyPrefix = 'yuque'
 const getYuqueCacheKey = id => `${yuqueCacheKeyPrefix}-${id}`
@@ -20,15 +20,15 @@ export class YuqueService {
             }
         }
 
-        sourceAllNodes(context, this.cachedPluginOptions).then(({ data }) => {
+        sourceAllNodes(context, this.cachedPluginOptions).then(({data}) => {
             (data ?? []).forEach(article => {
                 this.dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article))
             })
-        })
+        }).catch(console.error)
     }
 
     async findOneBySlug(slug: string): Promise<YuQue> {
-        const { data } = await readBySlug(slug)
+        const {data} = await readBySlug(slug)
 
         this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data)).then()
 
@@ -42,11 +42,11 @@ export class YuqueService {
         if (res) {
             const yuqueArticle = JSON.parse(res)
 
-            if((!yuqueArticle.body || ! yuqueArticle.body_html) && yuqueArticle.slug) {
+            if ((!yuqueArticle.body || !yuqueArticle.body_html) && yuqueArticle.slug) {
                 console.log('saving cache...', yuqueArticle)
 
                 const {data} = await readBySlug(yuqueArticle.slug)
-                
+
                 this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data))
 
                 return data
@@ -60,7 +60,6 @@ export class YuqueService {
 
     async findAll(): Promise<YuQue[]> {
         const all = await this.dynamoService.getAllCaches()
-        console.log('all = ', all)
 
         if (all && all.length > 0) {
             return all.map(item => item?.cacheValue?.S).filter(Boolean).map(s => JSON.parse(s))
