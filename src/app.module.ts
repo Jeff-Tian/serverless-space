@@ -26,7 +26,7 @@ let graphqlOptions: GqlModuleOptions = {
 }
 
 if (process.env['CACHE_URL']) {
-    const redis = Redis.createClient({ url: process.env['CACHE_URL'], enableOfflineQueue: false, lazyConnect: true })
+    const redis = Redis.createClient({ url: process.env['CACHE_URL'], lazyConnect: true })
 
     graphqlOptions.cache = new BaseRedisCache({
         client: redis,
