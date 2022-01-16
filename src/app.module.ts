@@ -25,7 +25,7 @@ let graphqlOptions: GqlModuleOptions = {
     ],
 }
 
-if (process.env['CACHE_URL']) {
+if (process.env['CACHE_URL'] && false) {
     const redis = new Redis(process.env['CACHE_URL'])
 
     graphqlOptions.cache = new BaseRedisCache({
