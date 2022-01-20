@@ -14,7 +14,7 @@ export class BabelService {
         return Babel.transform(sanitized, {
             presets: ['env', 'react', ...presets],
             plugins: [],
-            filename: "example.ts"
+            filename: "example.tsx"
         })?.code?.replace(/"div"/g, '"view"').replace(/"ol"/g, '"view"').replace(/"li"/g, '"view"')
     }
 

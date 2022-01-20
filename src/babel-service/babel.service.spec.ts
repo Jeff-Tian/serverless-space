@@ -57,4 +57,17 @@ var s = "s";`)
 
 var s = "s";`)
     })
+
+    it('transforms typescript and jsx', async () => {
+        const res = await sut.transform('const s: string = "s"; const jsx = (<button>Hello</button>)', ['typescript'])
+        expect(res).toEqual(`"use strict";
+
+var s = "s";
+var jsx = /*#__PURE__*/React.createElement("button", null, "Hello");`)
+    })
+
+    it('transforms code with comments', async () => {
+        const res = await sut.transform('/* comments */')
+        expect(res).toEqual(`"use strict";`)
+    })
 })
