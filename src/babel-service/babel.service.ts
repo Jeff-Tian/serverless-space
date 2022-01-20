@@ -12,7 +12,7 @@ export class BabelService {
         const sanitized = code.replace(/import.+react.*['"];/g, '').replace(/export/g, '');
 
         return Babel.transform(sanitized, {
-            presets: ['env', 'react', ...presets],
+            presets: ['env', 'react', 'typescript', ...presets],
             plugins: [],
             filename: "example.tsx"
         })?.code?.replace(/"div"/g, '"view"').replace(/"ol"/g, '"view"').replace(/"li"/g, '"view"')

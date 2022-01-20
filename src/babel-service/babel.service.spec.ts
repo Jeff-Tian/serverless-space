@@ -52,14 +52,14 @@ var s = "s";`)
     })
 
     it('transforms typescript', async () => {
-        const res = await sut.transform('const s: string = "s";', ['typescript'])
+        const res = await sut.transform('const s: string = "s";')
         expect(res).toEqual(`"use strict";
 
 var s = "s";`)
     })
 
     it('transforms typescript and jsx', async () => {
-        const res = await sut.transform('const s: string = "s"; const jsx = (<button>Hello</button>)', ['typescript'])
+        const res = await sut.transform('const s: string = "s"; const jsx = (<button>Hello</button>)')
         expect(res).toEqual(`"use strict";
 
 var s = "s";
@@ -68,6 +68,7 @@ var jsx = /*#__PURE__*/React.createElement("button", null, "Hello");`)
 
     it('transforms code with comments', async () => {
         const res = await sut.transform('/* comments */')
-        expect(res).toEqual(`"use strict";`)
+        expect(res).toEqual(`/* comments */
+"use strict";`)
     })
 })
