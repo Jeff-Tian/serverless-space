@@ -78,7 +78,8 @@
     "rxjs": "*",
     "serverless-express": "2.0.11",
     "single-trailing-newline": "^1.0.0",
-    "xstate": "^4.25.0"
+    "xstate": "^4.25.0",
+    "dotenv": "^14.2.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.1.1",
