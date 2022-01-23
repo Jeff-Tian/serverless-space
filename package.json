@@ -44,7 +44,7 @@
     "@nestjs/platform-express": "8.0.6",
     "@types/aws-lambda": "^8.10.83",
     "@vendia/serverless-express": "4.3.11",
-    "apollo-server": "^3.3.0",
+    "apollo-server": "^3.4.1",
     "apollo-server-cache-redis": "^3.2.0",
     "apollo-server-express": "3.3.0",
     "apollo-server-plugin-response-cache": "^3.3.0",
