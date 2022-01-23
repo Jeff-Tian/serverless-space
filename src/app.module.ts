@@ -10,6 +10,7 @@ import Redis from 'ioredis'
 import {GraphqlPluginModule} from "./graphql/graphql.plugin.module"
 import {BabelModule} from './babel-service/babel.module'
 import {ZhihuModule} from "./zhihu/zhihu.module";
+import util from "util";
 
 const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 const ONE_HOUR_IN_SECONDS = 60 * 60
@@ -25,16 +26,20 @@ let graphqlOptions: GqlModuleOptions = {
     ],
 }
 
-if (process.env['CACHE_URL'] && false) {
-    const redis = new Redis(process.env['CACHE_URL'])
-
-    graphqlOptions.cache = new BaseRedisCache({
-        client: redis,
+if (process.env['CACHE_URL']) {
+    const redis = new Redis(process.env['CACHE_URL'], {maxRetriesPerRequest: 1})
+    redis.on('error', error => {
+        console.error(`碰到 Redis 错误： ${util.inspect(error)}`)
+    })
+    redis.on('connect', () => {
+        graphqlOptions.cache = new BaseRedisCache({
+            client: redis,
+        })
     })
 }
 
 @Module({
-    imports: [CatsModule, RecipesModule, YuqueModule, ZhihuModule, BabelModule, GraphqlPluginModule, GraphQLModule.forRoot(graphqlOptions)],
+    imports: [CatsModule, RecipesModule, YuqueModule, ZhihuModule, BabelModule, GraphqlPluginModule, GraphQLModule.forRootAsync({useFactory:()=>graphqlOptions})],
 })
 export class AppModule {
 }
