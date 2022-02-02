@@ -23,13 +23,15 @@ export class DynamoService {
         this.ddb = new DynamoDB({apiVersion: '2012-08-10'})
     }
 
-    public async saveCache(key, value) {
+    public async saveCache(key, value, created_at?, status?) {
         await this.ensureCacheTable()
         const params = {
             TableName: cacheTable,
             Item: {
                 cacheKey: {S: key},
-                cacheValue: {S: value}
+                cacheValue: {S: value},
+                created_at: {S: created_at},
+                status: {S: status}
             }
         }
 
