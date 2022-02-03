@@ -3,7 +3,7 @@ import {DynamoService} from "./dynamo.service";
 
 export const mockDynamoDB = {
     items: [],
-    createTable: jest.fn().mockImplementation((params)=>{
+    createTable: jest.fn().mockImplementation((params) => {
         return mockDynamoDB
     }),
     putItem: jest.fn().mockImplementation((params) => {
@@ -43,16 +43,18 @@ describe('dynamo', () => {
             },
             "cacheValue": {
                 "S": cacheValue
-            }
+            },
+            "created_at": {"S": undefined},
+            "status": {"S": undefined}
         })
     })
 
-    it('gets value', async()=>{
+    it('gets value', async () => {
         const res = await sut.getCache(cacheKey)
         expect(res).toStrictEqual(cacheValue)
     })
 
-    it('gets value not exists', async()=>{
+    it('gets value not exists', async () => {
         const res = await sut.getCache('not exists')
         expect(res).toStrictEqual(undefined)
     })
