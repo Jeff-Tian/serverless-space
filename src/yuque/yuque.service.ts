@@ -6,6 +6,22 @@ import {DynamoService} from "../dynamo/dynamo.service";
 const yuqueCacheKeyPrefix = 'yuque'
 const getYuqueCacheKey = id => `${yuqueCacheKeyPrefix}-${id}`
 
+const byCreatedAt = (a1, a2) => {
+    if (a1.created_at && a2.created_at) {
+        return Math.sign(new Date(a2.created_at).getTime() - new Date(a1.created_at).getTime())
+    }
+
+    if (a1.created_at && !a2.created_at) {
+        return -1
+    }
+
+    if (a2.created_at && !a1.created_at) {
+        return 1
+    }
+
+    return 0
+};
+
 @Injectable()
 export class YuqueService {
     private cachedPluginOptions: { writeCache: (articles) => Promise<void>; readCache: () => Promise<any>; repo: string; login: string };
@@ -62,21 +78,7 @@ export class YuqueService {
         const all = await this.dynamoService.getAllCaches()
 
         if (all && all.length > 0) {
-            return all.map(item => item?.cacheValue?.S).filter(Boolean).map(s => JSON.parse(s)).filter(a => Number(a.status) === 1).sort((a1, a2) => {
-                if (a1.created_at && a2.created_at) {
-                    return Math.sign(new Date(a2.created_at).getTime() - new Date(a1.created_at).getTime())
-                }
-
-                if (a1.created_at && !a2.created_at) {
-                    return -1
-                }
-
-                if (a2.created_at && !a1.created_at) {
-                    return 1
-                }
-
-                return 0
-            })
+            return all.map(item => item?.cacheValue?.S).filter(Boolean).map(s => JSON.parse(s)).filter(a => Number(a.status) === 1).sort(byCreatedAt)
         }
 
         return []
