@@ -83,4 +83,9 @@ export class YuqueService {
 
         return []
     }
+
+    async find(skip: number, take: number): Promise<YuQue[]> {
+        const all = await this.findAll()
+        return all.slice(skip, skip + take)
+    }
 }

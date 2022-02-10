@@ -23,4 +23,9 @@ export class YuqueResolver {
     allYuque(): Promise<YuQue[]> {
         return this.yuqueService.findAll()
     }
+
+    @Query(returns => [YuQue])
+    async paginatedYuque(@Args('skip', {nullable: true, defaultValue: 0}) skip?: number, @Args('take', {nullable: true, defaultValue: 5}) take?: number): Promise<YuQue[]> {
+        return this.yuqueService.find(skip, take)
+    }
 }

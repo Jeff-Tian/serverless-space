@@ -49,4 +49,24 @@ describe('yuque service', () => {
         const res = await sut.findAll()
         expect(res).toStrictEqual([{status: 1}])
     })
+
+    it('supports pagination for (skip = 1, take = 2)', async () => {
+        mockGetAllCaches.mockReturnValue([{
+            cacheValue: {
+                S: JSON.stringify({
+                    status: 1,
+                    slug: '1'
+                })
+            }
+        }, {cacheValue: {S: JSON.stringify({status: 1, slug: '2'})}}, {
+            cacheValue: {
+                S: JSON.stringify({
+                    status: 1,
+                    slug: '3'
+                })
+            }
+        }])
+        const res = await sut.find(1, 2)
+        expect(res).toStrictEqual([{status: 1, slug: '2'}, {status: 1, slug: '3'}])
+    })
 })
