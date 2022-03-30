@@ -37,6 +37,10 @@ curl https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/cats
 curl https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/graphql
 ```
 
+### About adding new dependencies
+
+Due to size limit of AWS Lambda, this project uses layers for node_modules. So when we need to add new dependencies to the project, besides the normal `yarn add xxx`, we need to also manually add the dependency to the [layers/nodejs/package.json](layers/nodejs/package.json).
+
 ## Run gatsby locally
 
 ```bash
@@ -53,6 +57,8 @@ open http://localhost:3000/dev/gatsby/graphql?query=%23%20Welcome%20to%20GraphiQ
 
 ## Deploy
 
+### From local machine
+
 Due to package size limitation, we have to run the following command to deploy: https://stackoverflow.com/a/69176517/769900
 
 ```shell
@@ -65,3 +71,11 @@ yarn pre-deploy
 du -h -d 0 layers/nodejs/node_modules | sort -h
 serverless deploy
 ```
+
+### From Github Action
+
+Every push will trigger auto deploy by github action if tests pass.
+
+- https://github.com/Jeff-Tian/serverless-space/actions
+
+
