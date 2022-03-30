@@ -46,4 +46,17 @@ export class ZhihuService {
             }
         }
     }
+
+    async getVideoPlayUrlByVideoPage(videoPageUrl: string) {
+        const {data:html} = await this.httpService.get(videoPageUrl).toPromise()
+
+        const regex = /"playUrl":"(.*?)"/
+        const [, firstUrl] = html.match(regex)
+
+        return decodeURIComponent(firstUrl.replace(/\\u002F/g, '/'))
+    }
+
+    async getVideoIdByZvideoUrl(url: string) {
+        return url.substr(url.lastIndexOf('/') + 1)
+    }
 }
