@@ -32,12 +32,12 @@ export class YuqueService {
                 const items = await dynamoService.getAllCaches()
                 return items.map(item => item?.cacheValue?.S).filter(Boolean).map(s => JSON.parse(s))
             }, writeCache: async (articles) => {
-                await Promise.all(articles.map(article => dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article), article.created_at, article.status)))
+                await Promise.all(articles.map(article => dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article), String(article.created_at), String(article.status))))
             }
         }
 
         sourceAllNodes(context, this.cachedPluginOptions).then(({data}) => {
-            (data ?? []).forEach(article => this.dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article), article.created_at, article.status))
+            (data ?? []).forEach(article => this.dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article), String(article.created_at), String(article.status)))
         }).catch(console.error)
     }
 
@@ -46,9 +46,9 @@ export class YuqueService {
 
         console.log('cache saving ', data, data.created_at, data.status)
 
-        const res = await this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), data.created_at, data.status)
-
-        console.log('cache saving res = ', res)
+        this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), String(data.created_at), String(data.status)).then(res => {
+            console.log('cache saving res = ', res)
+        })
 
         return data
     }
@@ -63,7 +63,7 @@ export class YuqueService {
 
                 const {data} = await readBySlug(yuqueArticle.slug)
 
-                this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), data.created_at, data.status).then()
+                this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), String(data.created_at), String(data.status)).then()
 
                 return data
             }
