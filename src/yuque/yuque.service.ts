@@ -46,9 +46,13 @@ export class YuqueService {
 
         console.log('cache saving ', data, data.created_at, data.status)
 
-        this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), String(data.created_at), String(data.status)).then(res => {
+        const re = await this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), String(data.created_at), String(data.status)).then(res => {
             console.log('cache saving res = ', res)
+
+            return res
         })
+
+        console.log('caching saving await res = ', re)
 
         return data
     }
