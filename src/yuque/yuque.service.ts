@@ -32,14 +32,12 @@ export class YuqueService {
                 const items = await dynamoService.getAllCaches()
                 return items.map(item => item?.cacheValue?.S).filter(Boolean).map(s => JSON.parse(s))
             }, writeCache: async (articles) => {
-                await Promise.all(articles.map(article => dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article))))
+                await Promise.all(articles.map(article => dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article), article.created_at, article.status)))
             }
         }
 
         sourceAllNodes(context, this.cachedPluginOptions).then(({data}) => {
-            (data ?? []).forEach(article => {
-                this.dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article))
-            })
+            (data ?? []).forEach(article => this.dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article), article.created_at, article.status))
         }).catch(console.error)
     }
 
@@ -48,7 +46,7 @@ export class YuqueService {
 
         this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), data.created_at, data.status).then()
 
-        console.log('cache saving ', data)
+        console.log('cache saving ', data, data.created_at, data.status)
 
         return data
     }
@@ -63,7 +61,7 @@ export class YuqueService {
 
                 const {data} = await readBySlug(yuqueArticle.slug)
 
-                this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data))
+                this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), data.created_at, data.status).then()
 
                 return data
             }
