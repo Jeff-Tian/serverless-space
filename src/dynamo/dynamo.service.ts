@@ -24,7 +24,6 @@ export class DynamoService {
     }
 
     public async saveCache(key, value, created_at?, status?) {
-        await this.ensureCacheTable()
         const params = {
             TableName: cacheTable,
             Item: {
@@ -42,6 +41,7 @@ export class DynamoService {
             return res
         } catch (ex) {
             console.error(ex)
+            return ex
         }
     }
 

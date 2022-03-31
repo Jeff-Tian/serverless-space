@@ -44,9 +44,11 @@ export class YuqueService {
     async findOneBySlug(slug: string): Promise<YuQue> {
         const {data} = await readBySlug(slug)
 
-        this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), data.created_at, data.status).then()
-
         console.log('cache saving ', data, data.created_at, data.status)
+
+        const res = await this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), data.created_at, data.status)
+
+        console.log('cache saving res = ', res)
 
         return data
     }
