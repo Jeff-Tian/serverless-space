@@ -51,4 +51,19 @@ describe('clipboard', () => {
             .expect({data: {copyToClipboard: {key: 'key', value: 'value'}}})
             .expect(200)
     })
+
+    it('gets the clipboard', async () => {
+        return request(app.getHttpServer())
+            .post('/graphql')
+            .send({
+                query: `query QueryClipboard {
+                    clipboard(key: "key") {
+                        key
+                        value
+                    }
+            }`
+            })
+            .expect({data: {copyToClipboard: {key: 'key', value: 'value'}}})
+            .expect(200)
+    })
 })
