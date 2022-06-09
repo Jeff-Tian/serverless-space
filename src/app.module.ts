@@ -11,6 +11,7 @@ import {GraphqlPluginModule} from "./graphql/graphql.plugin.module"
 import {BabelModule} from './babel-service/babel.module'
 import {ZhihuModule} from "./zhihu/zhihu.module";
 import util from "util";
+import {ClipboardModule} from "./clipboard/clipboard.module";
 
 const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 const ONE_HOUR_IN_SECONDS = 60 * 60
@@ -39,7 +40,7 @@ if (process.env['CACHE_URL']) {
 }
 
 @Module({
-    imports: [CatsModule, RecipesModule, YuqueModule, ZhihuModule, BabelModule, GraphqlPluginModule, GraphQLModule.forRootAsync({useFactory:()=>graphqlOptions})],
+    imports: [ClipboardModule, CatsModule, RecipesModule, YuqueModule, ZhihuModule, BabelModule, GraphqlPluginModule, GraphQLModule.forRootAsync({useFactory: () => graphqlOptions})],
 })
 export class AppModule {
 }
