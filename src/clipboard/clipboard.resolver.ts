@@ -8,9 +8,9 @@ export class ClipboardResolver {
     constructor(private readonly clipboardService: ClipboardService) {
     }
 
-    @Query(returns => String)
-    async clipboard(@Args('key', {nullable: false}) key: string): Promise<string> {
-        return this.clipboardService.getClipboardText(key)
+    @Query(returns => ClipboardModel)
+    async clipboard(@Args('key', {nullable: false}) key: string): Promise<ClipboardModel> {
+        return {key: key, value: await this.clipboardService.getClipboardText(key)}
     }
 
     @Mutation(returns => ClipboardModel)

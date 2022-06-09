@@ -23,7 +23,7 @@ describe('clipboard', () => {
             .overrideProvider(DynamoService)
             .useValue({
                 saveCache: jest.fn().mockResolvedValue({key: 'key', value: 'value'}),
-                getCache: jest.fn().mockResolvedValue({key: 'key', value: 'value'}),
+                getCache: jest.fn().mockResolvedValue('value'),
             })
             .compile()
 
@@ -63,7 +63,7 @@ describe('clipboard', () => {
                     }
             }`
             })
-            .expect({data: {copyToClipboard: {key: 'key', value: 'value'}}})
+            .expect({data: {clipboard: {key: 'key', value: 'value'}}})
             .expect(200)
     })
 })
