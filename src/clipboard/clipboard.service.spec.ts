@@ -28,7 +28,8 @@ describe('clipboard', () => {
 
     describe('get clipboard text by key', () => {
         it('get text from clipboard by key', async () => {
-            const res = sut.getClipboardText('key')
+            await sut.copyToClipboard('key', text)
+            const res = await sut.getClipboardText('key')
             expect(res).toBe(text)
         })
     })
