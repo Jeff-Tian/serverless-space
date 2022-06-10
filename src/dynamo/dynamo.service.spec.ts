@@ -28,12 +28,16 @@ describe('dynamo', () => {
     const cacheKey = 'key'
     const cacheValue = 'value'
 
+    beforeEach(() => {
+        mockDynamoDB.items = []
+    })
+
     it('creates table if not exists', async () => {
         expect(sut.ensureCacheTable).toBeDefined();
     })
 
-    it('saves', async () => {
-        await sut.saveCache(cacheKey, cacheValue)
+    it('saves with status and created_at', async () => {
+        await sut.saveCache(cacheKey, cacheValue, 'created_at', 'status')
         expect(mockDynamoDB.items.length).toBe(1);
 
         const [cache] = mockDynamoDB.items
@@ -44,12 +48,29 @@ describe('dynamo', () => {
             "cacheValue": {
                 "S": cacheValue
             },
-            "created_at": {"S": undefined},
-            "status": {"S": undefined}
+            "created_at": {"S": 'created_at'},
+            "status": {"S": 'status'}
+        })
+    })
+
+    it('saves without status and created_at', async () => {
+        await sut.saveCache(cacheKey, cacheValue)
+        expect(mockDynamoDB.items.length).toBe(1);
+
+        const [cache] = mockDynamoDB.items
+        expect(cache).toStrictEqual({
+            "cacheKey": {
+                "S": cacheKey
+            },
+            "cacheValue": {
+                "S": cacheValue
+            }
         })
     })
 
     it('gets value', async () => {
+        await sut.saveCache(cacheKey, cacheValue)
+
         const res = await sut.getCache(cacheKey)
         expect(res).toStrictEqual(cacheValue)
     })
