@@ -24,14 +24,20 @@ export class DynamoService {
     }
 
     public async saveCache(key, value, created_at?, status?) {
-        const params = {
+        let params: DynamoDB.Types.PutItemInput = {
             TableName: cacheTable,
             Item: {
                 cacheKey: {S: key},
                 cacheValue: {S: value},
-                created_at: {S: created_at},
-                status: {S: status}
             }
+        }
+
+        if (typeof created_at !== 'undefined') {
+            params.Item.created_at = {S: created_at}
+        }
+
+        if (typeof status !== 'undefined') {
+            params.Item.status = {S: status}
         }
 
         try {
