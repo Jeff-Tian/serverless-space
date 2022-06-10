@@ -22,7 +22,7 @@ describe('clipboard', () => {
         })
             .overrideProvider(DynamoService)
             .useValue({
-                saveCache: jest.fn().mockResolvedValue({key: 'key', value: 'value'}),
+                saveCache: jest.fn().mockResolvedValue(undefined),
                 getCache: jest.fn().mockResolvedValue('value'),
             })
             .compile()

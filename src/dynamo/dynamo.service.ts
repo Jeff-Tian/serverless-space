@@ -89,7 +89,6 @@ export class DynamoService {
     }
 
     async getCache(key: string) {
-        console.log('getting cache by ', key)
         const params = {
             TableName: cacheTable,
             Key: {

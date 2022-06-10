@@ -6,11 +6,12 @@ export class ClipboardService {
     constructor(private readonly dynamoService: DynamoService) {
     }
 
-    public copyToClipboard(key: string, text: string) {
-        return this.dynamoService.saveCache(`clipboard-${key}`, text);
+    public async copyToClipboard(key: string, text: string): Promise<string> {
+        await this.dynamoService.saveCache(`clipboard-${key}`, text)
+        return this.getClipboardText(key);
     }
 
-    public getClipboardText(key: string) {
+    public async getClipboardText(key: string): Promise<string> {
         return this.dynamoService.getCache(`clipboard-${key}`)
     }
 }
