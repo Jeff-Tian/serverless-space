@@ -74,7 +74,14 @@ export class YuqueService {
         const all = await this.dynamoService.getAllCaches()
 
         if (all && all.length > 0) {
-            return all.map(item => item?.cacheValue?.S).filter(Boolean).map(s => JSON.parse(s)).filter(a => Number(a.status) === 1).sort(byCreatedAt)
+            return all
+                .filter(item => item?.status?.S?.toString() === '1')
+                .sort((item1, item2) => byCreatedAt(item1?.created_at?.S, item2?.created_at?.S))
+                .map(item => item?.cacheValue?.S)
+                .filter(Boolean)
+                .map(s => JSON.parse(s))
+                .filter(a => Number(a.status) === 1)
+                .sort(byCreatedAt)
         }
 
         return []
