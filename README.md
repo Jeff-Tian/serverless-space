@@ -79,3 +79,11 @@ Every push will trigger auto deploy by github action if tests pass.
 - https://github.com/Jeff-Tian/serverless-space/actions
 
 
+## IDEs tips
+
+### Webstorm
+
+#### Shortcut keys
+
+- Press `Ctrl+M` to jump to the matching brace.
+

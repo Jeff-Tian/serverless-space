@@ -76,7 +76,7 @@ export class YuqueService {
         if (all && all.length > 0) {
             return all
                 .filter(item => item?.status?.S?.toString() === '1')
-                .sort((item1, item2) => byCreatedAt(item1?.created_at?.S, item2?.created_at?.S))
+                .sort((item1, item2) => byCreatedAt({created_at: item1?.created_at?.S}, {created_at: item2?.created_at?.S}))
                 .map(item => item?.cacheValue?.S)
                 .filter(Boolean)
                 .map(s => JSON.parse(s))
