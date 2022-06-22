@@ -22,9 +22,9 @@ export class ZhihuService {
 
             return res
         }, async err => {
-            console.error('err = ', err.response)
+            console.error('err.response = ', err.response)
 
-            if (err.response.status === 401) {
+            if (err.response.status === 401 && err.response.headers?.server?.toLowerCase() !== 'github.com') {
                 if (await loginZhihu()) {
                     return axios(err.config)
                 }
@@ -62,6 +62,20 @@ export class ZhihuService {
     }
 
     async syncYuqueToZhihu(slug: string) {
-        await this.clipboardService.copyToClipboard(`yuque-slugs-to-sync`, JSON.stringify([slug]))
+        try {
+            const res = await Promise.all([
+                this.clipboardService.copyToClipboard(`yuque-slugs-to-sync`, JSON.stringify([slug])),
+                this.httpService.post('https://api.github.com/repos/jeff-tian/sync/dispatches', {"event_type": "webhook"}, {
+                    headers: {
+                        Accept: 'application/vnd.github.everest-preview+json',
+                        Authorization: `token ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`
+                    }
+                }).toPromise()
+            ])
+
+            console.log('res = ', res)
+        } catch (ex) {
+            throw ex
+        }
     }
 }
