@@ -2,6 +2,8 @@ import {INestApplication} from "@nestjs/common"
 import {Test} from "@nestjs/testing"
 import request from "supertest"
 import {AppModule} from "../src/app.module"
+import {DynamoService} from "../src/dynamo/dynamo.service";
+import {mockDynamoService} from "./fixtures/mocks";
 
 describe('Zhihu', () => {
     let app: INestApplication
@@ -10,6 +12,8 @@ describe('Zhihu', () => {
         const moduleRef = await Test.createTestingModule({
             imports: [AppModule],
         })
+            .overrideProvider(DynamoService)
+            .useValue(mockDynamoService)
             .compile()
 
         app = moduleRef.createNestApplication()

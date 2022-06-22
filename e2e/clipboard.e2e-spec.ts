@@ -4,6 +4,7 @@ import request from "supertest"
 import {DynamoService} from "../src/dynamo/dynamo.service";
 import {ClipboardModule} from "../src/clipboard/clipboard.module";
 import {GraphQLModule} from "@nestjs/graphql";
+import {mockDynamoService} from "./fixtures/mocks";
 
 
 jest.setTimeout(10000)
@@ -21,10 +22,7 @@ describe('clipboard', () => {
             })],
         })
             .overrideProvider(DynamoService)
-            .useValue({
-                saveCache: jest.fn().mockResolvedValue(undefined),
-                getCache: jest.fn().mockResolvedValue('value'),
-            })
+            .useValue(mockDynamoService)
             .compile()
 
         app = moduleRef.createNestApplication()

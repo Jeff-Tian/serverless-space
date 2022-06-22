@@ -3,6 +3,7 @@ import {Injectable} from "@nestjs/common"
 import {Observable} from "rxjs"
 import axios, {AxiosResponse} from "axios"
 import {curlirize} from "../common/curlirize"
+import {ClipboardService} from "../clipboard/clipboard.service";
 
 const loginZhihu = async () => {
     return false
@@ -10,7 +11,7 @@ const loginZhihu = async () => {
 
 @Injectable()
 export class ZhihuService {
-    constructor(private httpService: HttpService) {
+    constructor(private readonly httpService: HttpService, private readonly clipboardService: ClipboardService) {
         this.httpService.axiosRef.interceptors.request.use(config => {
             console.log(curlirize(config))
             return config
@@ -48,7 +49,7 @@ export class ZhihuService {
     }
 
     async getVideoPlayUrlByVideoPage(videoPageUrl: string) {
-        const {data:html} = await this.httpService.get(videoPageUrl).toPromise()
+        const {data: html} = await this.httpService.get(videoPageUrl).toPromise()
 
         const regex = /"playUrl":"(.*?)"/
         const [, firstUrl] = html.match(regex)
@@ -58,5 +59,9 @@ export class ZhihuService {
 
     async getVideoIdByZvideoUrl(url: string) {
         return url.substr(url.lastIndexOf('/') + 1)
+    }
+
+    async syncYuqueToZhihu(slug: string) {
+        await this.clipboardService.copyToClipboard(`yuque-slugs-to-sync`, JSON.stringify([slug]))
     }
 }

@@ -24,6 +24,7 @@ export class ZhihuResolver {
 
     @Mutation(() => PartialYuqueModel)
     async syncYuqueToZhihu(@Args('slug') slug: string) {
+        await this.zhihuService.syncYuqueToZhihu(slug)
         return {slug: slug}
     }
 }
