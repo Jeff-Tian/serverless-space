@@ -3,7 +3,7 @@ import {Test} from "@nestjs/testing"
 import request from "supertest"
 import {AppModule} from "../src/app.module"
 
-describe.skip('Zhihu', () => {
+describe('Zhihu', () => {
     let app: INestApplication
 
     beforeAll(async () => {
@@ -19,11 +19,35 @@ describe.skip('Zhihu', () => {
     it('create zhihu column article', async () => {
         return request(app.getHttpServer())
             .post('/graphql')
-            .send({query: `mutation createArticle {
+            .send({
+                query: `mutation createArticle {
                 draftColumnArticle {
                     id
                 }
-            }`})
+            }`
+            })
+            .expect(200)
+    })
+
+    it('triggers a sync from yuque article to zhihu column', async () => {
+        return request(app.getHttpServer()).post('/graphql')
+            .send({
+                query: `mutation triggerArticleSync ($slug: String!) {
+                    syncYuqueToZhihu (slug: $slug) {
+                        slug
+                    }
+                }`,
+                variables: {
+                    slug: 'abc'
+                }
+            })
+            .expect({
+                data:{
+                    syncYuqueToZhihu: {
+                        slug: 'abc'
+                    }
+                }
+            })
             .expect(200)
     })
 })
