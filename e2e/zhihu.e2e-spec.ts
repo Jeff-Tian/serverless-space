@@ -10,7 +10,7 @@ describe('Zhihu', () => {
     let app: INestApplication
 
     beforeAll(async () => {
-        process.env.GITHUB_PERSONAL_ACCESS_TOKEN = '5678'
+        process.env.SYNC_GITHUB_PERSONAL_ACCESS_TOKEN = '5678'
 
         const moduleRef = await Test.createTestingModule({
             imports: [AppModule],
@@ -102,6 +102,30 @@ describe('Zhihu', () => {
                         }
                     ]
                 })))
+                .expect(200)
+        })
+
+        it('runs successfully when token is correct', async () => {
+            nock('https://api.github.com').post('/repos/jeff-tian/sync/dispatches').reply(204)
+
+            return request(app.getHttpServer()).post('/graphql')
+                .send({
+                    query: `mutation triggerArticleSync ($slug: String!) {
+                    syncYuqueToZhihu (slug: $slug) {
+                        slug
+                    }
+                }`,
+                    variables: {
+                        slug: 'abc'
+                    }
+                })
+                .expect({
+                    data: {
+                        syncYuqueToZhihu: {
+                            slug: 'abc'
+                        }
+                    }
+                })
                 .expect(200)
         })
     })

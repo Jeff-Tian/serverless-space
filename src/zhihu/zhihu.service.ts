@@ -68,7 +68,7 @@ export class ZhihuService {
                 this.httpService.post('https://api.github.com/repos/jeff-tian/sync/dispatches', {"event_type": "webhook"}, {
                     headers: {
                         Accept: 'application/vnd.github.everest-preview+json',
-                        Authorization: `token ${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`
+                        Authorization: `token ${process.env.SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}`
                     }
                 }).toPromise()
             ])
