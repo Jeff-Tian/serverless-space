@@ -8,7 +8,8 @@
 
 ## Online GraphQL Studio
 
-- https://sls.pa-ca.me/nest/graphql
+- With CDN: https://sls.pa-ca.me/nest/graphql
+- Without CDN: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/graphql
 
 
 ## Why
