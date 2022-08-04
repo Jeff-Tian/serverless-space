@@ -86,6 +86,7 @@ export class DynamoService {
 
     public async ensureTtl() {
         const ttlConfig = {
+            TableName: cacheTable,
             TimeToLiveSpecification: {
                 Enabled: true,
                 AttributeName: 'expiresAt'
