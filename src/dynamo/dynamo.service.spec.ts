@@ -79,4 +79,8 @@ describe('dynamo', () => {
         const res = await sut.getCache('not exists')
         expect(res).toStrictEqual(undefined)
     })
+
+    it('ensures ttl config', async()=>{
+        expect(sut.ensureTtl).toBeDefined();
+    })
 })

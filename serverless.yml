@@ -101,7 +101,7 @@ functions:
       SERVERLESS_EXPRESS_PLATFORM: aws
   nest:
     handler: dist/src/main.handler
-    timeout: 30
+    timeout: 900
     layers:
       - {Ref: LibLambdaLayer}
       - {Ref: GatsbypluginsLambdaLayer}

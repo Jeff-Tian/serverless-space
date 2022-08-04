@@ -2,6 +2,8 @@ import {Injectable} from "@nestjs/common";
 import {DynamoDB, Endpoint} from "aws-sdk";
 import util from "util";
 import {CreateTableInput} from "aws-sdk/clients/dynamodb";
+import {DocumentClient} from "aws-sdk/lib/dynamodb/document_client";
+import UpdateTimeToLiveInput = DocumentClient.UpdateTimeToLiveInput;
 
 const cacheTable = 'cache-table'
 
@@ -24,6 +26,8 @@ export class DynamoService {
     }
 
     public async saveCache(key, value, created_at?, status?) {
+        await this.ensureTtl()
+
         let params: DynamoDB.Types.PutItemInput = {
             TableName: cacheTable,
             Item: {
@@ -75,6 +79,23 @@ export class DynamoService {
             return res
         } catch (ex) {
             console.error(`大概率是表已存在，这个错误可以忽略： ${util.inspect(ex)}`)
+
+            return Promise.resolve()
+        }
+    }
+
+    public async ensureTtl() {
+        const ttlConfig = {
+            TimeToLiveSpecification: {
+                Enabled: true,
+                AttributeName: 'expiresAt'
+            }
+        }
+
+        try {
+            return await this.ddb.updateTimeToLive(ttlConfig as UpdateTimeToLiveInput).promise()
+        } catch (ex) {
+            console.error('ensureTtl error: ', ex)
 
             return Promise.resolve()
         }
