@@ -36,6 +36,7 @@ provider:
          - "dynamodb:CreateTable"
          - "dynamodb:PutItem"
          - "dynamodb:GetItem"
+         - "dynamodb:UpdateTimeToLive"
        Resource: "arn:aws:dynamodb:us-east-1:443862765029:table/cache-table"
 
 # you can add statements to the Lambda function's IAM Role here
