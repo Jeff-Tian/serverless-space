@@ -12,8 +12,6 @@ import {BabelModule} from './babel-service/babel.module'
 import {ZhihuModule} from "./zhihu/zhihu.module";
 import util from "util";
 import {ClipboardModule} from "./clipboard/clipboard.module";
-
-const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 const ONE_HOUR_IN_SECONDS = 60 * 60
 
 let graphqlOptions: GqlModuleOptions = {
@@ -23,7 +21,7 @@ let graphqlOptions: GqlModuleOptions = {
     persistedQueries: {
         ttl: ONE_HOUR_IN_SECONDS
     },
-    plugins: [ApolloServerPluginLandingPageLocalDefault(), ApolloServerPluginCacheControl({defaultMaxAge: ONE_DAY_IN_SECONDS}), responseCachePlugin({}),
+    plugins: [ApolloServerPluginLandingPageLocalDefault(), ApolloServerPluginCacheControl({defaultMaxAge: 5}), responseCachePlugin({}),
     ],
 }
 
