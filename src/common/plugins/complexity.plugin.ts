@@ -1,7 +1,8 @@
-import { GraphQLSchemaHost, Plugin } from '@nestjs/graphql';
+import { GraphQLSchemaHost } from '@nestjs/graphql';
+import { Plugin } from '@nestjs/apollo';
+
 import {
   ApolloServerPlugin,
-  GraphQLRequestListener,
 } from 'apollo-server-plugin-base';
 import { GraphQLError } from 'graphql';
 import {

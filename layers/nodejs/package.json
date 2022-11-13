@@ -39,7 +39,7 @@
     "@nestjs/axios": "^0.0.3",
     "@nestjs/common": "^8.0.6",
     "@nestjs/core": "^8.0.6",
-    "@nestjs/graphql": "^9.0.4",
+    "@nestjs/graphql": "10.1.6",
     "@nestjs/platform-express": "8.0.6",
     "@types/aws-lambda": "^8.10.83",
     "@vendia/serverless-express": "4.3.11",
@@ -80,7 +80,9 @@
     "serverless-express": "2.0.11",
     "single-trailing-newline": "^1.0.0",
     "xstate": "^4.25.0",
-    "dotenv": "^14.2.0"
+    "dotenv": "^14.2.0",
+    "@apollo/gateway": "^2.1.4",
+    "@nestjs/apollo": "^10.1.6"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.1.1",

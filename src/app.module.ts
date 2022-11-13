@@ -1,5 +1,5 @@
 import {Module} from '@nestjs/common'
-import {GqlModuleOptions, GraphQLModule} from '@nestjs/graphql'
+import {GraphQLModule} from '@nestjs/graphql'
 import {ApolloServerPluginCacheControl, ApolloServerPluginLandingPageLocalDefault} from 'apollo-server-core'
 import {CatsModule} from "./cats/cats.module"
 import {RecipesModule} from "./recipes/recipes.module"
@@ -12,9 +12,13 @@ import {BabelModule} from './babel-service/babel.module'
 import {ZhihuModule} from "./zhihu/zhihu.module";
 import util from "util";
 import {ClipboardModule} from "./clipboard/clipboard.module";
+import {GatewayModule} from "./gateway/gateway.module";
+import {ApolloDriver, ApolloDriverConfig} from "@nestjs/apollo";
+
 const ONE_HOUR_IN_SECONDS = 60 * 60
 
-let graphqlOptions: GqlModuleOptions = {
+let graphqlOptions: ApolloDriverConfig = {
+    driver: ApolloDriver,
     autoSchemaFile: true,
     sortSchema: true,
     playground: false,
@@ -38,7 +42,7 @@ if (process.env['CACHE_URL']) {
 }
 
 @Module({
-    imports: [ClipboardModule, CatsModule, RecipesModule, YuqueModule, ZhihuModule, BabelModule, GraphqlPluginModule, GraphQLModule.forRootAsync({useFactory: () => graphqlOptions})],
+    imports: [ClipboardModule, CatsModule, RecipesModule, YuqueModule, ZhihuModule, BabelModule, GraphqlPluginModule, GraphQLModule.forRootAsync<ApolloDriverConfig>({useFactory: () => graphqlOptions}), GatewayModule],
 })
 export class AppModule {
 }
