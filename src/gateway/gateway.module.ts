@@ -16,8 +16,7 @@ import { GraphQLModule } from '@nestjs/graphql';
             gateway: {
                 supergraphSdl: new IntrospectAndCompose({
                     subgraphs: [
-                        { name: 'orders', url: 'https://uni-orders-jeff-tian.cloud.okteto.net/graphiql' },
-                        { name: 'sls', url: 'http://localhost/nest/graphql' },
+                        { name: 'orders', url: 'https://uni-orders-jeff-tian.cloud.okteto.net/graphql' },
                     ],
                 }),
             },

@@ -45,7 +45,7 @@
     "@vendia/serverless-express": "4.3.11",
     "apollo-server": "^3.3.0",
     "apollo-server-cache-redis": "^3.2.0",
-    "apollo-server-express": "3.3.0",
+    "apollo-server-express": "^3.5.0",
     "apollo-server-plugin-response-cache": "^3.3.0",
     "aws-lambda": "^1.0.6",
     "axios": "^0.24.0",

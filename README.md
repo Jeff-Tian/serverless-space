@@ -10,6 +10,7 @@
 
 - With CDN: https://sls.pa-ca.me/nest/graphql
 - Without CDN: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/graphql
+- Apollo Studio: https://studio.apollographql.com/graph/Serverless-Space/explorer?variant=current
 
 
 ## Why
@@ -88,3 +89,7 @@ Every push will trigger auto deploy by github action if tests pass.
 
 - Press `Ctrl+M` to jump to the matching brace.
 
+
+## Star History
+
+![](https://api.star-history.com/svg?repos=jeff-tian/serverless-space&type=Date)
