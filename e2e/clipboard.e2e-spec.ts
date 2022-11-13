@@ -5,6 +5,7 @@ import {DynamoService} from "../src/dynamo/dynamo.service";
 import {ClipboardModule} from "../src/clipboard/clipboard.module";
 import {GraphQLModule} from "@nestjs/graphql";
 import {mockDynamoService} from "./fixtures/mocks";
+import {ApolloDriver, ApolloDriverConfig} from "@nestjs/apollo";
 
 
 jest.setTimeout(10000)
@@ -13,13 +14,13 @@ describe('clipboard', () => {
 
     beforeAll(async () => {
         const moduleRef = await Test.createTestingModule({
-            imports: [ClipboardModule, GraphQLModule.forRootAsync({
-                useFactory: () => ({
-                    autoSchemaFile: true,
-                    sortSchema: true,
-                    playground: false,
-                })
-            })],
+            imports: [ClipboardModule, GraphQLModule.forRoot<ApolloDriverConfig>({
+                driver: ApolloDriver,
+                autoSchemaFile: true,
+                sortSchema: true,
+                playground: false,
+            })
+            ],
         })
             .overrideProvider(DynamoService)
             .useValue(mockDynamoService)

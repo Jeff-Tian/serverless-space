@@ -42,7 +42,8 @@ if (process.env['CACHE_URL']) {
 }
 
 @Module({
-    imports: [ClipboardModule, CatsModule, RecipesModule, YuqueModule, ZhihuModule, BabelModule, GraphqlPluginModule, GraphQLModule.forRootAsync<ApolloDriverConfig>({useFactory: () => graphqlOptions}), GatewayModule],
+    imports: [ClipboardModule, CatsModule, RecipesModule, YuqueModule, ZhihuModule, BabelModule, GraphqlPluginModule, GraphQLModule.forRoot<ApolloDriverConfig>(graphqlOptions)],
+    providers: []
 })
 export class AppModule {
 }
