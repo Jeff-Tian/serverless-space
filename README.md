@@ -74,7 +74,7 @@ du -h -d 0 layers/nodejs/node_modules | sort -h
 serverless deploy
 ```
 
-### From Github Action
+### From GitHub Action
 
 Every push will trigger auto deploy by github action if tests pass.
 
