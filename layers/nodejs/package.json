@@ -54,7 +54,7 @@
     "class-transformer": "^0.5.1",
     "configstore": "^6.0.0",
     "execa": "^5.1.1",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "express-graphql": "0.12.0",
     "fs-extra": "^10.0.0",
     "graphql": "^16.5.0",
