@@ -11,6 +11,8 @@ describe('Yuque', () => {
     let app: INestApplication
 
     beforeAll(async () => {
+        nock('https://www.yuque.com/api/v2/').persist().get(/.+/).reply(200, {data:{id: '61880244', title: 'abc'}})
+
         const moduleRef = await Test.createTestingModule({
             imports: [AppModule],
         })
@@ -21,8 +23,6 @@ describe('Yuque', () => {
     })
 
     it('get article by hash', async () => {
-        nock('https://www.yuque.com/api/v2/').get(/.+/).reply(200, {data:{id: '61880244', title: 'abc'}})
-        
         return request(app.getHttpServer())
             .post('/graphql')
             .send({
