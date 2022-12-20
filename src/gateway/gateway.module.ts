@@ -17,11 +17,11 @@ import {GraphQLModule} from '@nestjs/graphql';
                     subgraphs: [
                         {name: 'orders', url: 'https://uni-orders-jeff-tian.cloud.okteto.net/graphql'},
                         {name: 'face-swap', url: 'https://face-swap-jeff-tian.cloud.okteto.net/graphql'},
-                        {name: 'sls', url: 'https://sls.pa-ca.me/nest/graphql'},
-                        {
-                            name: 'user-service',
-                            url: 'https://brickverse-user-service-gracewen1.cloud.okteto.net/graphql'
-                        }
+                        // {name: 'sls', url: 'https://sls.pa-ca.me/nest/graphql'},
+                        // {
+                        //     name: 'user-service',
+                        //     url: 'https://brickverse-user-service-gracewen1.cloud.okteto.net/graphql'
+                        // }
                     ],
                     subgraphHealthCheck: false,
                 }),

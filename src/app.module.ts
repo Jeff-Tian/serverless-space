@@ -1,6 +1,6 @@
 import {Module} from '@nestjs/common'
 import {GraphQLModule} from '@nestjs/graphql'
-import {ApolloServerPluginCacheControl, ApolloServerPluginLandingPageLocalDefault} from 'apollo-server-core'
+import {ApolloServerPluginCacheControl} from 'apollo-server-core'
 import {CatsModule} from "./cats/cats.module"
 import {RecipesModule} from "./recipes/recipes.module"
 import {YuqueModule} from './yuque/yuque.module'
@@ -13,7 +13,7 @@ import {ZhihuModule} from "./zhihu/zhihu.module";
 import util from "util";
 import {ClipboardModule} from "./clipboard/clipboard.module";
 import {GatewayModule} from "./gateway/gateway.module";
-import {ApolloDriver, ApolloDriverConfig, ApolloFederationDriver, ApolloFederationDriverConfig} from "@nestjs/apollo";
+import {ApolloFederationDriver, ApolloFederationDriverConfig} from "@nestjs/apollo";
 
 const ONE_HOUR_IN_SECONDS = 60 * 60
 
@@ -21,18 +21,20 @@ let graphqlOptions: ApolloFederationDriverConfig = {
     driver: ApolloFederationDriver,
     autoSchemaFile: true,
     sortSchema: true,
-    playground: false,
+    playground: true,
     persistedQueries: {
         ttl: ONE_HOUR_IN_SECONDS
     },
-    plugins: [ApolloServerPluginLandingPageLocalDefault(), ApolloServerPluginCacheControl({defaultMaxAge: 5}), responseCachePlugin({}),
+    plugins: [ApolloServerPluginCacheControl({defaultMaxAge: 5}), responseCachePlugin({}),
     ],
 }
 
-if (process.env['CACHE_URL']) {
-    const redis = new Redis(process.env['CACHE_URL'], {maxRetriesPerRequest: 1})
+const cacheRedisUrl = process.env.CACHE_URL
+
+if (cacheRedisUrl && cacheRedisUrl !== 'undefined') {
+    const redis = new Redis(cacheRedisUrl, {maxRetriesPerRequest: 1})
     redis.on('error', error => {
-        console.error(`碰到 Redis 错误： ${util.inspect(error)}`)
+        console.error(`碰到 Redis （CACHE_URL = ${cacheRedisUrl}, type = ${cacheRedisUrl}） 错误： ${util.inspect(error)}`)
     })
     redis.on('connect', () => {
         graphqlOptions.cache = new BaseRedisCache({
@@ -41,8 +43,16 @@ if (process.env['CACHE_URL']) {
     })
 }
 
+const yuqueToken = process.env.YUQUE_TOKEN
+
+const modules = [ClipboardModule, CatsModule, RecipesModule, ZhihuModule, BabelModule, GraphqlPluginModule, GraphQLModule.forRoot(graphqlOptions), GatewayModule,]
+
+if (yuqueToken && yuqueToken !== 'undefined') {
+    modules.push(YuqueModule)
+}
+
 @Module({
-    imports: [ClipboardModule, CatsModule, RecipesModule, YuqueModule, ZhihuModule, BabelModule, GraphqlPluginModule, GraphQLModule.forRoot<ApolloDriverConfig>(graphqlOptions), GatewayModule,],
+    imports: modules,
 })
 export class AppModule {
 }
