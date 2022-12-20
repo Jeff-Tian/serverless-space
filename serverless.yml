@@ -122,6 +122,21 @@ functions:
       GITHUB_TOKEN: ${env:GITHUB_TOKEN}
       SYNC_GITHUB_PERSONAL_ACCESS_TOKEN: ${env:SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}
 
+  gateway:
+    handler: dist/src/gateway/main.handler
+    timeout: 900
+    layers:
+      - {Ref: LibLambdaLayer}
+    events:
+      - http:
+          method: ANY
+          path: gateway/
+      - http:
+          method: ANY
+          path: 'gateway/{proxy+}'
+    environment:
+      SERVERLESS_EXPRESS_PLATFORM: aws
+
   gatsby:
     handler: dist/src/gatsby.handler
     timeout: 30

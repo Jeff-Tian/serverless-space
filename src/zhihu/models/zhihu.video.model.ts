@@ -1,13 +1,13 @@
 import {Field, ObjectType} from "@nestjs/graphql"
 
 @ObjectType()
-export class VideoInfo {
+export class ZhihuVideoInfo {
     @Field(type => String)
     playUrl: string
 }
 
 @ObjectType()
 export class ZhihuVideo {
-    @Field(()=>VideoInfo)
-    first: VideoInfo
+    @Field(() => ZhihuVideoInfo)
+    first: ZhihuVideoInfo
 }
