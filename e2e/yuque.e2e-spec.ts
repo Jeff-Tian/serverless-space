@@ -1,6 +1,7 @@
 import { INestApplication } from "@nestjs/common"
 import { Test } from "@nestjs/testing"
 import request from "supertest"
+process.env.YUQUE_TOKEN = '1234'
 import { AppModule } from "../src/app.module"
 import nock from 'nock'
 
@@ -20,8 +21,6 @@ describe('Yuque', () => {
     })
 
     it('get article by hash', async () => {
-        process.env.YUQUE_TOKEN = '1234'
-        
         nock('https://www.yuque.com/api/v2/').get(/.+/).reply(200, {data:{id: '61880244', title: 'abc'}})
         
         return request(app.getHttpServer())
