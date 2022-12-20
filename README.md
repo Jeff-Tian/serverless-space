@@ -76,7 +76,7 @@ serverless deploy
 
 ### From GitHub Action
 
-Every push will trigger auto deploy by github action if tests pass.
+Every push will trigger auto deploy by GitHub action if tests pass.
 
 - https://github.com/Jeff-Tian/serverless-space/actions
 

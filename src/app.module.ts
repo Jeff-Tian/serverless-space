@@ -13,12 +13,12 @@ import {ZhihuModule} from "./zhihu/zhihu.module";
 import util from "util";
 import {ClipboardModule} from "./clipboard/clipboard.module";
 import {GatewayModule} from "./gateway/gateway.module";
-import {ApolloDriver, ApolloDriverConfig} from "@nestjs/apollo";
+import {ApolloDriver, ApolloDriverConfig, ApolloFederationDriver, ApolloFederationDriverConfig} from "@nestjs/apollo";
 
 const ONE_HOUR_IN_SECONDS = 60 * 60
 
-let graphqlOptions: ApolloDriverConfig = {
-    driver: ApolloDriver,
+let graphqlOptions: ApolloFederationDriverConfig = {
+    driver: ApolloFederationDriver,
     autoSchemaFile: true,
     sortSchema: true,
     playground: false,

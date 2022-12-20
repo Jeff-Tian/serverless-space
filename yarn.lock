@@ -68,6 +68,11 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
+"@apollo/cache-control-types@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@apollo/cache-control-types/-/cache-control-types-1.0.2.tgz#f42ed3563acc7f1f50617d65d208483977adc68e"
+  integrity sha512-Por80co1eUm4ATsvjCOoS/tIR8PHxqVjsA6z76I6Vw0rFn4cgyVElQcmQDIZiYsy41k8e5xkrMRECkM2WR8pNw==
+
 "@apollo/client@^3.2.5":
   version "3.5.5"
   resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.5.5.tgz#ce331403ee5f099e595430890f9b510c8435c932"
@@ -117,6 +122,14 @@
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@apollo/federation-internals/-/federation-internals-2.1.4.tgz#aa475c51fbc91d9e37e9a6e69446412ab8e32b88"
   integrity sha512-Fpln5hHEh0Jjy0vaTpIlv1SF+zg2cjunsH2X5QDHwKOXoHsT4o7LF+Duoy7LgZj6W3HNW9Z/srmuOXXNTl2gjw==
+  dependencies:
+    chalk "^4.1.0"
+    js-levenshtein "^1.1.6"
+
+"@apollo/federation-internals@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@apollo/federation-internals/-/federation-internals-2.2.2.tgz#ca8e0a3838600d95274d875df07d62ba72414ff1"
+  integrity sha512-Q16I75qZ6jA8lCoZedM5938oZONrJyL7Pk6TOqw44fndea0As0pb2Ug8dV3pAWq4HhJ+/vBu2WoP14CFcxA9Yw==
   dependencies:
     chalk "^4.1.0"
     js-levenshtein "^1.1.6"
@@ -211,6 +224,14 @@
     "@apollo/utils.fetcher" "^1.0.0"
     "@apollo/utils.keyvaluecache" "^1.0.1"
     "@apollo/utils.logger" "^1.0.0"
+
+"@apollo/subgraph@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@apollo/subgraph/-/subgraph-2.2.2.tgz#5cfb9d580cc1f84b46c4ee29238d1d16bdb1507a"
+  integrity sha512-CUJPN1v9JZgkMBWkmufJMGduUwTD4fFyjOk2oLRWUDB41r9+eeyI3/CvuuGaZH+xMxMOSf5HN9tbbAO/sPnuTQ==
+  dependencies:
+    "@apollo/cache-control-types" "^1.0.2"
+    "@apollo/federation-internals" "^2.2.2"
 
 "@apollo/usage-reporting-protobuf@^4.0.0":
   version "4.0.2"
