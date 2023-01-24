@@ -2,6 +2,7 @@ import {IntrospectAndCompose} from '@apollo/gateway';
 import {ApolloGatewayDriver, ApolloGatewayDriverConfig} from '@nestjs/apollo';
 import {Module} from '@nestjs/common';
 import {GraphQLModule} from '@nestjs/graphql';
+import {AuthenticatedDataSource} from "./authenticated.data.source";
 
 @Module({
     imports: [
@@ -25,6 +26,9 @@ import {GraphQLModule} from '@nestjs/graphql';
                     ],
                     subgraphHealthCheck: false,
                 }),
+                buildService: ({name, url}) => {
+                    return new AuthenticatedDataSource({url})
+                }
             },
         }),
     ],
