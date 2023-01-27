@@ -91,7 +91,7 @@
     "@types/jest": "^27.0.1",
     "jest": "^27.1.1",
     "rimraf": "^3.0.2",
-    "serverless": "^2.55.0",
+    "serverless": "^3.27.0",
     "serverless-dotenv-plugin": "^3.9.0",
     "serverless-offline": "^8.1.0",
     "serverless-plugin-layer-manager": "^1.0.6",
