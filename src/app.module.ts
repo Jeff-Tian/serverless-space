@@ -12,7 +12,6 @@ import {BabelModule} from './babel-service/babel.module'
 import {ZhihuModule} from "./zhihu/zhihu.module";
 import util from "util";
 import {ClipboardModule} from "./clipboard/clipboard.module";
-import {GatewayModule} from "./gateway/gateway.module";
 import {ApolloFederationDriver, ApolloFederationDriverConfig} from "@nestjs/apollo";
 
 const ONE_HOUR_IN_SECONDS = 60 * 60
@@ -25,7 +24,7 @@ let graphqlOptions: ApolloFederationDriverConfig = {
     persistedQueries: {
         ttl: ONE_HOUR_IN_SECONDS
     },
-    plugins: [ApolloServerPluginCacheControl({defaultMaxAge: 5}), responseCachePlugin({}),
+    plugins: [ApolloServerPluginCacheControl({defaultMaxAge: 5 * 60}), responseCachePlugin({}),
     ],
 }
 
