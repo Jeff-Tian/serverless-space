@@ -83,7 +83,8 @@
     "dotenv": "^14.2.0",
     "@apollo/gateway": "^2.1.4",
     "@nestjs/apollo": "^10.1.6",
-    "@apollo/subgraph": "^2.2.2"
+    "@apollo/subgraph": "^2.2.2",
+    "nestjs-gql-cache-control": "^0.1.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.1.1",
