@@ -40,7 +40,7 @@
     "@nestjs/common": "^8.0.6",
     "@nestjs/core": "^8.0.6",
     "@nestjs/graphql": "10.1.6",
-    "@nestjs/platform-express": "8.0.6",
+    "@nestjs/platform-express": "8.4.7",
     "@types/aws-lambda": "^8.10.83",
     "@vendia/serverless-express": "4.3.11",
     "apollo-server": "^3.3.0",
