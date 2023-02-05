@@ -5,3 +5,4 @@ dist
 yuque.json
 yuque-*.json
 .env
+package
