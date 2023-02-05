@@ -2,9 +2,6 @@ import { NotFoundException } from '@nestjs/common'
 import { Args, Query, Resolver } from '@nestjs/graphql'
 import { YuQue } from "./models/yuque.model"
 import { YuqueService } from "./yuque.service"
-import {CacheControl} from "nestjs-gql-cache-control";
-
-const One_Month_In_Seconds = 60 * 60 * 24 * 30
 
 @Resolver(of => YuQue)
 export class YuqueResolver {
@@ -12,7 +9,6 @@ export class YuqueResolver {
     }
 
     @Query(returns => YuQue)
-    @CacheControl({ maxAge: One_Month_In_Seconds })
     async yuque(@Args('id', { nullable: true }) id?: string, @Args('slug', { nullable: true }) slug?: string): Promise<YuQue> {
         const article = (id && await this.yuqueService.findOneById(id)) || (slug && await this.yuqueService.findOneBySlug(slug)) || null
 

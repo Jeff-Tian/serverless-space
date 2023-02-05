@@ -1,6 +1,12 @@
 import {INestApplication} from "@nestjs/common";
 import {Test} from "@nestjs/testing";
 import request from "supertest"
+
+jest.mock(`@jeff-tian/gatsby-source-yuque/gatsby-node`, () => {
+    return {
+        sourceAllNodes: jest.fn().mockResolvedValue([]),
+    }
+});
 import {DynamoService} from "../src/dynamo/dynamo.service";
 import {ClipboardModule} from "../src/clipboard/clipboard.module";
 import {GraphQLModule} from "@nestjs/graphql";

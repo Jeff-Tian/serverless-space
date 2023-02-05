@@ -1,6 +1,13 @@
 import { INestApplication } from "@nestjs/common"
 import { Test } from "@nestjs/testing"
 import request from "supertest"
+
+jest.mock(`@jeff-tian/gatsby-source-yuque/gatsby-node`, () => {
+    return {
+        sourceAllNodes: jest.fn().mockResolvedValue([]),
+    }
+});
+
 process.env.YUQUE_TOKEN = '1234'
 import { AppModule } from "../src/app.module"
 import nock from 'nock'
