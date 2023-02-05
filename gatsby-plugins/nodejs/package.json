@@ -19,7 +19,7 @@
     "aws-console:windows": "start https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
     "studio:windows": "start https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/gatsby/graphql",
     "install": "exit 0 && npm v gatsby dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby",
-    "postinstall": "exit 0 && npm v gatsby dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby",
+    "postinstall": "npm v gatsby dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby",
     "i": "exit 0"
   },
   "repository": {
