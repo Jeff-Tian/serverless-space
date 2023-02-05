@@ -67,7 +67,7 @@ const startRecipe = ({recipePath, projectRoot, watchChanges = false}) => {
 
     const startService = () => {
         service = interpret(
-            recipeMachine.withContext(initialState.context)
+            recipeMachine.withContext(initialState.context as any)
         ).onTransition((state: any) => {
             if (state.event.type !== 'update') {
                 console.log('===onTransition', {

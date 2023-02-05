@@ -95,7 +95,7 @@
     "@nestjs/testing": "^8.0.6",
     "@types/jest": "^27.0.1",
     "cross-env": "^7.0.3",
-    "gatsby-recipes": "0.9.3",
+    "gatsby-recipes": "1.4.0",
     "jest": "^27.1.1",
     "nock": "^13.2.1",
     "rimraf": "^3.0.2",
