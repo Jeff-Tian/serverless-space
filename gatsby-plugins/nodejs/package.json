@@ -39,7 +39,7 @@
     "gatsby-source-graphql": "^4.0.0"
   },
   "devDependencies": {
-    "gatsby-recipes": "0.9.3"
+    "gatsby-recipes": "1.4.0"
   },
   "jest": {
     "moduleFileExtensions": [
