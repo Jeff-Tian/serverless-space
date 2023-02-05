@@ -1,6 +1,13 @@
 import {INestApplication} from "@nestjs/common"
 import {Test} from "@nestjs/testing"
 import request from "supertest"
+
+jest.mock(`@jeff-tian/gatsby-source-yuque/gatsby-node`, () => {
+    return {
+        sourceAllNodes: jest.fn().mockResolvedValue([]),
+    }
+});
+
 import {AppModule} from "../src/app.module"
 import {testTargetUrl, transformedText} from '../src/test/constants'
 import {nockIt} from "../src/babel-service/babel.service.spec";
