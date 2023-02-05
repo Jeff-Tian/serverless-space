@@ -530,17 +530,16 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@jeff-tian/gatsby-source-yuque@2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-2.0.7.tgz#122fb1b97634af74e47c23ae530ef2da4b7a83cd"
-  integrity sha512-ZV9NTsXBgo0HHVQ4/bHcu1clWH8Z+jHNGXnW1Lk29L+7u1aVgd3jGCOzXRQQbUU2UZWm4LKiCXWrD0Jrkkm6TA==
+"@jeff-tian/gatsby-source-yuque@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.npmmirror.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-1.6.0.tgz#8ac05fdbcfc2995c157a6cd08f56c29311293034"
+  integrity sha512-NTM2vXGKmONaSpbqLNttQFUV/67ysLSqN1HINrp4AIHtKLRD/p8TlnNqBCZ9rwxEVXFm8EdPD9L+sPWkWEmwTQ==
   dependencies:
     "@babel/runtime" "^7.8.7"
     axios "^0.19.2"
     dayjs "^1.8.22"
     debug "^4.1.1"
-    gatsby-core-utils "^4.5.0"
-    gatsby-source-filesystem "5.5.0"
+    gatsby-source-filesystem latest
     gray-matter "^4.0.2"
     html-entities "^1.2.1"
     queue "^6.0.1"
@@ -1890,21 +1889,6 @@ gatsby-recipes@0.9.3:
     xstate "^4.9.1"
     yoga-layout-prebuilt "^1.9.6"
 
-gatsby-source-filesystem@5.5.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-5.5.0.tgz#fd7e86f1eb63171db1b181a372c1e2954d3fe301"
-  integrity sha512-STuHuf3who/9Nx5NW00fpRnaob0TXB3YftrPJ1qnZ+N5pfT0hyOrRm1EhSvrDAlXm3qT45fWddVDFLpaMU8+8g==
-  dependencies:
-    "@babel/runtime" "^7.20.7"
-    chokidar "^3.5.3"
-    file-type "^16.5.4"
-    fs-extra "^11.1.0"
-    gatsby-core-utils "^4.5.0"
-    mime "^3.0.0"
-    pretty-bytes "^5.6.0"
-    valid-url "^1.0.9"
-    xstate "^4.34.0"
-
 gatsby-source-filesystem@^3.14.0:
   version "3.15.0"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-3.15.0.tgz#2ecee63279d267e9cc324ad1cb5facf033a1cdd8"
@@ -1923,6 +1907,21 @@ gatsby-source-filesystem@^3.14.0:
     progress "^2.0.3"
     valid-url "^1.0.9"
     xstate "^4.14.0"
+
+gatsby-source-filesystem@latest:
+  version "5.5.0"
+  resolved "https://registry.npmmirror.com/gatsby-source-filesystem/-/gatsby-source-filesystem-5.5.0.tgz#fd7e86f1eb63171db1b181a372c1e2954d3fe301"
+  integrity sha512-STuHuf3who/9Nx5NW00fpRnaob0TXB3YftrPJ1qnZ+N5pfT0hyOrRm1EhSvrDAlXm3qT45fWddVDFLpaMU8+8g==
+  dependencies:
+    "@babel/runtime" "^7.20.7"
+    chokidar "^3.5.3"
+    file-type "^16.5.4"
+    fs-extra "^11.1.0"
+    gatsby-core-utils "^4.5.0"
+    mime "^3.0.0"
+    pretty-bytes "^5.6.0"
+    valid-url "^1.0.9"
+    xstate "^4.34.0"
 
 gatsby-source-graphql@^4.0.0:
   version "4.25.0"

@@ -24,7 +24,7 @@ let graphqlOptions: ApolloFederationDriverConfig = {
     persistedQueries: {
         ttl: ONE_HOUR_IN_SECONDS
     },
-    plugins: [ApolloServerPluginCacheControl({defaultMaxAge: 5 * 60}), responseCachePlugin({}),
+    plugins: [ApolloServerPluginCacheControl({defaultMaxAge: 5 * 60}),  responseCachePlugin({}),
     ],
 }
 

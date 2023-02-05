@@ -13,6 +13,7 @@ process.env.YUQUE_TOKEN = '1234'
 import {AppModule} from "../src/app.module"
 import nock from 'nock'
 import {readBySlug} from "../src/gatsby-resources/yuque";
+import {One_Month_In_Seconds} from "../src/yuque/yuque.resolver";
 
 jest.mock('aws-sdk')
 
@@ -31,7 +32,7 @@ describe('Yuque', () => {
         await app.init()
     })
 
-    it('get article by hash', async () => {
+    it('gets article by hash', async () => {
         return request(app.getHttpServer())
             .post('/graphql')
             .send({
@@ -43,6 +44,21 @@ describe('Yuque', () => {
             }`
             })
             .expect({data: {yuque: {id: '61880244', title: 'abc'}}})
+            .expect(200)
+    })
+
+    it('gets article by hash and caches for 1 month', async () => {
+        return request(app.getHttpServer())
+            .post('/graphql')
+            .send({
+                query: `query yuqueQuery {
+                yuque(slug: "bhagcw") {
+                    id
+                    title
+                }
+            }`
+            })
+            .expect('cache-control', `max-age=${One_Month_In_Seconds}, public`)
             .expect(200)
     })
 })
