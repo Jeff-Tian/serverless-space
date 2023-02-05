@@ -1,4 +1,10 @@
 import {Mock} from 'ts-mockery'
+
+jest.mock(`@jeff-tian/gatsby-source-yuque/gatsby-node`, () => {
+    return {
+        sourceAllNodes: jest.fn().mockResolvedValue([]),
+    }
+});
 import {YuqueService} from "./yuque.service";
 import {DynamoService} from "../dynamo/dynamo.service";
 
