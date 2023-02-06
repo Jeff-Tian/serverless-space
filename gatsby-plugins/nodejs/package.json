@@ -19,13 +19,10 @@
     "aws-console:windows": "start https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
     "studio:windows": "start https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/gatsby/graphql",
     "install": "exit 0 && npm v gatsby dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby",
-    "postinstall": "npm run install-source-yuque&&npm run install-babel&&npm run install-gatsby-source-filesystem&&npm run install-gatsby-core-utils&&npm run install-node-object-hash",
+    "postinstall": "npm run install-source-yuque&&npm run install-gatsby-source-filesystem",
     "i": "exit 0",
     "install-source-yuque": "npm v @jeff-tian/gatsby-source-yuque dist.tarball | xargs curl | tar -xz&&mkdir -p node_modules/@jeff-tian&&mv package node_modules/@jeff-tian/gatsby-source-yuque",
-    "install-babel": "npm v @babel/runtime dist.tarball | xargs curl | tar -xz&&mkdir -p node_modules/@babel&&mv package node_modules/@babel/runtime",
-    "install-gatsby-source-filesystem": "npm v gatsby-source-filesystem dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby-source-filesystem",
-    "install-gatsby-core-utils": "npm v gatsby-core-utils dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby-core-utils",
-    "install-node-object-hash": "npm v node-object-hash dist.tarball | xargs curl | tar -xz&&mv package node_modules/node-object-hash"
+    "install-gatsby-source-filesystem": "npm v gatsby-source-filesystem dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby-source-filesystem"
   },
   "repository": {
     "type": "git",
@@ -38,6 +35,7 @@
   },
   "homepage": "https://github.com/Jeff-Tian/serverless-space#readme",
   "dependencies": {
+    "gatsby-core-utils": "4.5.0"
   },
   "devDependencies": {
     "gatsby-recipes": "0.9.3"
