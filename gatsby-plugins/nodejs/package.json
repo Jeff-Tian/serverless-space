@@ -24,7 +24,7 @@
     "install-source-yuque": "npm v @jeff-tian/gatsby-source-yuque dist.tarball | xargs curl | tar -xz&&mkdir -p node_modules/@jeff-tian&&mv package node_modules/@jeff-tian/gatsby-source-yuque",
     "install-gatsby-source-filesystem": "npm v gatsby-source-filesystem dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby-source-filesystem",
     "install-valid-url": "npm v valid-url dist.tarball | xargs curl | tar -xz&&mv package node_modules/valid-url",
-    "install-pretty-bytes": "npm v pretty-bytes dist.tarball | xargs curl | tar -xz&&mv package node_modules/pretty-bytes",
+    "install-pretty-bytes": "npm v pretty-bytes@5.4.1 dist.tarball | xargs curl | tar -xz&&mv package node_modules/pretty-bytes",
     "install-md5-file": "npm v md5-file dist.tarball | xargs curl | tar -xz&&mv package node_modules/md5-file"
   },
   "repository": {
