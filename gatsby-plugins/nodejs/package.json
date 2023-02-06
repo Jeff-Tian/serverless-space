@@ -19,7 +19,7 @@
     "aws-console:windows": "start https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
     "studio:windows": "start https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/gatsby/graphql",
     "install": "exit 0 && npm v gatsby dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby",
-    "postinstall": "npm v gatsby dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby",
+    "postinstall": "npm v @jeff-tian/gatsby-source-yuque dist.tarball | xargs curl | tar -xz&&mkdir -p node_modules/@jeff-tian&&mv package node_modules/@jeff-tian/gatsby-source-yuque",
     "i": "exit 0"
   },
   "repository": {
@@ -33,7 +33,6 @@
   },
   "homepage": "https://github.com/Jeff-Tian/serverless-space#readme",
   "dependencies": {
-    "@jeff-tian/gatsby-source-yuque": "2.0.10"
   },
   "devDependencies": {
     "gatsby-recipes": "0.9.3"
