@@ -19,11 +19,13 @@
     "aws-console:windows": "start https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
     "studio:windows": "start https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/gatsby/graphql",
     "install": "exit 0 && npm v gatsby dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby",
-    "postinstall": "npm run install-source-yuque&&npm run install-gatsby-source-filesystem&&npm run install-valid-url",
+    "postinstall": "npm run install-source-yuque&&npm run install-gatsby-source-filesystem&&npm run install-valid-url&&npm run install-pretty-bytes&&npm run install-md5-file",
     "i": "exit 0",
     "install-source-yuque": "npm v @jeff-tian/gatsby-source-yuque dist.tarball | xargs curl | tar -xz&&mkdir -p node_modules/@jeff-tian&&mv package node_modules/@jeff-tian/gatsby-source-yuque",
     "install-gatsby-source-filesystem": "npm v gatsby-source-filesystem dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby-source-filesystem",
-    "install-valid-url": "npm v valid-url dist.tarball | xargs curl | tar -xz&&mv package node_modules/valid-url"
+    "install-valid-url": "npm v valid-url dist.tarball | xargs curl | tar -xz&&mv package node_modules/valid-url",
+    "install-pretty-bytes": "npm v pretty-bytes dist.tarball | xargs curl | tar -xz&&mv package node_modules/pretty-bytes",
+    "install-md5-file": "npm v md5-file dist.tarball | xargs curl | tar -xz&&mv package node_modules/md5-file"
   },
   "repository": {
     "type": "git",
