@@ -32,7 +32,7 @@
     "install-gray-matter": "npm v gray-matter dist.tarball | xargs curl | tar -xz&&mv package node_modules/gray-matter",
     "install-section-matter": "npm v section-matter dist.tarball | xargs curl | tar -xz&&mv package node_modules/section-matter",
     "install-kind-of": "npm v kind-of dist.tarball | xargs curl | tar -xz&&mv package node_modules/kind-of",
-    "install-extend-shallow": "npm v extend-shallow dist.tarball | xargs curl | tar -xz&&mv package node_modules/extend-shallow",
+    "install-extend-shallow": "npm v extend-shallow dist.tarball | xargs curl | tar -xz&&mv package node_modules/extend-shallow"
   },
   "repository": {
     "type": "git",
