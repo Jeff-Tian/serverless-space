@@ -7,7 +7,6 @@ import {YuqueModule} from './yuque/yuque.module'
 import responseCachePlugin from 'apollo-server-plugin-response-cache'
 import {BaseRedisCache} from 'apollo-server-cache-redis'
 import Redis from 'ioredis'
-import {GraphqlPluginModule} from "./graphql/graphql.plugin.module"
 import {BabelModule} from './babel-service/babel.module'
 import {ZhihuModule} from "./zhihu/zhihu.module";
 import util from "util";
@@ -44,7 +43,7 @@ if (cacheRedisUrl && cacheRedisUrl !== 'undefined') {
 
 const yuqueToken = process.env.YUQUE_TOKEN
 
-const modules = [ClipboardModule, CatsModule, RecipesModule, ZhihuModule, BabelModule, GraphqlPluginModule, GraphQLModule.forRoot(graphqlOptions)]
+const modules = [ClipboardModule, CatsModule, RecipesModule, ZhihuModule, BabelModule, GraphQLModule.forRoot(graphqlOptions)]
 
 if (yuqueToken && yuqueToken !== 'undefined') {
     modules.push(YuqueModule)
