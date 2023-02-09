@@ -38,7 +38,7 @@
     "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@hapi/hoek": "^9.2.0",
     "@hapi/joi": "15.1.1",
-    "@jeff-tian/gatsby-source-yuque": "2.1.0",
+    "@jeff-tian/gatsby-source-yuque": "2.1.1",
     "@mdx-js/mdx": "^1.6.22",
     "@nestjs/apollo": "^10.1.6",
     "@nestjs/axios": "^0.0.3",

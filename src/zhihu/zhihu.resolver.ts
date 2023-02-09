@@ -1,10 +1,10 @@
-import {Args, Mutation, Query, Resolver} from "@nestjs/graphql"
-import {Zhihu} from "./models/zhihu.model"
-import {ZhihuService} from "./zhihu.service"
-import {ZhihuVideo} from "./models/zhihu.video.model";
-import {plainToClass} from 'class-transformer'
-import {YuQue} from "../yuque/models/yuque.model";
-import {PartialYuqueModel} from "./models/partial.yuque.model";
+import { Args, Mutation, Query, Resolver } from "@nestjs/graphql"
+import { Zhihu } from "./models/zhihu.model"
+import { ZhihuService } from "./zhihu.service"
+import { ZhihuVideoInfo } from "./models/zhihu.video.model";
+import { plainToClass } from 'class-transformer'
+import { YuQue } from "../yuque/models/yuque.model";
+import { PartialYuqueModel } from "./models/partial.yuque.model";
 
 @Resolver(of => Zhihu)
 export class ZhihuResolver {
@@ -17,14 +17,14 @@ export class ZhihuResolver {
         return this.zhihuService.draftColumnArticle()
     }
 
-    @Query(returns => ZhihuVideo)
+    @Query(returns => ZhihuVideoInfo)
     async getVideoInfoByUrl(@Args('zvideoUrl') zvideoUrl: string) {
-        return plainToClass(ZhihuVideo, {first: {playUrl: await this.zhihuService.getVideoPlayUrlByVideoPage(zvideoUrl)}})
+        return plainToClass(ZhihuVideoInfo, { playUrl: await this.zhihuService.getVideoPlayUrlByVideoPage(zvideoUrl) })
     }
 
     @Mutation(() => PartialYuqueModel)
     async syncYuqueToZhihu(@Args('slug') slug: string) {
         await this.zhihuService.syncYuqueToZhihu(slug)
-        return {slug: slug}
+        return { slug: slug }
     }
 }

@@ -5,9 +5,3 @@ export class ZhihuVideoInfo {
     @Field(type => String)
     playUrl: string
 }
-
-@ObjectType()
-export class ZhihuVideo {
-    @Field(() => ZhihuVideoInfo)
-    first: ZhihuVideoInfo
-}
