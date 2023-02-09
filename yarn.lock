@@ -4591,7 +4591,7 @@ apollo-server-caching@^3.3.0:
   dependencies:
     lru-cache "^6.0.0"
 
-apollo-server-core@^3.11.1, apollo-server-core@^3.3.0:
+apollo-server-core@^3.11.1:
   version "3.11.1"
   resolved "https://registry.yarnpkg.com/apollo-server-core/-/apollo-server-core-3.11.1.tgz#89d83aeaa71a59f760ebfa35bb0cbd31e15474ca"
   integrity sha512-t/eCKrRFK1lYZlc5pHD99iG7Np7CEm3SmbDiONA7fckR3EaB/pdsEdIkIwQ5QBBpT5JLp/nwvrZRVwhaWmaRvw==
@@ -4632,7 +4632,7 @@ apollo-server-errors@^3.3.1:
   resolved "https://registry.yarnpkg.com/apollo-server-errors/-/apollo-server-errors-3.3.1.tgz#ba5c00cdaa33d4cbd09779f8cb6f47475d1cd655"
   integrity sha512-xnZJ5QWs6FixHICXHxUfm+ZWqqxrNuPlQ+kj5m6RtEgIpekOPssH/SD9gf2B4HuWV0QozorrygwZnux8POvyPA==
 
-apollo-server-express@^3.3.0, apollo-server-express@^3.5.0:
+apollo-server-express@^3.11.1, apollo-server-express@^3.5.0:
   version "3.11.1"
   resolved "https://registry.yarnpkg.com/apollo-server-express/-/apollo-server-express-3.11.1.tgz#f46d2f2f8db3d99ede6c0c144fea02f24b73cb78"
   integrity sha512-x9ngcpXbBlt4naCXTwNtBFb/mOd9OU0wtFXvJkObHF26NsRazu3DxDfEuekA6V1NFOocD+A9jmVMQeQWug5MgA==
@@ -4675,13 +4675,14 @@ apollo-server-types@^3.7.1:
     apollo-reporting-protobuf "^3.3.3"
     apollo-server-env "^4.2.1"
 
-apollo-server@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/apollo-server/-/apollo-server-3.3.0.tgz#4c0c9d20185d89cbe83aec2c797564b5b5968ecb"
-  integrity sha512-vJE+lIOQMgno3IaJvwo66S53m0CU4fq7qAgnOCubitIGNKEHiUL6yXKL0rMGfOPZqeed2S2QWQrOsCGQDIudMw==
+apollo-server@3.11.1:
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/apollo-server/-/apollo-server-3.11.1.tgz#831646081323aadf2cb53cdc3401786e41d44d81"
+  integrity sha512-3RZ/veWGbi0zXy2YVaPkYIAavpbHyEVui91DNYvz6UFS0fZmhJwG7f1VmGheeRiqiV8nFa8GuBejI1niTeAYzA==
   dependencies:
-    apollo-server-core "^3.3.0"
-    apollo-server-express "^3.3.0"
+    "@types/express" "4.17.14"
+    apollo-server-core "^3.11.1"
+    apollo-server-express "^3.11.1"
     express "^4.17.1"
 
 apollo-upload-client@17.0.0:
