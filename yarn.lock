@@ -2253,10 +2253,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jeff-tian/gatsby-source-yuque@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-2.1.1.tgz#33f346a653330c8100889b5d12ea8f2fb800b283"
-  integrity sha512-x3YwEa0PiidYTXl0HwhCgbi3JqaDQ9xiHKPcGZQDPQxCQMQSxZcEeGOvRc3kVUQCw+foKmIw+Qo/nvFrdku0FA==
+"@jeff-tian/gatsby-source-yuque@2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-2.1.2.tgz#3a8590a8d085da7b9956e74cd5a184ce58eb9b75"
+  integrity sha512-t4DyuOUw/VjjtXXENsIFFfKg3E9JmjXV42dX8F2fwpLxcE1GWHBmP8HTpXDOXpkIHWyNOhTctA5wjqOIKjGiQw==
   dependencies:
     "@babel/runtime" "^7.8.7"
     axios "^0.19.2"
@@ -2718,10 +2718,10 @@
     tslib "2.4.0"
     uuid "8.3.2"
 
-"@nestjs/core@^8.0.6":
-  version "8.4.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-8.4.7.tgz#fbec7fa744ac8749a4b966f759a6656c1cf43883"
-  integrity sha512-XB9uexHqzr2xkPo6QSiQWJJttyYYLmvQ5My64cFvWFi7Wk2NIus0/xUNInwX3kmFWB6pF1ab5Y2ZBvWdPwGBhw==
+"@nestjs/core@^9.0.5":
+  version "9.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-9.0.5.tgz#b4cb8f8b0c1d234a840f06e265717d4a24f8d224"
+  integrity sha512-41BBJlsquasVrGeRWNYb74Fwsc+oB5EmKC/hioQJAhGqIw5Kr5AcdEoEFaMKFzNLAPbU6c/nVW8T8CrvtQbQww==
   dependencies:
     "@nuxtjs/opencollective" "0.3.2"
     fast-safe-stringify "2.1.1"
