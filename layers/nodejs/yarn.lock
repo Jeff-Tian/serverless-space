@@ -42,7 +42,7 @@
     "chalk" "^4.1.0"
     "js-levenshtein" "^1.1.6"
 
-"@apollo/gateway@^0.44.1 || ^0.46.0 || ^0.48.0 || ^0.49.0 || ^0.50.0 || ^2.0.0", "@apollo/gateway@2.1.4":
+"@apollo/gateway@2.1.4":
   "integrity" "sha512-EIKHZFdaaNEzySs48b7r6BEXVTiS4pi/yI2OVPWkEUbkVnk7NPlQNIhDXtxSeIgEY1l79PEZ9Jw09QqtjTFoTg=="
   "resolved" "https://registry.npmjs.org/@apollo/gateway/-/gateway-2.1.4.tgz"
   "version" "2.1.4"
@@ -135,7 +135,7 @@
     "@apollo/utils.keyvaluecache" "^2.0.1"
     "@apollo/utils.logger" "^2.0.0"
 
-"@apollo/subgraph@^0.1.5 || ^0.3.0 || ^0.4.0 || ^2.0.0", "@apollo/subgraph@2.2.2":
+"@apollo/subgraph@2.2.2":
   "integrity" "sha512-CUJPN1v9JZgkMBWkmufJMGduUwTD4fFyjOk2oLRWUDB41r9+eeyI3/CvuuGaZH+xMxMOSf5HN9tbbAO/sPnuTQ=="
   "resolved" "https://registry.npmjs.org/@apollo/subgraph/-/subgraph-2.2.2.tgz"
   "version" "2.2.2"
@@ -765,7 +765,7 @@
   dependencies:
     "axios" "0.23.0"
 
-"@nestjs/common@^7.0.8 || ^8.0.0 || ^9.0.0", "@nestjs/common@^8.0.0", "@nestjs/common@^8.0.6", "@nestjs/common@^8.2.3 || ^9.0.0":
+"@nestjs/common@^8.0.6":
   "integrity" "sha512-m/YsbcBal+gA5CFrDpqXqsSfylo+DIQrkFY3qhVIltsYRfu8ct8J9pqsTO6OPf3mvqdOpFGrV5sBjoyAzOBvsw=="
   "resolved" "https://registry.npmjs.org/@nestjs/common/-/common-8.4.7.tgz"
   "version" "8.4.7"
@@ -775,7 +775,7 @@
     "tslib" "2.4.0"
     "uuid" "8.3.2"
 
-"@nestjs/core@^8.0.6", "@nestjs/core@^8.2.3 || ^9.0.0":
+"@nestjs/core@^8.0.6":
   "integrity" "sha512-XB9uexHqzr2xkPo6QSiQWJJttyYYLmvQ5My64cFvWFi7Wk2NIus0/xUNInwX3kmFWB6pF1ab5Y2ZBvWdPwGBhw=="
   "resolved" "https://registry.npmjs.org/@nestjs/core/-/core-8.4.7.tgz"
   "version" "8.4.7"
@@ -788,7 +788,7 @@
     "tslib" "2.4.0"
     "uuid" "8.3.2"
 
-"@nestjs/graphql@^10.0.0", "@nestjs/graphql@10.1.6":
+"@nestjs/graphql@10.1.6":
   "integrity" "sha512-RiDTqyBqk+qolcMMKBANuG5zw0q0zbVmkwWydB2F1ObvUyl5t/GOAcR8mbq3gvpfYzylQ5t5/svWUDq/7dcpaQ=="
   "resolved" "https://registry.npmjs.org/@nestjs/graphql/-/graphql-10.1.6.tgz"
   "version" "10.1.6"
@@ -813,7 +813,7 @@
   "resolved" "https://registry.npmjs.org/@nestjs/mapped-types/-/mapped-types-1.2.0.tgz"
   "version" "1.2.0"
 
-"@nestjs/platform-express@^8.0.0", "@nestjs/platform-express@8.0.6":
+"@nestjs/platform-express@8.0.6":
   "integrity" "sha512-1nIWd2w3aq3k0UNThDI6VWLqurc0Fvw3FO6BHWHK+Y7H/z9KFHZ0W/HdD9IJH05m4Smp/2neZoMkKdlXeh9wpQ=="
   "resolved" "https://registry.npmjs.org/@nestjs/platform-express/-/platform-express-8.0.6.tgz"
   "version" "8.0.6"
@@ -1183,7 +1183,7 @@
   "resolved" "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz"
   "version" "5.3.2"
 
-"acorn@^6.0.0 || ^7.0.0 || ^8.0.0", "acorn@^8.0.0":
+"acorn@^8.0.0":
   "integrity" "sha512-yXbYeFy+jUuYd3/CDcg2NkIYE991XYX/bje7LmjJigUciaeO1JR4XxXgCIV1/Zc/dRuFEyw1L0pbA+qynJkW5Q=="
   "resolved" "https://registry.npmjs.org/acorn/-/acorn-8.5.0.tgz"
   "version" "8.5.0"
@@ -1276,7 +1276,7 @@
   dependencies:
     "lru-cache" "^6.0.0"
 
-"apollo-server-core@^3.11.1", "apollo-server-core@^3.5.0":
+"apollo-server-core@^3.11.1":
   "integrity" "sha512-t/eCKrRFK1lYZlc5pHD99iG7Np7CEm3SmbDiONA7fckR3EaB/pdsEdIkIwQ5QBBpT5JLp/nwvrZRVwhaWmaRvw=="
   "resolved" "https://registry.npmjs.org/apollo-server-core/-/apollo-server-core-3.11.1.tgz"
   "version" "3.11.1"
@@ -1721,26 +1721,18 @@
   "resolved" "https://registry.npmjs.org/chownr/-/chownr-2.0.0.tgz"
   "version" "2.0.0"
 
-"class-transformer@*", "class-transformer@^0.2.0 || ^0.3.0 || ^0.4.0 || ^0.5.0", "class-transformer@^0.5.1":
+"class-transformer@^0.5.1":
   "integrity" "sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw=="
   "resolved" "https://registry.npmjs.org/class-transformer/-/class-transformer-0.5.1.tgz"
   "version" "0.5.1"
 
-"class-validator@*", "class-validator@^0.14.0":
+"class-validator@^0.14.0":
   "integrity" "sha512-ct3ltplN8I9fOwUd8GrP8UQixwff129BkEtuWDKL5W45cQuLd19xqmTLu5ge78YDm/fdje6FMt0hGOhl0lii3A=="
   "resolved" "https://registry.npmjs.org/class-validator/-/class-validator-0.14.0.tgz"
   "version" "0.14.0"
   dependencies:
     "@types/validator" "^13.7.10"
     "libphonenumber-js" "^1.10.14"
-    "validator" "^13.7.0"
-
-"class-validator@^0.11.1 || ^0.12.0 || ^0.13.0":
-  "integrity" "sha512-yBUcQy07FPlGzUjoLuUfIOXzgynnQPPruyK1Ge2B74k9ROwnle1E+NxLWnUv5OLU8hA/qL5leAE9XnXq3byaBw=="
-  "resolved" "https://registry.npmjs.org/class-validator/-/class-validator-0.13.2.tgz"
-  "version" "0.13.2"
-  dependencies:
-    "libphonenumber-js" "^1.9.43"
     "validator" "^13.7.0"
 
 "clean-stack@^2.0.0":
@@ -2038,7 +2030,7 @@
   "resolved" "https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.2.tgz"
   "version" "1.0.2"
 
-"encoding@^0.1.0", "encoding@^0.1.13":
+"encoding@^0.1.13":
   "integrity" "sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A=="
   "resolved" "https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz"
   "version" "0.1.13"
@@ -2491,12 +2483,12 @@
   "resolved" "https://registry.npmjs.org/graphql-type-json/-/graphql-type-json-0.3.2.tgz"
   "version" "0.3.2"
 
-"graphql-ws@^5.5.5", "graphql-ws@5.5.5":
+"graphql-ws@5.5.5":
   "integrity" "sha512-hvyIS71vs4Tu/yUYHPvGXsTgo0t3arU820+lT5VjZS2go0ewp2LqyCgxEN56CzOG7Iys52eRhHBiD1gGRdiQtw=="
   "resolved" "https://registry.npmjs.org/graphql-ws/-/graphql-ws-5.5.5.tgz"
   "version" "5.5.5"
 
-"graphql@^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0", "graphql@^14.0.0 || ^15.0.0 || ^16.0.0", "graphql@^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "graphql@^14.2.1 || ^15.0.0 || ^16.0.0", "graphql@^15.3.0 || ^16.0.0", "graphql@^15.7.2 || ^16.0.0", "graphql@^15.8.0 || ^16.0.0", "graphql@^16.5.0", "graphql@>=0.11 <=16", "graphql@14.x || 15.x || 16.x":
+"graphql@^16.5.0":
   "integrity" "sha512-KPIBPDlW7NxrbT/eh4qPXz5FiFdL5UbaA0XUNz2Rp3Z3hqBSkbj0GVjwFDztsWVauZUWsbKHgMg++sk8UX0bkw=="
   "resolved" "https://registry.npmjs.org/graphql/-/graphql-16.6.0.tgz"
   "version" "16.6.0"
@@ -3034,7 +3026,7 @@
   "resolved" "https://registry.npmjs.org/kleur/-/kleur-4.1.5.tgz"
   "version" "4.1.5"
 
-"libphonenumber-js@^1.10.14", "libphonenumber-js@^1.9.43":
+"libphonenumber-js@^1.10.14":
   "integrity" "sha512-NS4ZEgNhwbcPz1gfSXCGFnQm0xEiyTSPRthIuWytDzOiEG9xnZ2FbLyfJC4tI2BMAAXpoWbNxHYH75pa3Dq9og=="
   "resolved" "https://registry.npmjs.org/libphonenumber-js/-/libphonenumber-js-1.10.18.tgz"
   "version" "1.10.18"
@@ -4104,7 +4096,7 @@
     "object-assign" "^4.1.1"
     "scheduler" "^0.20.2"
 
-"react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2":
+"react@^17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -4159,7 +4151,7 @@
   dependencies:
     "redis-errors" "^1.0.0"
 
-"reflect-metadata@^0.1.12", "reflect-metadata@^0.1.13":
+"reflect-metadata@^0.1.13":
   "integrity" "sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg=="
   "resolved" "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.1.13.tgz"
   "version" "0.1.13"
@@ -4258,7 +4250,7 @@
   dependencies:
     "queue-microtask" "^1.2.2"
 
-"rxjs@*", "rxjs@^7.1.0":
+"rxjs@*":
   "integrity" "sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg=="
   "resolved" "https://registry.npmjs.org/rxjs/-/rxjs-7.8.0.tgz"
   "version" "7.8.0"
@@ -4531,7 +4523,7 @@
   dependencies:
     "inline-style-parser" "0.1.1"
 
-"subscriptions-transport-ws@^0.9.0 || ^0.11.0", "subscriptions-transport-ws@0.11.0":
+"subscriptions-transport-ws@0.11.0":
   "integrity" "sha512-8D4C6DIH5tGiAIpp5I0wD/xRlNiZAPGHygzCe7VzyzUoxHtawzjNAY9SUTXU05/EY2NMY9/9GF0ycizkXr1CWQ=="
   "resolved" "https://registry.npmjs.org/subscriptions-transport-ws/-/subscriptions-transport-ws-0.11.0.tgz"
   "version" "0.11.0"

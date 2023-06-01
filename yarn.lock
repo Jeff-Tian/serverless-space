@@ -3042,10 +3042,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jeff-tian/gatsby-source-yuque@2.1.6":
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-2.1.6.tgz#5eca90bbbb80346ef8210532a9e70fed6a573d59"
-  integrity sha512-+S2Afk8YrIgeSrSQWIuf0KuB0zrvIiv1GRSYHoIB4mdSmfSElrDX/lKmGSjitTtRash2r/MccIw16OD1quNTaw==
+"@jeff-tian/gatsby-source-yuque@2.1.7":
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-2.1.7.tgz#4dbaa36b13e53b5b24d649723c8fa58377544901"
+  integrity sha512-bgEKiSXtCwzE8/baiPo1seaLfEUtTnu1K4M++O2QUl+XLcufIKn6PGBQ/erWYKxjUYi350kJ6lkfcwFi7O//MA==
   dependencies:
     "@babel/runtime" "7.8.7"
     axios "^0.19.2"
@@ -3053,7 +3053,7 @@
     debug "^4.1.1"
     gray-matter "^4.0.2"
     html-entities "^1.2.1"
-    queue "5.0.1"
+    queue "6.0.1"
     ramda "0.27.0"
 
 "@jest/console@^27.5.1":
@@ -13946,10 +13946,10 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-queue@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/queue/-/queue-5.0.1.tgz#17b7d8b8f9ecd563b8b160d4f469b78f5573a368"
-  integrity sha512-c3KGXGbjY5KMHfemu1HN57Fz/7ECA4TPgCJ3u0io25z2vBpgppHo5SQOkScDRU5iXP4HWE7hKk+Cteb6+p/wew==
+queue@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/queue/-/queue-6.0.1.tgz#abd5a5b0376912f070a25729e0b6a7d565683791"
+  integrity sha512-AJBQabRCCNr9ANq8v77RJEv73DPbn55cdTb+Giq4X0AVnNVZvMHlYp7XlQiN+1npCZj1DuSmaA2hYVUUDgxFDg==
   dependencies:
     inherits "~2.0.3"
 
