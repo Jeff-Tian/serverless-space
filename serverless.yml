@@ -18,12 +18,20 @@ service: serverless-space
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
-frameworkVersion: '2'
+frameworkVersion: '3'
+
+useDotenv: true
 
 provider:
   name: aws
   runtime: nodejs18.x
   lambdaHashingVersion: 20201221
+  environment:
+    YUQUE_TOKEN: ${env:YUQUE_TOKEN}
+    YUQUE_PATH: /tmp/yuque.json
+    CACHE_URL: ${env:CACHE_URL}
+    GITHUB_TOKEN: ${env:GITHUB_TOKEN}
+    SYNC_GITHUB_PERSONAL_ACCESS_TOKEN: ${env:SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}
 
 # you can overwrite defaults here
 #  stage: dev
@@ -160,7 +168,6 @@ plugins:
   - serverless-plugin-layer-manager
   - serverless-offline
   - serverless-express
-  - serverless-dotenv-plugin
 
 layers:
   lib:
