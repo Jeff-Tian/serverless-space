@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/Jeff-Tian/serverless-space#readme",
   "dependencies": {
-    "@babel/core": "^7.15.5",
+    "@babel/core": "^7.22.6",
     "@babel/plugin-proposal-optional-chaining": "^7.14.5",
     "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@hapi/hoek": "^9.2.0",
