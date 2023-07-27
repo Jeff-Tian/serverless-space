@@ -16,6 +16,9 @@ export const mockDynamoDB = {
         return {promise: () => Promise.resolve({Item: res})}
     }),
     promise: jest.fn().mockReturnValue(Promise.resolve()),
+    updateTimeToLive: jest.fn().mockImplementation(() => {
+        return {promise: () => Promise.resolve()}
+    })
 }
 
 jest.mock('aws-sdk', () => {
@@ -80,7 +83,7 @@ describe('dynamo', () => {
         expect(res).toStrictEqual(undefined)
     })
 
-    it('ensures ttl config', async()=>{
+    it('ensures ttl config', async () => {
         expect(sut.ensureTtl).toBeDefined();
     })
 })

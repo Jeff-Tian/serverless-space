@@ -34,7 +34,7 @@ provider:
     SYNC_GITHUB_PERSONAL_ACCESS_TOKEN: ${env:SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}
 
 # you can overwrite defaults here
-#  stage: dev
+  stage: stg
 #  region: us-east-1
 
   iamRoleStatements:
@@ -109,7 +109,7 @@ functions:
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
   nest:
-    handler: dist/src/main.handler
+    handler: dist/main.handler
     timeout: 900
     layers:
       - {Ref: LibLambdaLayer}

@@ -1,6 +1,7 @@
-import {HttpService, Injectable} from "@nestjs/common";
+import {Injectable} from "@nestjs/common";
+import {HttpService} from "@nestjs/axios";
 
-const Babel = require('./babel.min.js')
+import Babel from "./babel.min.js";
 
 @Injectable()
 export class BabelService {
@@ -11,6 +12,7 @@ export class BabelService {
     async transform(code, presets = []) {
         const sanitized = code.replace(/import.+react.*['"];/g, '').replace(/export/g, '');
 
+        // @ts-ignore
         return Babel.transform(sanitized, {
             presets: ['env', 'react', 'typescript', ...presets],
             plugins: [],
