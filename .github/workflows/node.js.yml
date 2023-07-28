@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install yarn -g
-    - run: yarn && yarn ci-check
+    - run: yarn && yarn pre-deploy && yarn ci-check
     - run: sudo apt update
     - run: sudo apt install awscli
     - run: printf "${{secrets.AWS_API_KEY}}\n${{secrets.AWS_API_SECRET}}\nus-east-1\njson\n" | aws configure

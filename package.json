@@ -103,7 +103,7 @@
     "rimraf": "^3.0.2",
     "serverless": "3.33.0",
     "serverless-offline": "12.0.4",
-    "serverless-plugin-layer-manager": "1.0.6",
+    "serverless-plugin-layer-manager": "1.0.4",
     "supertest": "^6.1.6",
     "ts-jest": "^27.0.5",
     "ts-mockery": "^1.2.0"
