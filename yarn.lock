@@ -3042,10 +3042,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jeff-tian/gatsby-source-yuque@3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-3.0.1.tgz#38a854a7c890b3296a0456b53691f2062c753f1d"
-  integrity sha512-ZTaWkDaDqf/SdSyT4terxX6jGjHP+2pRJuf0RAwl1yPcgYZduNXJKG+MPuJesGFGuIHWG7nJaMZSSjzMZKdvEg==
+"@jeff-tian/gatsby-source-yuque@3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@jeff-tian/gatsby-source-yuque/-/gatsby-source-yuque-3.0.3.tgz#97e89dc8b4a0b3d15db8c56785030afe3e996f32"
+  integrity sha512-gm+qmo/saRaWYL4glVRd6mj2AvOkFb83emJzSfXC/jkDADUecNPX0JpIipFPv2uy7IM8AeU/VBCizGi9vZkOBw==
   dependencies:
     "@babel/runtime" "7.8.7"
     axios "^0.19.2"
@@ -3053,7 +3053,7 @@
     debug "^4.1.1"
     gray-matter "^4.0.2"
     html-entities "^1.2.1"
-    queue "7.0.0"
+    queue "3.0.1"
     ramda "0.27.0"
 
 "@jest/console@^27.5.1":
@@ -10355,7 +10355,7 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@2.0.4, inherits@^2.0.0, inherits@^2.0.1, inherits@^2.0.3, inherits@^2.0.4, inherits@~2.0.1, inherits@~2.0.3:
+inherits@2, inherits@2.0.4, inherits@^2.0.0, inherits@^2.0.1, inherits@^2.0.3, inherits@^2.0.4, inherits@~2.0.0, inherits@~2.0.1, inherits@~2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
@@ -13946,10 +13946,12 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-queue@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/queue/-/queue-7.0.0.tgz#2f43841ac492a4848007089810702704f5b2c4ae"
-  integrity sha512-sphwS7HdfQnvrJAXUNAUgpf9H/546IE3p/5Lf2jr71O4udEYlqAhkevykumas2FYuMkX/29JMOgrRdRoYZ/X9w==
+queue@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/queue/-/queue-3.0.1.tgz#ffb421e62acef38968cb1bff5c5ed9024b9817d6"
+  integrity sha512-bcbGKlWPE0v85aCohpWKWARXH/IodnyxL0RrbiThSk5S14+n9k9aNMlUj4E2s9OMsrZit+3d8Zs9dnRPEbX5Mg==
+  dependencies:
+    inherits "~2.0.0"
 
 quick-lru@^5.1.1:
   version "5.1.1"
