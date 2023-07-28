@@ -1,5 +1,5 @@
 import * as Joi from "@hapi/joi"
-import { sourceAllNodes, sourceNode, sourceNodes } from "@jeff-tian/gatsby-source-yuque/gatsby-node"
+import { sourceAllNodes, sourceNode, sourceNodes } from "@jeff-tian/gatsby-source-yuque/dist/gatsby-node"
 
 const schema = {
     id: Joi.number(),

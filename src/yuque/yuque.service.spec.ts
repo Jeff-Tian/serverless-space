@@ -1,6 +1,6 @@
 import {Mock} from 'ts-mockery'
 
-jest.mock(`@jeff-tian/gatsby-source-yuque/gatsby-node`, () => {
+jest.mock(`@jeff-tian/gatsby-source-yuque/dist/gatsby-node`, () => {
     return {
         sourceAllNodes: jest.fn().mockResolvedValue([]),
     }
