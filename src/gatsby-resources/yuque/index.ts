@@ -1,5 +1,6 @@
 import * as Joi from "@hapi/joi"
-import { sourceAllNodes, sourceNode, sourceNodes } from "@jeff-tian/gatsby-source-yuque/dist/gatsby-node"
+import {sourceNodes} from "@jeff-tian/gatsby-source-yuque/dist/gatsby-node.js"
+import {sourceNode, sourceAllNodes} from "@jeff-tian/gatsby-source-yuque/dist/helpers.js"
 
 const schema = {
     id: Joi.number(),
@@ -32,7 +33,7 @@ const context = {
     createContentDigest: () => 'aaaa'
 }
 
-const pluginOptions = { login: 'tian-jie', repo: `blog` }
+const pluginOptions = {login: 'tian-jie', repo: `blog`}
 
 const readArticles = async () => {
     if (articles) {
@@ -56,4 +57,4 @@ const readBySlug = async (slug) => {
     return sourceNode(context, pluginOptions, slug)
 }
 
-export { schema, read, all, readBySlug, context, sourceAllNodes, pluginOptions, sourceNodes }
+export {schema, read, all, readBySlug, context, sourceAllNodes, pluginOptions, sourceNodes}

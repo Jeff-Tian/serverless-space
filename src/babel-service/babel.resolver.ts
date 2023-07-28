@@ -1,6 +1,6 @@
 import {Args, Query, Resolver} from "@nestjs/graphql";
-import {BabelResult} from "./model/babel.result";
-import {BabelService} from "./babel.service";
+import {BabelResult} from "./model/babel.result.js";
+import {BabelService} from "./babel.service.js";
 import * as assert from 'assert'
 
 @Resolver(() => BabelResult)

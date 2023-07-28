@@ -2,7 +2,7 @@ import {IntrospectAndCompose} from '@apollo/gateway';
 import {ApolloGatewayDriver, ApolloGatewayDriverConfig} from '@nestjs/apollo';
 import {Module} from '@nestjs/common';
 import {GraphQLModule} from '@nestjs/graphql';
-import {AuthenticatedDataSource} from "./authenticated.data.source";
+import {AuthenticatedDataSource} from "./authenticated.data.source.js";
 
 @Module({
     imports: [

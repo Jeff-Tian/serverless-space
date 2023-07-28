@@ -1,14 +1,14 @@
 import * as path from "path"
-import express from 'serverless-express/express'
+import express from 'serverless-express/express.js'
 import {graphqlHTTP} from "express-graphql"
 import chokidar from "chokidar"
 import {GraphQLBoolean, GraphQLObjectType, GraphQLSchema, GraphQLString} from "graphql"
 import {interpret} from "xstate"
 import lodash from "lodash"
-import createTypes from "./create-types"
+import createTypes from "./create-types.js"
 import {PubSub} from "graphql-subscriptions"
 import {v4 as uuidv4} from "uuid"
-import recipeMachine from "./gatsby-recipes/src/recipe-machine"
+import recipeMachine from "./gatsby-recipes/src/recipe-machine/index.js"
 import serverlessExpress from '@vendia/serverless-express'
 import {Callback, Context, Handler} from "aws-lambda"
 import cors from "cors"
@@ -67,6 +67,7 @@ const startRecipe = ({recipePath, projectRoot, watchChanges = false}) => {
 
     const startService = () => {
         service = interpret(
+            // @ts-ignore
             recipeMachine.withContext(initialState.context as any)
         ).onTransition((state: any) => {
             if (state.event.type !== 'update') {
@@ -202,6 +203,7 @@ if (require.main === module) {
 export default app
 
 const bootstrap = async () => {
+    // @ts-ignore
     return serverlessExpress({app})
 }
 

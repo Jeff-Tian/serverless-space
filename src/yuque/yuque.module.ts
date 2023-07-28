@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { YuqueResolver } from './yuque.resolver';
-import {YuqueService} from "./yuque.service"
-import {DynamoService} from "../dynamo/dynamo.service";
+import { YuqueResolver } from './yuque.resolver.js';
+import {YuqueService} from "./yuque.service.js"
+import {DynamoService} from "../dynamo/dynamo.service.js";
 
 @Module({
     providers: [YuqueResolver, YuqueService, DynamoService],

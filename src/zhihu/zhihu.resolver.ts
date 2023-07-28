@@ -1,10 +1,9 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql"
-import { Zhihu } from "./models/zhihu.model"
-import { ZhihuService } from "./zhihu.service"
-import { ZhihuVideoInfo } from "./models/zhihu.video.model";
+import { Zhihu } from "./models/zhihu.model.js"
+import { ZhihuService } from "./zhihu.service.js"
+import { ZhihuVideoInfo } from "./models/zhihu.video.model.js";
 import { plainToClass } from 'class-transformer'
-import { YuQue } from "../yuque/models/yuque.model";
-import { PartialYuqueModel } from "./models/partial.yuque.model";
+import { PartialYuqueModel } from "./models/partial.yuque.model.js";
 
 @Resolver(of => Zhihu)
 export class ZhihuResolver {

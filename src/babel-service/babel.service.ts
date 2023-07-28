@@ -1,7 +1,7 @@
 import {Injectable} from "@nestjs/common";
 import {HttpService} from "@nestjs/axios";
 
-import Babel from "./babel.min.js";
+import * as Babel from "./babel.min.js";
 
 @Injectable()
 export class BabelService {

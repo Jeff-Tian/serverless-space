@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import serverlessExpress from '@vendia/serverless-express';
 import { Callback, Context, Handler } from 'aws-lambda';
-import {GatewayModule} from "./gateway.module";
+import {GatewayModule} from "./gateway.module.js";
 
 let server: Handler;
 
@@ -14,6 +14,7 @@ async function bootstrap(): Promise<Handler> {
     })
 
     const expressApp = app.getHttpAdapter().getInstance();
+    // @ts-ignore
     return serverlessExpress({ app: expressApp });
 }
 

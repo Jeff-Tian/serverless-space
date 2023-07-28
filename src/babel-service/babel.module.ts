@@ -1,5 +1,5 @@
-import {BabelService} from "./babel.service";
-import {BabelResolver} from "./babel.resolver";
+import {BabelService} from "./babel.service.js";
+import {BabelResolver} from "./babel.resolver.js";
 import {Module} from "@nestjs/common";
 import {HttpModule} from "@nestjs/axios";
 

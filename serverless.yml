@@ -109,7 +109,7 @@ functions:
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
   nest:
-    handler: dist/main.handler
+    handler: dist/src/main.handler
     timeout: 900
     layers:
       - {Ref: LibLambdaLayer}

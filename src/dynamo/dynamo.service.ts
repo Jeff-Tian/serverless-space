@@ -1,8 +1,8 @@
 import {Injectable} from "@nestjs/common";
 import {DynamoDB, Endpoint} from "aws-sdk";
 import util from "util";
-import {CreateTableInput} from "aws-sdk/clients/dynamodb";
-import {DocumentClient} from "aws-sdk/lib/dynamodb/document_client";
+import {CreateTableInput} from "aws-sdk/clients/dynamodb.js";
+import {DocumentClient} from "aws-sdk/lib/dynamodb/document_client.js";
 import UpdateTimeToLiveInput = DocumentClient.UpdateTimeToLiveInput;
 
 const cacheTable = 'cache-table'

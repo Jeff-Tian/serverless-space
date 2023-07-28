@@ -2,9 +2,9 @@ import {GraphQLObjectType, GraphQLString, GraphQLList} from "graphql"
 import * as Joi from "@hapi/joi"
 import _ from "lodash"
 import {ObjectTypeComposer, schemaComposer} from "graphql-compose"
-import * as Joi2GQL from "./joi-to-graphql"
-import * as builtInResources from "./resources"
-import * as customizedResources from "./gatsby-resources"
+import * as Joi2GQL from "./joi-to-graphql/index.js"
+import * as builtInResources from "./resources.js"
+import * as customizedResources from "./gatsby-resources/index.js"
 
 const resources = {...builtInResources, ...customizedResources}
 

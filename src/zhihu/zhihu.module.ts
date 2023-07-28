@@ -1,8 +1,8 @@
 import {Module} from '@nestjs/common'
-import {ZhihuService} from './zhihu.service'
+import {ZhihuService} from './zhihu.service.js'
 import {HttpModule} from "@nestjs/axios"
-import { ZhihuResolver } from './zhihu.resolver';
-import {ClipboardModule} from "../clipboard/clipboard.module";
+import { ZhihuResolver } from './zhihu.resolver.js';
+import {ClipboardModule} from "../clipboard/clipboard.module.js";
 
 @Module({
     imports: [HttpModule.register({

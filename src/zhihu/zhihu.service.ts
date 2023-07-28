@@ -2,8 +2,8 @@ import {HttpService} from "@nestjs/axios"
 import {Injectable} from "@nestjs/common"
 import {Observable} from "rxjs"
 import axios, {AxiosResponse} from "axios"
-import {curlirize} from "../common/curlirize"
-import {ClipboardService} from "../clipboard/clipboard.service";
+import {curlirize} from "../common/curlirize.js"
+import {ClipboardService} from "../clipboard/clipboard.service.js";
 
 const loginZhihu = async () => {
     return false

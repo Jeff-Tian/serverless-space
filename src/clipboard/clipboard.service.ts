@@ -1,5 +1,5 @@
 import {Injectable} from "@nestjs/common";
-import {DynamoService} from "../dynamo/dynamo.service";
+import {DynamoService} from "../dynamo/dynamo.service.js";
 
 @Injectable()
 export class ClipboardService {

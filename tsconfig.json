@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "module": "NodeNext",
     "esModuleInterop": true,
     "declaration": true,
     "removeComments": true,
@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "allowJs": true,
     "jsx": "react-jsx",
-    "moduleResolution": "node"
+    "moduleResolution": "NodeNext"
   },
   "include": [
     "src/**/*",

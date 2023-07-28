@@ -3,8 +3,8 @@ import path from "path"
 import * as Joi from "@hapi/joi"
 import singleTrailingNewline from "single-trailing-newline"
 
-import getDiff from "../utils/get-diff"
-import resourceSchema from "../resource-schema"
+import getDiff from "../utils/get-diff.js"
+import resourceSchema from "../resource-schema.js"
 
 const makePath = root => path.join(root, `.gitignore`)
 

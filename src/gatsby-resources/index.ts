@@ -1,1 +1,1 @@
-export * as Yuque from "./yuque";
+export * as Yuque from "./yuque/index.js";

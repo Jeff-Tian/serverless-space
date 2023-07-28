@@ -1,7 +1,7 @@
 import {GraphQLObjectType, GraphQLSchema} from "graphql"
 import Hoek from "@hapi/hoek"
 import * as Joi from "@hapi/joi"
-import {typeDictionary} from "../helpers"
+import {typeDictionary} from "../helpers/index.js"
 
 const internals: any = {}
 

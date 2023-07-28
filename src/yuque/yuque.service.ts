@@ -1,7 +1,7 @@
 import {Injectable} from '@nestjs/common'
-import {YuQue} from './models/yuque.model'
-import {readBySlug, pluginOptions, context, sourceAllNodes} from '../gatsby-resources/yuque'
-import {DynamoService} from "../dynamo/dynamo.service";
+import {YuQue} from './models/yuque.model.js'
+import {readBySlug, pluginOptions, context, sourceAllNodes} from '../gatsby-resources/yuque/index.js'
+import {DynamoService} from "../dynamo/dynamo.service.js";
 
 const yuqueCacheKeyPrefix = 'yuque'
 const getYuqueCacheKey = id => `${yuqueCacheKeyPrefix}-${id}`

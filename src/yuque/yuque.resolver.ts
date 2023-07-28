@@ -1,7 +1,7 @@
 import {NotFoundException} from '@nestjs/common'
 import {Args, Info, Query, Resolver} from '@nestjs/graphql'
-import {YuQue} from "./models/yuque.model"
-import {YuqueService} from "./yuque.service"
+import {YuQue} from "./models/yuque.model.js"
+import {YuqueService} from "./yuque.service.js"
 import {GraphQLResolveInfo} from "graphql/type";
 
 export const One_Month_In_Seconds = 60 * 60 * 24 * 30

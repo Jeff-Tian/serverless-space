@@ -1,7 +1,7 @@
 import {Args, Mutation, Query, Resolver} from "@nestjs/graphql";
-import {ClipboardService} from "./clipboard.service";
-import {ClipboardInput} from "./models/clipboard.input";
-import {ClipboardModel} from "./models/clipboard.model";
+import {ClipboardService} from "./clipboard.service.js";
+import {ClipboardInput} from "./models/clipboard.input.js";
+import {ClipboardModel} from "./models/clipboard.model.js";
 
 @Resolver(of => ClipboardModel)
 export class ClipboardResolver {

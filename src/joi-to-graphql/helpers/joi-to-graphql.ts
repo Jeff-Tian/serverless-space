@@ -1,7 +1,7 @@
 import {GraphQLObjectType, GraphQLInputObjectType, GraphQLList} from "graphql"
 import {GraphQLJSONObject} from "graphql-type-json"
 import Hoek from "@hapi/hoek"
-import * as TypeDictionary from "./type-dictionary"
+import * as TypeDictionary from "./type-dictionary.js"
 
 const internals: any = {}
 let cache = {}
