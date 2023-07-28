@@ -9,8 +9,11 @@
 ## Online GraphQL Studio
 
 - With CDN: https://sls.pa-ca.me/nest/graphql
-- Without CDN: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/graphql
+- Without CDN: 
+  - dev: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/graphql
+  - stg: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/stg/nest/graphql
 - Apollo Studio: https://studio.apollographql.com/graph/Serverless-Space/explorer?variant=current
+  - Dashboard: https://studio.apollographql.com/public/Serverless-Space/variant/current
 
 ## Why
 
