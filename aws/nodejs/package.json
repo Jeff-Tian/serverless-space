@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/Jeff-Tian/serverless-space#readme",
   "dependencies": {
-    "aws-sdk": "^2.1046.0"
+    "aws-sdk": "^2.1354.0"
   },
   "devDependencies": {},
   "jest": {
