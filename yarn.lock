@@ -15690,10 +15690,10 @@ serverless-offline@12.0.4:
     velocityjs "^2.0.6"
     ws "^8.11.0"
 
-serverless-plugin-layer-manager@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.npmmirror.com/serverless-plugin-layer-manager/-/serverless-plugin-layer-manager-1.0.4.tgz#d3b4a01a51ee5ddcfc018ce8ce2e87c415626fef"
-  integrity sha512-JoTIV6oO6UwQ0YVhBCueD7+d/LhcFpJR3W84dmWXJlY7sQfIinvY/hcG/ntBo/+c3I+WIGWpmIh+aAlq5WT1yw==
+serverless-plugin-layer-manager@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmmirror.com/serverless-plugin-layer-manager/-/serverless-plugin-layer-manager-1.1.1.tgz#b653c3a14675c7d90c36d212f91d5b93969145cd"
+  integrity sha512-7bZJHr4S3RxxiXBOR1Msc7YdOL7h2uLkDdfEguOMjcCKPsFX75gCY1s8ynvLdjm2+dHWSxtGMRHmP+CdoEQa2A==
   dependencies:
     pascalcase "^1.0.0"
 

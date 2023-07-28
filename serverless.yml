@@ -171,6 +171,14 @@ plugins:
   - serverless-offline
   - serverless-express
 
+custom:
+  plugin:
+    layerManager:
+      NodeLayers:
+        unsafePermissions: false
+  layerConfig:
+    installLayers: false
+
 layers:
   lib:
     path: layers
