@@ -79,6 +79,14 @@ Every push will trigger auto deploy by GitHub action if tests pass.
 
 - https://github.com/Jeff-Tian/serverless-space/actions
 
+## Contributions
+
+All kinds of contributions are welcome!
+
+- [Submit issues]()
+- [Submit pull requests]()
+- [Documentation]()
+
 ## IDEs tips
 
 ### Webstorm
