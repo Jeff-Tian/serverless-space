@@ -135,3 +135,9 @@ API Gateway 可以将[请求映射](https://us-east-1.console.aws.amazon.com/api
 API Gateway 可以生成一个[仪表盘](https://us-east-1.console.aws.amazon.com/apigateway/home?region=us-east-1#/apis/jqp5j170i6/dashboard)来展示 API 的调用情况。
 
 ![](assets/api-dashboard.png)
+
+## 💵 了解更多
+
+欢迎来知乎[向我咨询](https://www.zhihu.com/consult/people/1073548674713423872)！
+
+[![](https://camo.githubusercontent.com/61cb76c8b403b7cad37b5525bef4df09b6468b54d1b8865b62898c752a2f6454/68747470733a2f2f66697273742d676f2d76657263656c2e76657263656c2e6170702f6170692f64796e616d6963696d616765)](https://www.zhihu.com/consult/people/1073548674713423872)

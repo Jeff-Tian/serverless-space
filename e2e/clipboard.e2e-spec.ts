@@ -2,7 +2,7 @@ import {INestApplication} from "@nestjs/common";
 import {Test} from "@nestjs/testing";
 import request from "supertest"
 
-jest.mock(`@jeff-tian/gatsby-source-yuque/gatsby-node`, () => {
+jest.mock(`@jeff-tian/gatsby-source-yuque/dist/gatsby-node`, () => {
     return {
         sourceAllNodes: jest.fn().mockResolvedValue([]),
     }
