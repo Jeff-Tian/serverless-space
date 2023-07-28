@@ -4,6 +4,9 @@
 
 > My General SFF (Serverless for front-end).
 
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Jeff-Tian_serverless-space&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Jeff-Tian_serverless-space)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Jeff-Tian_serverless-space&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Jeff-Tian_serverless-space)
+
 ![](https://pic1.zhimg.com/v2-783af5de059844bc4da647ce90a1b6f6_1440w.jpg?source=172ae18b)
 
 ## Online GraphQL Studio
