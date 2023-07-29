@@ -26,7 +26,7 @@
     "install-valid-url": "npm v valid-url dist.tarball | xargs curl | tar -xz&&mv package node_modules/valid-url",
     "install-pretty-bytes": "npm v pretty-bytes@5.4.1 dist.tarball | xargs curl | tar -xz&&mv package node_modules/pretty-bytes",
     "install-md5-file": "npm v md5-file dist.tarball | xargs curl | tar -xz&&mv package node_modules/md5-file",
-    "install-queue": "npm v queue dist.tarball | xargs curl | tar -xz&&mv package node_modules/queue",
+    "install-queue": "npm v queue@3.0.1 dist.tarball | xargs curl | tar -xz&&mv package node_modules/queue",
     "install-dayjs": "npm v dayjs dist.tarball | xargs curl | tar -xz&&mv package node_modules/dayjs",
     "install-html-entities": "npm v html-entities@1.2.1 dist.tarball | xargs curl | tar -xz&&mv package node_modules/html-entities",
     "install-gray-matter": "npm v gray-matter dist.tarball | xargs curl | tar -xz&&mv package node_modules/gray-matter",
