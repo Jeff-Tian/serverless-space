@@ -75,6 +75,7 @@ package:
     - '!node_modules/**'
     - '!layers/**'
     - '!gatsby/**'
+    - '!src/**'
 #    - include-me.js
 #    - include-me-dir/**
 
