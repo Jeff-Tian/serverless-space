@@ -27,10 +27,6 @@
 - url: https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions
 - login: jie.tian@live.cn
 
-## Online development
-
-https://jeff-tian-serverless-space-7j9qqgv3pwjx.github.dev/
-
 ## Local development
 
 ```powershell
