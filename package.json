@@ -14,6 +14,7 @@
     "test:e2e": "jest --config ./e2e/jest-e2e.json --detectOpenHandles",
     "offline": "yarn build && cross-env NODE_ENV=local serverless offline",
     "deploy": "serverless deploy --verbose&&(./smoke || sh smoke.sh)",
+    "deploy-from-local": "AWS_SHARED_CREDENTIALS_FILE=~/.aws/config AWS_PROFILE=lambda-doc-rotary serverless deploy",
     "pre-deploy": "cd layers/nodejs && npm i --production --legacy-peer-deps&&cd ../../gatsby-plugins/nodejs&&(npm i --production --legacy-peer-deps && npm v gatsby dist.tarball | xargs curl | tar -xz&&(mv package node_modules/gatsby || echo 'mv skipped'))&& (cd ../../aws/nodejs && npm v aws-sdk dist.tarball | xargs curl | tar -xz&&(mv package node_modules/aws-sdk || echo 'mv skipped'))",
     "aws-console": "open https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
     "aws-console:windows": "start https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",

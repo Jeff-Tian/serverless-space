@@ -71,11 +71,13 @@ provider:
 
 # you can add packaging information here
 package:
+  individually: true
   patterns:
     - '!node_modules/**'
     - '!layers/**'
     - '!gatsby/**'
     - '!src/**'
+    - '!e2e/**'
 #    - include-me.js
 #    - include-me-dir/**
 

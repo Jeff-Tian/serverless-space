@@ -76,7 +76,7 @@ npm install -g serverless-plugin-names
 yarn pre-deploy
 # check size of node_modules, if size > 250M, then need to clean some unnecessary dependencies to reduce the size
 du -h -d 0 layers/nodejs/node_modules | sort -h
-serverless deploy
+yarn deploy-from-local
 ```
 
 ### From GitHub Action
