@@ -64,37 +64,6 @@ describe('Zhihu', () => {
                         {
                             "extensions": {
                                 "code": "INTERNAL_SERVER_ERROR",
-                                "exception": {
-                                    "config": {
-                                        "data": "{\"event_type\":\"webhook\"}",
-                                        "headers": {
-                                            "Accept": "application/vnd.github.everest-preview+json",
-                                            "Authorization": "token 5678",
-                                            "Content-Length": 24,
-                                            "Content-Type": "application/json",
-                                            "User-Agent": "axios/0.23.0"
-                                        },
-                                        "maxBodyLength": -1,
-                                        "maxContentLength": -1,
-                                        "method": "post",
-                                        "timeout": 0,
-                                        "transformRequest": [
-                                            null
-                                        ],
-                                        "transformResponse": [
-                                            null
-                                        ],
-                                        "transitional": {
-                                            "clarifyTimeoutError": false,
-                                            "forcedJSONParsing": true,
-                                            "silentJSONParsing": true
-                                        },
-                                        "url": "https://api.github.com/repos/jeff-tian/sync/dispatches",
-                                        "xsrfCookieName": "XSRF-TOKEN",
-                                        "xsrfHeaderName": "X-XSRF-TOKEN"
-                                    },
-                                    "status": 401
-                                }
                             },
                             "locations": [
                                 {

@@ -1,10 +1,8 @@
 import {Module} from '@nestjs/common'
 import {GraphQLModule} from '@nestjs/graphql'
-import {ApolloServerPluginCacheControl} from 'apollo-server-core'
 import {CatsModule} from "./cats/cats.module"
 import {RecipesModule} from "./recipes/recipes.module"
 import {YuqueModule} from './yuque/yuque.module'
-import responseCachePlugin from 'apollo-server-plugin-response-cache'
 import {BaseRedisCache} from 'apollo-server-cache-redis'
 import Redis from 'ioredis'
 import {BabelModule} from './babel-service/babel.module'
@@ -17,14 +15,13 @@ const ONE_HOUR_IN_SECONDS = 60 * 60
 
 let graphqlOptions: ApolloFederationDriverConfig = {
     driver: ApolloFederationDriver,
-    autoSchemaFile: true,
+    autoSchemaFile: {path: 'schema.gql', federation: 2},
     sortSchema: true,
     playground: true,
     persistedQueries: {
         ttl: ONE_HOUR_IN_SECONDS
     },
-    plugins: [ApolloServerPluginCacheControl({defaultMaxAge: 5 * 60}),  responseCachePlugin({}),
-    ],
+    plugins: [],
 }
 
 const cacheRedisUrl = process.env.CACHE_URL

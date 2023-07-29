@@ -10,7 +10,6 @@ import {AuthenticatedDataSource} from "./authenticated.data.source";
             driver: ApolloGatewayDriver,
             server: {
                 // ... Apollo server options
-                cors: true,
                 path: '/gateway'
             },
             gateway: {
