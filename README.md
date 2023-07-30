@@ -12,11 +12,11 @@
 ## Online GraphQL Studio
 
 - With CDN: https://sls.pa-ca.me/nest/graphql
-- Without CDN: 
-  - dev: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/graphql
-  - stg: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/stg/nest/graphql
+- Without CDN:
+    - dev: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/graphql
+    - stg: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/stg/nest/graphql
 - Apollo Studio: https://studio.apollographql.com/graph/Serverless-Space/explorer?variant=current
-  - Dashboard: https://studio.apollographql.com/public/Serverless-Space/variant/current
+    - Dashboard: https://studio.apollographql.com/public/Serverless-Space/variant/current
 
 ## Why
 
@@ -139,6 +139,12 @@ API Gateway 可以绑定[自定义域名](https://us-east-1.console.aws.amazon.c
 API Gateway 可以将[请求映射](https://us-east-1.console.aws.amazon.com/apigateway/home?region=us-east-1#/apis/jqp5j170i6/resources/fvzmag/methods/ANY)到 Lambda 函数，这样就可以通过 API Gateway 来调用 Lambda 函数。
 
 ![](assets/api-gateway.png)
+
+### 自定义域名
+
+目前一共建立了两个 API 网关，分别是 dev 和 stg。使用了 sls.pa-ca.me 这个域名，并且将 /dev 映射到 dev 环境，将 / 映射到了 stg 的 API 网关。
+
+![](assets/api-mapping.jpg)
 
 ### API Dashboard
 

@@ -120,7 +120,6 @@ functions:
     layers:
       - { Ref: LibLambdaLayer }
       - { Ref: GatsbypluginsLambdaLayer }
-#      - {Ref: AwsLambdaLayer}
     events:
       - http:
           method: ANY
@@ -194,12 +193,6 @@ layers:
     name: gatsby-plugins-lib
     description: gatsby plugins
     retain: true
-#  aws:
-#    path: aws
-#    name: aws-lib
-#    description: aws lib
-#    retain: true
-
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
