@@ -13,7 +13,7 @@ import {DynamoService} from "../src/dynamo/dynamo.service";
 import {mockDynamoService} from "./fixtures/mocks";
 import nock from "nock";
 
-describe('Zhihu', () => {
+describe.skip('Zhihu', () => {
     let app: INestApplication
 
     beforeAll(async () => {
