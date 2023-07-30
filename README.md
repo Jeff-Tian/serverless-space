@@ -14,7 +14,7 @@
 - With CDN: https://sls.pa-ca.me/nest/graphql
 - Without CDN:
     - dev: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/graphql
-    - stg: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/stg/nest/graphql
+    - stg: https://zcjk76jr21.execute-api.us-east-1.amazonaws.com/stg/nest/graphql
 - Apollo Studio: https://studio.apollographql.com/graph/Serverless-Space/explorer?variant=current
     - Dashboard: https://studio.apollographql.com/public/Serverless-Space/variant/current
 
@@ -22,10 +22,14 @@
 
 [一顿操作猛如虎，部署一个万能 BFF](https://zhuanlan.zhihu.com/p/412196725)
 
+## How
+
+[基于 AWS 构建 BFF 的架构说明 - Jeff Tian的文章 - 知乎](https://zhuanlan.zhihu.com/p/646372965)
+
 ## Console
 
 - url: https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions
-- login: jie.tian@live.cn
+- root user login: jie.tian@live.cn
 
 ## Local development
 
@@ -40,9 +44,11 @@ curl https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/cats
 curl https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/graphql
 ```
 
-### About adding new dependencies
+### About adding new dependencies 添加新的依赖
 
-Due to size limit of AWS Lambda, this project uses layers for node_modules. So when we need to add new dependencies to the project, besides the normal `yarn add xxx`, we need to also manually add the dependency to the [layers/nodejs/package.json](layers/nodejs/package.json).
+Due to the size limit of AWS Lambda, this project uses layers for node_modules. So when we need to add new dependencies to the project, besides the normal `yarn add xxx`, we need to also manually add the dependency to the [layers/nodejs/package.json](layers/nodejs/package.json).
+
+因为 AWS Lambda 限制了代码包的大小，在不压缩的情况下不可以超过 68 M；又限制了单个层，在不压缩的情况下不能超过 250 M 。所以这个项目使用了多个 layers 来存放依赖。所以当我们需要添加新的依赖时，如果在后面想将它添加到 layer 中，那么，就需要去对应的 layer 目录下，手动安装该依赖，并且显示指定其版本，以避免出现一些意料之外的问题。
 
 ## Run gatsby locally
 

@@ -7,3 +7,4 @@ yuque-*.json
 .env
 package
 schema.gql
+yarn-error.log
