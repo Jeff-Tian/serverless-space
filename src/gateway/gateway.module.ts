@@ -10,7 +10,9 @@ import {AuthenticatedDataSource} from "./authenticated.data.source";
             driver: ApolloGatewayDriver,
             server: {
                 // ... Apollo server options
-                path: '/stg/gateway'
+                path: '/stg/gateway',
+                // @ts-ignore
+                cors: true
             },
             gateway: {
                 supergraphSdl: new IntrospectAndCompose({
