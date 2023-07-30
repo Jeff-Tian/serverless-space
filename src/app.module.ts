@@ -13,7 +13,7 @@ import {ApolloFederationDriver, ApolloFederationDriverConfig} from "@nestjs/apol
 
 const ONE_HOUR_IN_SECONDS = 60 * 60
 
-const isOnline = process.env.ONLINE === 'production';
+const isOnline = process.env.ONLINE === 'true';
 
 let graphqlOptions: ApolloFederationDriverConfig = {
     driver: ApolloFederationDriver,
