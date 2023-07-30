@@ -135,15 +135,19 @@ functions:
       - http:
           method: ANY
           path: nest/
+          cors: true
       - http:
           method: ANY
           path: stg/nest/
+          cors: true
       - http:
           method: ANY
           path: 'nest/{proxy+}'
+          cors: true
       - http:
           method: ANY
           path: 'stg/nest/{proxy+}'
+          cors: true
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
       YUQUE_TOKEN: ${env:YUQUE_TOKEN}
@@ -162,15 +166,19 @@ functions:
       - http:
           method: ANY
           path: gateway/
+          cors: true
       - http:
           method: ANY
           path: stg/gateway/
+          cors: true
       - http:
           method: ANY
           path: 'gateway/{proxy+}'
+          cors: true
       - http:
           method: ANY
           path: 'stg/gateway/{proxy+}'
+          cors: true
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
 
