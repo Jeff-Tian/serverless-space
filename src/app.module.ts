@@ -19,7 +19,7 @@ console.log(`isOnline = ${isOnline}`)
 
 let graphqlOptions: ApolloFederationDriverConfig = {
     driver: ApolloFederationDriver,
-    autoSchemaFile: isOnline ? {path: 'schema.gql', federation: 2} : true,
+    autoSchemaFile: {path: 'schema.gql', federation: 2},
     sortSchema: true,
     playground: true,
     persistedQueries: {
