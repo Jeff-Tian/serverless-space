@@ -7,7 +7,7 @@
   "projects": {},
   "monorepo": false,
   "compilerOptions": {
-    "builder": "tsc",
+    "builder": "swc",
     "webpack": false,
     "plugins": [],
     "assets": [],

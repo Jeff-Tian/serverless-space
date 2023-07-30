@@ -126,7 +126,7 @@ functions:
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
   nest:
-    handler: dist/src/main.handler
+    handler: dist/main.handler
     timeout: 900
     layers:
       - { Ref: LibLambdaLayer }
@@ -154,7 +154,7 @@ functions:
       ONLINE: true
 
   gateway:
-    handler: dist/src/gateway/main.handler
+    handler: dist/gateway/main.handler
     timeout: 900
     layers:
       - { Ref: LibLambdaLayer }
@@ -175,7 +175,7 @@ functions:
       SERVERLESS_EXPRESS_PLATFORM: aws
 
   gatsby:
-    handler: dist/src/gatsby.handler
+    handler: dist/gatsby.handler
     timeout: 30
     layers:
       - { Ref: LibLambdaLayer }
