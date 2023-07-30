@@ -34,6 +34,8 @@ provider:
     SYNC_GITHUB_PERSONAL_ACCESS_TOKEN: ${env:SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}
     APOLLO_GRAPH_REF: Serverless-Space@current
     APOLLO_KEY: ${env:APOLLO_KEY}
+  binaryMediaTypes:
+    - 'multipart/form-data'
 
   # you can overwrite defaults here
   stage: stg
