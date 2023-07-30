@@ -13,11 +13,9 @@ import {ApolloFederationDriver, ApolloFederationDriverConfig} from "@nestjs/apol
 
 const ONE_HOUR_IN_SECONDS = 60 * 60
 
-const isOnline = process.env.ONLINE === 'true';
-
 let graphqlOptions: ApolloFederationDriverConfig = {
     driver: ApolloFederationDriver,
-    autoSchemaFile: isOnline ? false : {path: 'schema.gql', federation: 2},
+    autoSchemaFile: {path: 'schema.gql', federation: 2},
     sortSchema: true,
     playground: true,
     persistedQueries: {

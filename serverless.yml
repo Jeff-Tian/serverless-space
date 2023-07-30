@@ -151,7 +151,6 @@ functions:
       CACHE_URL: ${env:CACHE_URL}
       GITHUB_TOKEN: ${env:GITHUB_TOKEN}
       SYNC_GITHUB_PERSONAL_ACCESS_TOKEN: ${env:SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}
-      ONLINE: true
 
   gateway:
     handler: dist/gateway/main.handler
