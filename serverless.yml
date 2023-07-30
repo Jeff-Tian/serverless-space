@@ -162,19 +162,15 @@ functions:
       - http:
           method: ANY
           path: gateway/
-          cors: true
       - http:
           method: ANY
           path: stg/gateway/
-          cors: true
       - http:
           method: ANY
           path: 'gateway/{proxy+}'
-          cors: true
       - http:
           method: ANY
           path: 'stg/gateway/{proxy+}'
-          cors: true
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
 
