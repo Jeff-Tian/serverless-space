@@ -7,13 +7,8 @@
   "projects": {},
   "monorepo": false,
   "compilerOptions": {
-    "builder": {
-      "type": "webpack",
-      "options": {
-        "configPath": "webpack.config.js"
-      }
-    },
-    "webpack": true,
+    "builder": "tsc",
+    "webpack": false,
     "plugins": [],
     "assets": [],
     "manualRestart": false

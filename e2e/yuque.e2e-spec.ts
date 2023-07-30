@@ -12,10 +12,33 @@ jest.mock(`@jeff-tian/gatsby-source-yuque/dist/gatsby-node`, () => {
 process.env.YUQUE_TOKEN = '1234'
 import {AppModule} from "../src/app.module"
 import nock from 'nock'
-import {readBySlug} from "../src/gatsby-resources/yuque";
 import {One_Month_In_Seconds} from "../src/yuque/yuque.resolver";
 
-jest.mock('aws-sdk')
+const mockDynamoDB = {
+    items: [],
+    createTable: jest.fn().mockImplementation((params) => {
+        return mockDynamoDB
+    }),
+    putItem: jest.fn().mockImplementation((params) => {
+        mockDynamoDB.items.push(params.Item)
+        return mockDynamoDB
+    }),
+    getItem: jest.fn().mockImplementation((params) => {
+        const [res] = mockDynamoDB.items.filter((item) => params.Key.cacheKey.S === item.cacheKey.S)
+
+        return {promise: () => Promise.resolve({Item: res})}
+    }),
+    promise: jest.fn().mockReturnValue(Promise.resolve()),
+    updateTimeToLive: jest.fn().mockImplementation(() => {
+        return {promise: () => Promise.resolve(true)}
+    })
+}
+
+jest.mock('aws-sdk', () => {
+    return {
+        DynamoDB: jest.fn(() => mockDynamoDB),
+    }
+})
 
 describe('Yuque', () => {
     let app: INestApplication

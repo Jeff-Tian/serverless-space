@@ -158,6 +158,12 @@ API Gateway 可以绑定[自定义域名](https://us-east-1.console.aws.amazon.c
 
 目前最方便切换环境的方式是通过修改自定义域名的 API 映射。不过，观察到这里的修改到最终生效是一段时间的延迟的，所以，要确保修改后，等待一段时间再进行测试。
 
+### Redis 缓存
+
+本项目使用了 [Redis](https://redis.io/) 作为缓存，使用了 [ioredis]() 包来访问 Redis。Redis 服务使用了 Upstash 的免费版，已经使用几年的时间，看起来非常稳定。
+
+![](assets/upstash.png)
+
 ## 💵 了解更多
 
 欢迎来知乎[向我咨询](https://www.zhihu.com/consult/people/1073548674713423872)！
