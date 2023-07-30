@@ -1,13 +1,13 @@
 {
   "name": "serverless-space",
   "version": "1.1.0",
-  "description": "",
+  "description": "万能 BFF：这是我利用 AWS 免费资源构建一个 SFF 的实验场地，用于验证一些 Serverless 的想法。AWS 一共有 200 多个服务，目前这里使用的仅仅是一些 VPC 之外的服务。",
   "main": "index.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "start": "node index.js",
     "test": "jest",
-    "build": "nest build&&cp src/babel-service/babel.min.js dist/src/babel-service/babel.min.js",
+    "build": "nest build&&mkdir -p dist/src/babel-service&&cp src/babel-service/babel.min.js dist/src/babel-service/babel.min.js",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
@@ -25,7 +25,7 @@
     "type": "git",
     "url": "git+https://github.com/Jeff-Tian/serverless-space.git"
   },
-  "author": "",
+  "author": "Jeff Tian <jeff.tian@outlook.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Jeff-Tian/serverless-space/issues"
@@ -109,6 +109,7 @@
     "serverless-plugin-layer-manager": "1.1.1",
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.1",
+    "ts-loader": "^9.4.4",
     "ts-mockery": "^1.2.0"
   },
   "jest": {

@@ -1,0 +1,66 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type BabelResult {
+  text: String!
+}
+
+input ClipboardInput {
+  key: String!
+  value: String!
+}
+
+type ClipboardModel {
+  key: String!
+  value: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type Mutation {
+  addRecipe(newRecipeData: NewRecipeInput!): Recipe!
+  copyToClipboard(clipboard: ClipboardInput!): ClipboardModel!
+  draftColumnArticle: Zhihu!
+  removeRecipe(id: String!): Boolean!
+  syncYuqueToZhihu(slug: String!): PartialYuqueModel!
+}
+
+input NewRecipeInput {
+  description: String
+  ingredients: [String!]!
+  title: String!
+}
+
+type PartialYuqueModel {
+  slug: String!
+}
+
+type Query {
+  clipboard(key: String!): ClipboardModel!
+  getVideoInfoByUrl(zvideoUrl: String!): ZhihuVideoInfo!
+  recipe(id: String!): Recipe!
+  recipes(skip: Int! = 0, take: Int! = 25): [Recipe!]!
+  transform(extra: String, presets: [String!], sourceCode: String, url: String): BabelResult!
+}
+
+type Recipe {
+  creationDate: Date!
+  description: String
+  id: ID!
+  ingredients: [String!]!
+  title: String!
+}
+
+type Subscription {
+  recipeAdded: Recipe!
+}
+
+type Zhihu {
+  id: ID!
+}
+
+type ZhihuVideoInfo {
+  playUrl: String!
+}

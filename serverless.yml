@@ -97,6 +97,9 @@ functions:
       - http:
           path: users/create
           method: get
+      - http:
+          path: stg/users/create
+          method: get
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
   api:
@@ -109,7 +112,15 @@ functions:
           method: ANY
           cors: true
       - http:
+          path: stg/api/
+          method: ANY
+          cors: true
+      - http:
           path: api/{proxy+}
+          method: ANY
+          cors: true
+      - http:
+          path: stg/api/{proxy+}
           method: ANY
           cors: true
     environment:
@@ -126,7 +137,13 @@ functions:
           path: nest/
       - http:
           method: ANY
+          path: stg/nest/
+      - http:
+          method: ANY
           path: 'nest/{proxy+}'
+      - http:
+          method: ANY
+          path: 'stg/nest/{proxy+}'
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
       YUQUE_TOKEN: ${env:YUQUE_TOKEN}
@@ -134,6 +151,7 @@ functions:
       CACHE_URL: ${env:CACHE_URL}
       GITHUB_TOKEN: ${env:GITHUB_TOKEN}
       SYNC_GITHUB_PERSONAL_ACCESS_TOKEN: ${env:SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}
+      ONLINE: true
 
   gateway:
     handler: dist/src/gateway/main.handler
@@ -146,7 +164,13 @@ functions:
           path: gateway/
       - http:
           method: ANY
+          path: stg/gateway/
+      - http:
+          method: ANY
           path: 'gateway/{proxy+}'
+      - http:
+          method: ANY
+          path: 'stg/gateway/{proxy+}'
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
 
@@ -162,7 +186,13 @@ functions:
           path: gatsby/
       - http:
           method: ANY
+          path: stg/gatsby/
+      - http:
+          method: ANY
           path: 'gatsby/{proxy+}'
+      - http:
+          method: ANY
+          path: 'stg/gatsby/{proxy+}'
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
       YUQUE_TOKEN: ${env:YUQUE_TOKEN}
