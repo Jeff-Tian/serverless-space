@@ -169,18 +169,30 @@ functions:
           method: ANY
           path: gateway/
           cors: true
+          response:
+            headers:
+              Access-Control-Allow-Origin: '*'
       - http:
           method: ANY
           path: stg/gateway/
           cors: true
+          response:
+            headers:
+              Access-Control-Allow-Origin: '*'
       - http:
           method: ANY
           path: 'gateway/{proxy+}'
           cors: true
+          response:
+            headers:
+              Access-Control-Allow-Origin: '*'
       - http:
           method: ANY
           path: 'stg/gateway/{proxy+}'
           cors: true
+          response:
+            headers:
+              Access-Control-Allow-Origin: '*'
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
 
