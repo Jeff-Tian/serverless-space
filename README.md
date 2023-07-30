@@ -134,29 +134,29 @@ API Gateway 可以发送到 CloudWatch 的详细指标如下：
 
 ![](assets/cloudformation.png)
 
-### 自定义域名
-
-API Gateway 可以绑定[自定义域名](https://us-east-1.console.aws.amazon.com/apigateway/main/publish/domain-names?domain=sls.pa-ca.me&region=us-east-1)：
-
-![](assets/custom-domain.png)
-
-### API 映射
+### 网关 API 映射
 
 API Gateway 可以将[请求映射](https://us-east-1.console.aws.amazon.com/apigateway/home?region=us-east-1#/apis/jqp5j170i6/resources/fvzmag/methods/ANY)到 Lambda 函数，这样就可以通过 API Gateway 来调用 Lambda 函数。
 
 ![](assets/api-gateway.png)
-
-### 自定义域名
-
-目前一共建立了两个 API 网关，分别是 dev 和 stg。使用了 sls.pa-ca.me 这个域名，并且将 /dev 映射到 dev 环境，将 / 映射到了 stg 的 API 网关。
-
-![](assets/api-mapping.jpg)
 
 ### API Dashboard
 
 API Gateway 可以生成一个[仪表盘](https://us-east-1.console.aws.amazon.com/apigateway/home?region=us-east-1#/apis/jqp5j170i6/dashboard)来展示 API 的调用情况。
 
 ![](assets/api-dashboard.png)
+
+### 自定义域名
+
+API Gateway 可以绑定[自定义域名](https://us-east-1.console.aws.amazon.com/apigateway/main/publish/domain-names?domain=sls.pa-ca.me&region=us-east-1)：
+
+![](assets/custom-domain.png)
+
+目前一共建立了两个 API 网关，分别是 dev 和 stg。使用了 sls.pa-ca.me 这个域名，并且将 /dev 映射到 dev 环境，将 / 映射到了 stg 的 API 网关。
+
+![](assets/api-mapping.jpg)
+
+目前最方便切换环境的方式是通过修改自定义域名的 API 映射。不过，观察到这里的修改到最终生效是一段时间的延迟的，所以，要确保修改后，等待一段时间再进行测试。
 
 ## 💵 了解更多
 
