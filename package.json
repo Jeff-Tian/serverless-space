@@ -15,7 +15,7 @@
     "offline": "yarn build && cross-env NODE_ENV=local serverless offline",
     "deploy": "serverless deploy --verbose&&(./smoke || sh smoke.sh)",
     "deploy-from-local": "AWS_SHARED_CREDENTIALS_FILE=~/.aws/config AWS_PROFILE=lambda-doc-rotary serverless deploy",
-    "pre-deploy": "cd layers/nodejs && npm i --production --legacy-peer-deps&&cd ../../gatsby-plugins/nodejs&&(npm i --production --legacy-peer-deps && npm v gatsby dist.tarball | xargs curl | tar -xz&&(mv package node_modules/gatsby || echo 'mv skipped'))&& (cd ../../aws/nodejs && npm v aws-sdk dist.tarball | xargs curl | tar -xz&&(mv package node_modules/aws-sdk || echo 'mv skipped'))",
+    "pre-deploy": "cd layers/nodejs && npm i --production --legacy-peer-deps&&cd ../../gatsby-plugins/nodejs&&(npm i --production --legacy-peer-deps && npm v gatsby dist.tarball | xargs curl | tar -xz&&(mv package node_modules/gatsby || echo 'mv skipped'))",
     "aws-console": "open https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
     "aws-console:windows": "start https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
     "studio:windows": "start https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/gatsby/graphql",
@@ -95,6 +95,9 @@
   "devDependencies": {
     "@nestjs/cli": "^10.1.10",
     "@nestjs/testing": "^10.1.2",
+    "@swc/cli": "^0.1.62",
+    "@swc/core": "^1.3.72",
+    "@swc/jest": "^0.2.27",
     "@types/jest": "^29.5.3",
     "cross-env": "^7.0.3",
     "gatsby-recipes": "1.4.0",
