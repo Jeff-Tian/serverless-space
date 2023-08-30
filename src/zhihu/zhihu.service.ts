@@ -22,7 +22,7 @@ export class ZhihuService {
 
             return res
         }, async err => {
-            console.error('err.response = ', err.response)
+            console.error('err.response = ', err.response.status)
 
             if (err.response.status === 401 && err.response.headers?.server?.toLowerCase() !== 'github.com') {
                 if (await loginZhihu()) {
@@ -30,7 +30,7 @@ export class ZhihuService {
                 }
             }
 
-            return Promise.reject(err)
+            return Promise.reject(err.message)
         })
     }
 
@@ -72,9 +72,8 @@ export class ZhihuService {
                     }
                 }).toPromise()
             ])
-
-            console.log('res = ', res)
         } catch (ex) {
+            console.error('ex = ', ex.message);
             throw ex
         }
     }

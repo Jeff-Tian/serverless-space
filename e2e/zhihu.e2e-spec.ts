@@ -13,7 +13,7 @@ import {DynamoService} from "../src/dynamo/dynamo.service";
 import {mockDynamoService} from "./fixtures/mocks";
 import nock from "nock";
 
-describe.skip('Zhihu', () => {
+describe('Zhihu', () => {
     let app: INestApplication
 
     beforeAll(async () => {
@@ -31,6 +31,8 @@ describe.skip('Zhihu', () => {
     })
 
     it('create zhihu column article', async () => {
+        nock('https://zhuanlan.zhihu.com').post('/api/articles/drafts').reply(200, {})
+
         return request(app.getHttpServer())
             .post('/graphql')
             .send({
@@ -64,6 +66,10 @@ describe.skip('Zhihu', () => {
                         {
                             "extensions": {
                                 "code": "INTERNAL_SERVER_ERROR",
+                                "exception": {
+                                    "name": "NonErrorThrown",
+                                    "thrownValue": "Request failed with status code 401"
+                                }
                             },
                             "locations": [
                                 {
@@ -71,7 +77,7 @@ describe.skip('Zhihu', () => {
                                     "line": 2
                                 }
                             ],
-                            "message": "Request failed with status code 401",
+                            "message": expect.stringContaining("Request failed with status code 401"),
                             "path": [
                                 "syncYuqueToZhihu"
                             ]

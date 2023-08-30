@@ -6,7 +6,7 @@ export const curlirize = (config) => {
     const cmd = `cURL to replay: curl -X ${config.method} "${config.url}" ${serializedHeaders.join(' ')} `
 
     if (config.data) {
-        return cmd + `--data '${config.data}'`
+        return cmd + `--data '${JSON.stringify(config.data)}'`
     } else {
         return cmd
     }
