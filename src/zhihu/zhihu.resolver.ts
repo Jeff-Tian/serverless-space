@@ -3,7 +3,6 @@ import { Zhihu } from "./models/zhihu.model"
 import { ZhihuService } from "./zhihu.service"
 import { ZhihuVideoInfo } from "./models/zhihu.video.model";
 import { plainToClass } from 'class-transformer'
-import { YuQue } from "../yuque/models/yuque.model";
 import { PartialYuqueModel } from "./models/partial.yuque.model";
 
 @Resolver(of => Zhihu)
