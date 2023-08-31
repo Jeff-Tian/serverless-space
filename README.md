@@ -28,7 +28,7 @@
 
 [基于 AWS 构建 BFF 的架构说明 - Jeff Tian的文章 - 知乎](https://zhuanlan.zhihu.com/p/646372965)
 
-## Console
+## AWS Console
 
 - url: https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions
 - root user login: jie.tian@live.cn
@@ -148,6 +148,11 @@ API Gateway 可以生成一个[仪表盘](https://us-east-1.console.aws.amazon.c
 
 ![](assets/api-dashboard.png)
 
+### 监控
+
+还可以通过 https://console.serverless.com/jefftian/metrics/awsLambda?globalScope=awsLambda&globalTimeFrame=30d 查看更多详情。
+![](assets/serverless-console.png)
+
 ### 自定义域名
 
 API Gateway 可以绑定[自定义域名](https://us-east-1.console.aws.amazon.com/apigateway/main/publish/domain-names?domain=sls.pa-ca.me&region=us-east-1)：
@@ -173,8 +178,6 @@ API Gateway 可以绑定[自定义域名](https://us-east-1.console.aws.amazon.c
 ```shell
 yarn offline
 ```
-
-
 
 ## 💵 了解更多
 
