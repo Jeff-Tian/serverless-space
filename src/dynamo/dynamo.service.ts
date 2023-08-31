@@ -26,8 +26,6 @@ export class DynamoService {
     }
 
     public async saveCache(key, value, created_at?, status?) {
-        await this.ensureTtl()
-
         let params: DynamoDB.Types.PutItemInput = {
             TableName: cacheTable,
             Item: {
@@ -45,10 +43,7 @@ export class DynamoService {
         }
 
         try {
-            console.log('saving to cache: ', params)
-            const res = await this.ddb.putItem(params).promise()
-            console.log('saving cache result = ', res)
-            return res
+            return await this.ddb.putItem(params).promise()
         } catch (ex) {
             console.error(ex)
             return ex
