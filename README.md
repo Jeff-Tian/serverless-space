@@ -166,6 +166,16 @@ API Gateway 可以绑定[自定义域名](https://us-east-1.console.aws.amazon.c
 
 ![](assets/upstash.png)
 
+## 开发
+
+创建好 module 以及 resolver 之后，使用以下命令生成 Schema：
+
+```shell
+yarn offline
+```
+
+
+
 ## 💵 了解更多
 
 欢迎来知乎[向我咨询](https://www.zhihu.com/consult/people/1073548674713423872)！
