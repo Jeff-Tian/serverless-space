@@ -25,13 +25,15 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-#          cache: 'npm'
+          cache: 'npm'
       - run: npm install yarn -g
+      - run: cat schema.gql
       - run: yarn && yarn pre-deploy && yarn ci-check
+      - run: cat dist/schema.gql
       - run: sudo apt update
       - run: sudo apt install awscli
       - run: printf "${{secrets.AWS_API_KEY}}\n${{secrets.AWS_API_SECRET}}\nus-east-1\njson\n" | aws configure
       - run: ls ~/.aws
-#      - run: GITHUB_TOKEN="${{secrets.GITHUB_TOKEN}}" CACHE_URL="${{secrets.CACHE_URL}}" YUQUE_TOKEN="${{secrets.YUQUE_TOKEN}}" SYNC_GITHUB_PERSONAL_ACCESS_TOKEN="${{secrets.SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}}" APOLLO_KEY="${{secrets.APOLLO_KEY}}" node_modules/.bin/serverless package
-#      - run: du -h .serverless/* | sort -hr
+      #      - run: GITHUB_TOKEN="${{secrets.GITHUB_TOKEN}}" CACHE_URL="${{secrets.CACHE_URL}}" YUQUE_TOKEN="${{secrets.YUQUE_TOKEN}}" SYNC_GITHUB_PERSONAL_ACCESS_TOKEN="${{secrets.SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}}" APOLLO_KEY="${{secrets.APOLLO_KEY}}" node_modules/.bin/serverless package
+      #      - run: du -h .serverless/* | sort -hr
       - run: GITHUB_TOKEN="${{secrets.GITHUB_TOKEN}}" CACHE_URL="${{secrets.CACHE_URL}}" YUQUE_TOKEN="${{secrets.YUQUE_TOKEN}}" SYNC_GITHUB_PERSONAL_ACCESS_TOKEN="${{secrets.SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}}" APOLLO_KEY="${{secrets.APOLLO_KEY}}" yarn deploy
