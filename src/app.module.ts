@@ -61,16 +61,17 @@ if (cacheRedisUrl && cacheRedisUrl !== 'undefined') {
     })
 }
 
-const yuqueToken = process.env.YUQUE_TOKEN
-
-const modules = [ClipboardModule, CatsModule, RecipesModule, ZhihuModule, ICloudModule, BabelModule, GraphQLModule.forRoot(graphqlOptions)]
-
-if (yuqueToken && yuqueToken !== 'undefined') {
-    modules.push(YuqueModule)
-}
-
 @Module({
-    imports: modules,
+    imports: [
+        YuqueModule,
+        ClipboardModule,
+        CatsModule,
+        RecipesModule,
+        ZhihuModule,
+        ICloudModule,
+        BabelModule,
+        GraphQLModule.forRoot(graphqlOptions)
+    ],
 })
 export class AppModule {
 }
