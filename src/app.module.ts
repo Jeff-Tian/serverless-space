@@ -16,8 +16,6 @@ const ONE_HOUR_IN_SECONDS = 60 * 60
 
 const isOnline = process.env.SLS_ORG_ID === '3f67c057-6e96-41d5-80bc-16bd888cb6bf';
 
-console.log(`isOnline = ${isOnline}`)
-
 const onlineGraphqlOptions: ApolloFederationDriverConfig = {
     driver: ApolloFederationDriver,
     // 由于线上环境，不能使用 fs 模块（文件系统不可写），所以这里不使用 autoSchemaFile
