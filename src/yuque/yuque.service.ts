@@ -3,6 +3,7 @@ import {YuQue} from './models/yuque.model'
 import {readBySlug, pluginOptions, context, sourceAllNodes} from '../gatsby-resources/yuque'
 import {DynamoService} from "../dynamo/dynamo.service";
 import {HttpService} from "@nestjs/axios";
+import {SendMessageCommand, SQSClient} from "@aws-sdk/client-sqs";
 
 const yuqueCacheKeyPrefix = 'yuque'
 const getYuqueCacheKey = id => `${yuqueCacheKeyPrefix}-${id}`
@@ -115,6 +116,30 @@ export class YuqueService {
 
         this.logger.log(`notification results: ${JSON.stringify(results)}`);
 
-        return results;
+        this.logger.log('notifying sqs...');
+
+        const sqs = new SQSClient();
+        const sendMessageCommand = new SendMessageCommand({
+            QueueUrl: process.env.QUEUE_URL,
+            MessageBody: payload,
+            MessageAttributes: {
+                AttributeName: {
+                    StringValue: "AttributeValue",
+                    DataType: "String",
+                }
+            }
+        })
+
+        try {
+            const sqsResult = await sqs.send(sendMessageCommand);
+            this.logger.log(`sqs result: ${JSON.stringify(sqsResult)}`);
+
+            return [...results, sqsResult];
+        } catch (ex) {
+            console.error(ex);
+            this.logger.error(`sqs error: `, ex);
+
+            return results;
+        }
     }
 }
