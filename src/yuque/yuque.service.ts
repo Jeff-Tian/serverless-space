@@ -105,42 +105,43 @@ export class YuqueService {
     async workflow(payload) {
         this.logger.log(`Received webhook payload: ${JSON.stringify(payload)}`);
 
-        const notifyWeCom = this.httpService.post('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8f57b747-5af9-4d42-bed8-541ba91fe9a5', {
-            msgtype: 'markdown',
-            markdown: {
-                content: payload.data.body.substr(0, 2000),
-                title: payload.data.title,
-            }
-        }).toPromise();
-
-        const results = await Promise.all([notifyWeCom]);
-
-        this.logger.log(`notification results: `, util.inspect(results.map(r => r.data)));
-
-        this.logger.log('notifying sqs...');
-
-        const sqs = new SQSClient();
-        const sendMessageCommand = new SendMessageCommand({
-            QueueUrl: process.env.QUEUE_URL,
-            MessageBody: JSON.stringify(payload),
-            MessageAttributes: {
-                AttributeName: {
-                    StringValue: "AttributeValue",
-                    DataType: "String",
-                }
-            }
-        })
-
         try {
-            const sqsResult = await sqs.send(sendMessageCommand);
-            this.logger.log(`sqs result: `, util.inspect(sqsResult));
+            const notifyWeCom = this.httpService.post('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8f57b747-5af9-4d42-bed8-541ba91fe9a5', {
+                msgtype: 'news',
+                news: {
+                    articles: [
+                        {
+                            title: payload.data.title,
+                            description: payload.data.body.substr(0, 512),
+                            url: `https://jeff-tian.jiwai.win/posts/${payload.data.slug}/`,
+                            picurl: payload.data.actor.avatar_url
+                        }
+                    ]
+                }
+            }).toPromise();
 
-            return [...results, sqsResult];
-        } catch (ex) {
-            console.error(ex);
-            this.logger.error(`sqs error: `, ex);
+            const sqs = new SQSClient();
+            const sendMessageCommand = new SendMessageCommand({
+                QueueUrl: process.env.QUEUE_URL,
+                MessageBody: JSON.stringify(payload),
+                MessageAttributes: {
+                    AttributeName: {
+                        StringValue: "AttributeValue",
+                        DataType: "String",
+                    }
+                }
+            })
+
+            const results = await Promise.all([notifyWeCom, sqs.send(sendMessageCommand)]);
+
+            this.logger.log(`notification results: `, util.inspect(results[0].data), util.inspect(results[1].$metadata.requestId));
 
             return results;
+        } catch (ex) {
+            console.error(ex);
+            this.logger.error(`notification error: `, ex);
+
+            return ex;
         }
     }
 }
