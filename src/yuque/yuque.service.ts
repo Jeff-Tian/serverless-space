@@ -2,6 +2,7 @@ import {Injectable, Logger} from '@nestjs/common'
 import {YuQue} from './models/yuque.model'
 import {readBySlug, pluginOptions, context, sourceAllNodes} from '../gatsby-resources/yuque'
 import {DynamoService} from "../dynamo/dynamo.service";
+import {HttpService} from "@nestjs/axios";
 
 const yuqueCacheKeyPrefix = 'yuque'
 const getYuqueCacheKey = id => `${yuqueCacheKeyPrefix}-${id}`
@@ -33,7 +34,7 @@ export class YuqueService {
 
     private readonly logger = new Logger(YuqueService.name);
 
-    constructor(private readonly dynamoService: DynamoService) {
+    constructor(private readonly dynamoService: DynamoService, private readonly httpService: HttpService) {
         this.cachedPluginOptions = {
             ...pluginOptions, readCache: async () => {
                 const items = await dynamoService.getAllCaches()
@@ -102,6 +103,18 @@ export class YuqueService {
     async workflow(payload) {
         this.logger.log(`Received webhook payload: ${JSON.stringify(payload)}`);
 
-        // TODO: more triggers
+        const notifyWeCom = this.httpService.post('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8f57b747-5af9-4d42-bed8-541ba91fe9a5', {
+            msgtype: 'markdown',
+            markdown: {
+                content: payload.data.body,
+                title: payload.data.title,
+            }
+        }).toPromise();
+
+        const results = await Promise.all([notifyWeCom]);
+
+        this.logger.log(`notification results: ${JSON.stringify(results)}`);
+
+        return results;
     }
 }
