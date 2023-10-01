@@ -52,6 +52,14 @@ Due to the size limit of AWS Lambda, this project uses layers for node_modules. 
 
 因为 AWS Lambda 限制了代码包的大小，在不压缩的情况下不可以超过 68 M；又限制了单个层，在不压缩的情况下不能超过 250 M 。所以这个项目使用了多个 layers 来存放依赖。所以当我们需要添加新的依赖时，如果在后面想将它添加到 layer 中，那么，就需要去对应的 layer 目录下，手动安装该依赖，并且显示指定其版本，以避免出现一些意料之外的问题。
 
+同时，当更新 package.json 里的包时，也需要在对应的 layer 目录下升级。但是这样有一些麻烦，不过好在有一些相关的命令来稍微简化该工作，举例来说，我们升级了一些 package.json 里的包，这时可以通过以下命令来升级 layers/nodejs/package.json 里的包：
+
+```shell
+git diff package.json > patch_file
+patch p1 layers/nodejs/package.json patch_file
+rm patch_file
+```
+
 ## Run gatsby locally
 
 ```bash
