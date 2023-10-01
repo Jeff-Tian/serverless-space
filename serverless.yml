@@ -95,6 +95,12 @@ package:
 #    - venv/**
 #    - layers/**
 
+constructs:
+  jobs:
+    type: queue
+    worker:
+      handler: handler.consumer
+
 functions:
   hello:
     handler: handler.hello
@@ -163,6 +169,7 @@ functions:
       GITHUB_TOKEN: ${env:GITHUB_TOKEN}
       SYNC_GITHUB_PERSONAL_ACCESS_TOKEN: ${env:SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}
       ONLINE: true
+      QUEUE_URL: ${construct:jobs.queueUrl}
 
   gateway:
     handler: dist/gateway/main.handler
@@ -230,6 +237,7 @@ plugins:
   - serverless-plugin-layer-manager
   - serverless-offline
   - serverless-express
+  - serverless-lift
 
 custom:
   plugin:
