@@ -10,7 +10,6 @@ import {PubSub} from "graphql-subscriptions"
 import {v4 as uuidv4} from "uuid"
 import recipeMachine from "./gatsby-recipes/src/recipe-machine"
 import serverlessExpress from '@vendia/serverless-express'
-import {Callback, Context, Handler} from "aws-lambda"
 import cors from "cors"
 import bodyParser from "body-parser"
 
@@ -207,10 +206,10 @@ const bootstrap = async () => {
 
 let server
 
-export const handler: Handler = async (
+export const handler = async (
     event: any,
-    context: Context,
-    callback: Callback,
+    context,
+    callback,
 ) => {
     server = server ?? (await bootstrap())
     return server(event, context, callback)
