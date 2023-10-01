@@ -78,7 +78,8 @@
     "dotenv": "^16.3.1",
     "@apollo/gateway": "2.5.1",
     "@nestjs/apollo": "11.0.0",
-    "@apollo/subgraph": "2.5.1"
+    "@apollo/subgraph": "2.5.1",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@nestjs/cli": "10.1.18",
