@@ -48,7 +48,7 @@ type Query {
   getVideoInfoByUrl(zvideoUrl: String!): ZhihuVideoInfo!
   paginatedYuque(skip: Float = 0, take: Float = 5): [YuQue!]!
   recipe(id: String!): Recipe!
-  recipes(skip: Int = 0, take: Int = 25): [Recipe!]!
+  recipes(skip: Int! = 0, take: Int! = 25): [Recipe!]!
   transform(extra: String, presets: [String!], sourceCode: String, url: String): BabelResult!
   yuque(id: String, slug: String): YuQue!
 }

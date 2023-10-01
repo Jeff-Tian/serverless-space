@@ -66,10 +66,6 @@ describe('Zhihu', () => {
                         {
                             "extensions": {
                                 "code": "INTERNAL_SERVER_ERROR",
-                                "exception": {
-                                    "name": "NonErrorThrown",
-                                    "thrownValue": "Request failed with status code 401"
-                                }
                             },
                             "locations": [
                                 {
