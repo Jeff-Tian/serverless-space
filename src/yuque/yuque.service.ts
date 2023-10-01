@@ -115,14 +115,14 @@ export class YuqueService {
 
         const results = await Promise.all([notifyWeCom]);
 
-        this.logger.log(`notification results: `, util.inspect(results));
+        this.logger.log(`notification results: `, util.inspect(results.map(r => r.data)));
 
         this.logger.log('notifying sqs...');
 
         const sqs = new SQSClient();
         const sendMessageCommand = new SendMessageCommand({
             QueueUrl: process.env.QUEUE_URL,
-            MessageBody: payload,
+            MessageBody: JSON.stringify(payload),
             MessageAttributes: {
                 AttributeName: {
                     StringValue: "AttributeValue",
