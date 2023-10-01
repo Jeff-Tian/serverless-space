@@ -77,13 +77,4 @@ export class ZhihuService {
             throw ex
         }
     }
-
-    async triggerSyncGitHubAction() {
-        return this.httpService.post('https://api.github.com/repos/jeff-tian/sync/dispatches', {"event_type": "webhook"}, {
-            headers: {
-                Accept: 'application/vnd.github.everest-preview+json',
-                Authorization: `token ${process.env.SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}`
-            }
-        }).toPromise()
-    }
 }

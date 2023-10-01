@@ -1,4 +1,4 @@
-import {Injectable} from '@nestjs/common'
+import {Injectable, Logger} from '@nestjs/common'
 import {YuQue} from './models/yuque.model'
 import {readBySlug, pluginOptions, context, sourceAllNodes} from '../gatsby-resources/yuque'
 import {DynamoService} from "../dynamo/dynamo.service";
@@ -24,7 +24,14 @@ const byCreatedAt = (a1, a2) => {
 
 @Injectable()
 export class YuqueService {
-    private cachedPluginOptions: { writeCache: (articles) => Promise<void>; readCache: () => Promise<any>; repo: string; login: string };
+    private cachedPluginOptions: {
+        writeCache: (articles) => Promise<void>;
+        readCache: () => Promise<any>;
+        repo: string;
+        login: string
+    };
+
+    private readonly logger = new Logger(YuqueService.name);
 
     constructor(private readonly dynamoService: DynamoService) {
         this.cachedPluginOptions = {
@@ -90,5 +97,11 @@ export class YuqueService {
     async find(skip: number, take: number): Promise<YuQue[]> {
         const all = await this.findAll()
         return all.slice(skip, skip + take)
+    }
+
+    async workflow(payload) {
+        this.logger.log(`Received webhook payload: ${JSON.stringify(payload)}`);
+
+        // TODO: more triggers
     }
 }
