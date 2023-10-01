@@ -1,4 +1,4 @@
-name: My Test Single Project
+name: Sonar Scan
 on:
   push:
     branches:

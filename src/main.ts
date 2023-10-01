@@ -10,7 +10,8 @@ let server: Handler;
 
 async function bootstrap(): Promise<Handler> {
     const app = await NestFactory.create(AppModule, {
-        logger: ['error', 'warn', 'log']
+        logger: ['error', 'warn', 'log'],
+        snapshot: true,
     });
     await app.init();
 
