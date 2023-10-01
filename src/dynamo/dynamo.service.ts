@@ -1,32 +1,35 @@
 import {Injectable} from "@nestjs/common";
-import {DynamoDB, Endpoint} from "aws-sdk";
 import util from "util";
-import {CreateTableInput} from "aws-sdk/clients/dynamodb";
-import {DocumentClient} from "aws-sdk/lib/dynamodb/document_client";
-import UpdateTimeToLiveInput = DocumentClient.UpdateTimeToLiveInput;
+import {
+    CreateTableCommand, CreateTableInput,
+    DynamoDBClient, GetItemCommand,
+    PutItemCommand,
+    PutItemInput, ScanCommand,
+    UpdateTableCommand, UpdateTimeToLiveInput
+} from "@aws-sdk/client-dynamodb";
 
 const cacheTable = 'cache-table'
 
 @Injectable()
 export class DynamoService {
-    private ddb: DynamoDB;
+    private ddb: DynamoDBClient;
 
     constructor() {
         if (process.env.NODE_ENV === 'local') {
             console.log('connecting to local dynamodb !')
 
-            this.ddb = new DynamoDB({
-                endpoint: new Endpoint('http://localhost:8000'),
+            this.ddb = new DynamoDBClient({
+                endpoint: 'http://localhost:8000',
             })
 
             return
         }
 
-        this.ddb = new DynamoDB({apiVersion: '2012-08-10'})
+        this.ddb = new DynamoDBClient({apiVersion: '2012-08-10'})
     }
 
     public async saveCache(key, value, created_at?, status?) {
-        let params: DynamoDB.Types.PutItemInput = {
+        let params: PutItemInput = {
             TableName: cacheTable,
             Item: {
                 cacheKey: {S: key},
@@ -43,7 +46,7 @@ export class DynamoService {
         }
 
         try {
-            return await this.ddb.putItem(params).promise()
+            return await this.ddb.send(new PutItemCommand(params))
         } catch (ex) {
             console.error(ex)
             return ex
@@ -69,7 +72,8 @@ export class DynamoService {
                 BillingMode: 'PAY_PER_REQUEST',
             }
 
-            const res = await this.ddb.createTable(params).promise()
+            const createTableCommand = new CreateTableCommand(params)
+            const res = await this.ddb.send(createTableCommand)
             console.log('table created: ', res)
             return res
         } catch (ex) {
@@ -80,7 +84,7 @@ export class DynamoService {
     }
 
     public async ensureTtl() {
-        const ttlConfig = {
+        const ttlConfig: UpdateTimeToLiveInput = {
             TableName: cacheTable,
             TimeToLiveSpecification: {
                 Enabled: true,
@@ -89,7 +93,8 @@ export class DynamoService {
         }
 
         try {
-            return await this.ddb.updateTimeToLive(ttlConfig as UpdateTimeToLiveInput).promise()
+            const updateTtlCommand = new UpdateTableCommand(ttlConfig)
+            return await this.ddb.send(updateTtlCommand)
         } catch (ex) {
             console.error('ensureTtl error: ', ex)
 
@@ -98,9 +103,8 @@ export class DynamoService {
     }
 
     async getAllCaches() {
-        const itemWrapper = await this.ddb.scan({
-            TableName: cacheTable
-        }).promise()
+        const scanCommand = new ScanCommand({TableName: cacheTable})
+        const itemWrapper = await this.ddb.send(scanCommand)
 
         return itemWrapper.Items
     }
@@ -112,7 +116,8 @@ export class DynamoService {
                 cacheKey: {S: key}
             }
         }
-        const itemWrapper = await this.ddb.getItem(params).promise()
+        const getItemCommand = new GetItemCommand(params)
+        const itemWrapper = await this.ddb.send(getItemCommand)
         return itemWrapper.Item?.cacheValue?.S
     }
 }

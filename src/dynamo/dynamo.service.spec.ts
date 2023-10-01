@@ -1,32 +1,28 @@
 import {DynamoService} from "./dynamo.service";
 
-
 export const mockDynamoDB = {
     items: [],
-    createTable: jest.fn().mockImplementation((params) => {
-        return mockDynamoDB
-    }),
-    putItem: jest.fn().mockImplementation((params) => {
-        mockDynamoDB.items.push(params.Item)
-        return mockDynamoDB
-    }),
-    getItem: jest.fn().mockImplementation((params) => {
-        const [res] = mockDynamoDB.items.filter((item) => params.Key.cacheKey.S === item.cacheKey.S)
-
-        return {promise: () => Promise.resolve({Item: res})}
-    }),
-    promise: jest.fn().mockReturnValue(Promise.resolve()),
-    updateTimeToLive: jest.fn().mockImplementation(() => {
-        return {promise: () => Promise.resolve(true)}
+    send: jest.fn().mockImplementation((params) => {
+        const {type, params: unwrappedParams} = params
+        console.log('input = ', JSON.stringify(params))
+        if (type === 'put-item') {
+            mockDynamoDB.items.push(unwrappedParams.Item)
+            return Promise.resolve(true)
+        }
+        if (type === 'get-item') {
+            return Promise.resolve({Item: mockDynamoDB.items.filter((item) => unwrappedParams.Key.cacheKey.S === item.cacheKey.S)[0]})
+        }
     })
 }
 
-jest.mock('aws-sdk', () => {
+jest.mock('@aws-sdk/client-dynamodb', () => {
     return {
-        DynamoDB: jest.fn(() => mockDynamoDB),
+        DynamoDBClient: jest.fn(() => mockDynamoDB),
+        PutItemCommand: jest.fn().mockImplementation((params) => ({type: 'put-item', params})),
+        GetItemCommand: jest.fn().mockImplementation((params) => ({type: 'get-item', params}))
     }
 })
-describe('dynamo', () => {
+describe('dynamodb', () => {
     const sut = new DynamoService();
     const cacheKey = 'key'
     const cacheValue = 'value'

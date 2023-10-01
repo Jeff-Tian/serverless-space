@@ -36,6 +36,7 @@
     "@apollo/gateway": "2.5.1",
     "@apollo/server": "^4.9.0",
     "@apollo/subgraph": "2.5.1",
+    "@aws-sdk/client-dynamodb": "^3.421.0",
     "@babel/core": "^7.22.9",
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
     "@babel/plugin-transform-react-jsx": "^7.22.5",
