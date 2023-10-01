@@ -7,11 +7,13 @@ jest.mock(`@jeff-tian/gatsby-source-yuque/dist/gatsby-node`, () => {
 });
 import {YuqueService} from "./yuque.service";
 import {DynamoService} from "../dynamo/dynamo.service";
+import {HttpService} from "@nestjs/axios";
 
 describe('yuque service', () => {
     const mockGetAllCaches = jest.fn()
     const mockDynamoService = Mock.of<DynamoService>({getAllCaches: mockGetAllCaches})
-    const sut = new YuqueService(mockDynamoService)
+    const mockHttpService = Mock.of<HttpService>();
+    const sut = new YuqueService(mockDynamoService, mockHttpService)
 
     beforeEach(() => {
         mockGetAllCaches.mockReset();
