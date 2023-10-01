@@ -100,6 +100,8 @@ constructs:
     type: queue
     worker:
       handler: handler.consumer
+      layers:
+        - { Ref: LibLambdaLayer }
 
 functions:
   hello:

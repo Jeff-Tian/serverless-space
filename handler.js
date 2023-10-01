@@ -21,7 +21,7 @@ module.exports.hello = async (event) => {
     // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };
 
-module.consumer = async (event) => {
+module.exports.consumer = async (event) => {
     console.log('consuming ', event);
 
     for (const record of event.Records) {
