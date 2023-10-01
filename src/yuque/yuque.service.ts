@@ -107,14 +107,14 @@ export class YuqueService {
         const notifyWeCom = this.httpService.post('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8f57b747-5af9-4d42-bed8-541ba91fe9a5', {
             msgtype: 'markdown',
             markdown: {
-                content: payload.data.body,
+                content: payload.data.body.substr(0, 4000),
                 title: payload.data.title,
             }
         }).toPromise();
 
         const results = await Promise.all([notifyWeCom]);
 
-        this.logger.log(`notification results: ${JSON.stringify(results)}`);
+        this.logger.log(`notification results: `, results);
 
         this.logger.log('notifying sqs...');
 
