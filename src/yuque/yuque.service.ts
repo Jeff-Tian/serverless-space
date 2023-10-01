@@ -4,6 +4,7 @@ import {readBySlug, pluginOptions, context, sourceAllNodes} from '../gatsby-reso
 import {DynamoService} from "../dynamo/dynamo.service";
 import {HttpService} from "@nestjs/axios";
 import {SendMessageCommand, SQSClient} from "@aws-sdk/client-sqs";
+import util from "util";
 
 const yuqueCacheKeyPrefix = 'yuque'
 const getYuqueCacheKey = id => `${yuqueCacheKeyPrefix}-${id}`
@@ -107,14 +108,14 @@ export class YuqueService {
         const notifyWeCom = this.httpService.post('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8f57b747-5af9-4d42-bed8-541ba91fe9a5', {
             msgtype: 'markdown',
             markdown: {
-                content: payload.data.body.substr(0, 4000),
+                content: payload.data.body.substr(0, 2000),
                 title: payload.data.title,
             }
         }).toPromise();
 
         const results = await Promise.all([notifyWeCom]);
 
-        this.logger.log(`notification results: `, results);
+        this.logger.log(`notification results: `, util.inspect(results));
 
         this.logger.log('notifying sqs...');
 
@@ -132,7 +133,7 @@ export class YuqueService {
 
         try {
             const sqsResult = await sqs.send(sendMessageCommand);
-            this.logger.log(`sqs result: ${JSON.stringify(sqsResult)}`);
+            this.logger.log(`sqs result: `, util.inspect(sqsResult));
 
             return [...results, sqsResult];
         } catch (ex) {
