@@ -18,6 +18,7 @@
   },
   "include": [
     "src/**/*",
-    "node_modules/gatsby-recipes/src/**/*",
+    "node_modules/gatsby-recipes/src/**/*", 
+    "wechat", "test/mp.test.js",
   ]
 }
