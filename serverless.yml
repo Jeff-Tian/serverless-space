@@ -102,6 +102,9 @@ constructs:
       handler: handler.consumer
       layers:
         - { Ref: LibLambdaLayer }
+      environment:
+        MP_APPID: ${env:MP_APPID}
+        MP_SECRET: ${env:MP_SECRET}
 
 functions:
   hello:

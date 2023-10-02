@@ -12,8 +12,8 @@ describe("mp features", () => {
     it('gets access token', async () => {
         nock('https://api.weixin.qq.com').post('/cgi-bin/stable_token', {
             grant_type: 'client_credential',
-            appid: '1234',
-            secret: '5678',
+            appid: /.+/,
+            secret: /.+/,
             force_refresh: false
         }).reply(200, mockTokenRes)
 
@@ -26,8 +26,8 @@ describe("mp features", () => {
     it('adds an image', async () => {
         nock('https://api.weixin.qq.com').post('/cgi-bin/stable_token', {
             grant_type: 'client_credential',
-            appid: '1234',
-            secret: '5678',
+            appid: /.+/,
+            secret: /.+/,
             force_refresh: false
         }).reply(200, mockTokenRes)
 
@@ -53,8 +53,8 @@ describe("mp features", () => {
     it('adds a draft', async () => {
         nock('https://api.weixin.qq.com').post('/cgi-bin/stable_token', {
             grant_type: 'client_credential',
-            appid: '1234',
-            secret: '5678',
+            appid: /.+/,
+            secret: /.+/,
             force_refresh: false
         }).reply(200, mockTokenRes)
 

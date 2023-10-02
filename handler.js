@@ -1,6 +1,7 @@
 'use strict';
 const handler = require('serverless-express/handler')
 const app = require('./index.js')
+const mp = require('./wechat/mp')
 
 module.exports.api = handler(app)
 
@@ -31,6 +32,17 @@ module.exports.consumer = async (event) => {
             messageAttributes.AttributeName.stringValue
         );
         console.log("Message Body: ", record.body);
+
+        const slug = record.body.data.slug;
+        const title = record.body.data.title;
+        const content = record.body.data.body;
+
+        const res = await mp.addDraft({
+            title,
+            content,
+            content_source_url: `https://jeff-tian.jiwai.win/posts/${slug}/`
+        });
+        console.log('add draft res = ', res.data);
     }
 
     console.log('consumed event');
