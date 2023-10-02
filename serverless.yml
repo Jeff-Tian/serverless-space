@@ -172,6 +172,7 @@ functions:
       SYNC_GITHUB_PERSONAL_ACCESS_TOKEN: ${env:SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}
       ONLINE: true
       QUEUE_URL: ${construct:jobs.queueUrl}
+      WECOM_NOTIFICATION_URL: ${env:WECOM_NOTIFICATION_URL}
 
   gateway:
     handler: dist/gateway/main.handler

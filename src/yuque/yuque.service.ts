@@ -1,9 +1,9 @@
-import {Injectable, Logger} from '@nestjs/common'
-import {YuQue} from './models/yuque.model'
-import {readBySlug, pluginOptions, context, sourceAllNodes} from '../gatsby-resources/yuque'
-import {DynamoService} from "../dynamo/dynamo.service";
-import {HttpService} from "@nestjs/axios";
-import {SendMessageCommand, SQSClient} from "@aws-sdk/client-sqs";
+import { Injectable, Logger } from '@nestjs/common'
+import { YuQue } from './models/yuque.model'
+import { readBySlug, pluginOptions, context, sourceAllNodes } from '../gatsby-resources/yuque'
+import { DynamoService } from "../dynamo/dynamo.service";
+import { HttpService } from "@nestjs/axios";
+import { SendMessageCommand, SQSClient } from "@aws-sdk/client-sqs";
 import util from "util";
 
 const yuqueCacheKeyPrefix = 'yuque'
@@ -46,13 +46,13 @@ export class YuqueService {
             }
         }
 
-        sourceAllNodes(context, this.cachedPluginOptions).then(({data}) => {
+        sourceAllNodes(context, this.cachedPluginOptions).then(({ data }) => {
             (data ?? []).forEach(article => this.dynamoService.saveCache(getYuqueCacheKey(article.id), JSON.stringify(article), String(article.created_at), String(article.status)))
         }).catch(console.error)
     }
 
     async findOneBySlug(slug: string): Promise<YuQue> {
-        const {data} = await readBySlug(slug)
+        const { data } = await readBySlug(slug)
 
         await this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), String(data.created_at), String(data.status))
 
@@ -67,7 +67,7 @@ export class YuqueService {
             if ((!yuqueArticle.body || !yuqueArticle.body_html) && yuqueArticle.slug) {
                 console.log('saving cache...', yuqueArticle)
 
-                const {data} = await readBySlug(yuqueArticle.slug)
+                const { data } = await readBySlug(yuqueArticle.slug)
 
                 await this.dynamoService.saveCache(getYuqueCacheKey(data.id), JSON.stringify(data), String(data.created_at), String(data.status))
 
@@ -86,7 +86,7 @@ export class YuqueService {
         if (all && all.length > 0) {
             return all
                 .filter(item => item?.status?.S?.toString() === '1')
-                .sort((item1, item2) => byCreatedAt({created_at: item1?.created_at?.S}, {created_at: item2?.created_at?.S}))
+                .sort((item1, item2) => byCreatedAt({ created_at: item1?.created_at?.S }, { created_at: item2?.created_at?.S }))
                 .map(item => item?.cacheValue?.S)
                 .filter(Boolean)
                 .map(s => JSON.parse(s))
@@ -106,7 +106,7 @@ export class YuqueService {
         this.logger.log(`Received webhook payload: ${JSON.stringify(payload)}`);
 
         try {
-            const notifyWeCom = this.httpService.post('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8f57b747-5af9-4d42-bed8-541ba91fe9a5', {
+            const notifyWeCom = this.httpService.post(process.env.WECOM_NOTIFICATION_URL, {
                 msgtype: 'news',
                 news: {
                     articles: [
