@@ -4,10 +4,11 @@ const path = require('path')
 const FormData = require('form-data')
 
 module.exports.getAccessToken = async () => {
+    console.log('getting access token with ', process.env.MP_APPID)
     return axios.post('https://api.weixin.qq.com/cgi-bin/stable_token', {
         grant_type: 'client_credential',
-        appid: process.env.MP_APPID,
-        secret: process.env.MP_SECRET,
+        appid: String(process.env.MP_APPID).trim(),
+        secret: String(process.env.MP_SECRET).trim(),
         force_refresh: false
     })
 }
@@ -58,7 +59,7 @@ module.exports.addPersistedImage = async (access_token) => {
     )
 }
 
-module.exports.addDraft = async ({ title, content, content_source_url }) => {
+module.exports.addDraft = async ({title, content, content_source_url}) => {
     const token = await module.exports.getAccessToken();
 
     console.log('token result = ', token.data);
@@ -66,7 +67,7 @@ module.exports.addDraft = async ({ title, content, content_source_url }) => {
     const mediaRes = await module.exports.addPersistedImage(token.data.access_token);
 
     console.log('mediaRes= ', mediaRes.data.media_id);
-    
+
     return axios.post(`https://api.weixin.qq.com/cgi-bin/draft/add?access_token=${token.data.access_token}`, {
         articles: [
             {
