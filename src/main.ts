@@ -21,10 +21,12 @@ async function bootstrap(): Promise<any> {
     })
 
     const expressApp = app.getHttpAdapter().getInstance();
-    expressApp.use(bodyParser.json({limit: '100mb'}));
-    expressApp.use(bodyParser.raw({limit: '100mb'}));
 
-    return serverlessExpress({app: expressApp});
+    const serverlessExpressApp = serverlessExpress({app: expressApp});
+    serverlessExpressApp.use(bodyParser.json({limit: '10mb'}));
+    serverlessExpressApp.use(bodyParser.raw({limit: '10mb'}));
+
+    return serverlessExpressApp;
 }
 
 export const handler = async (
