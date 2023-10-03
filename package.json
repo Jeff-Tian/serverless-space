@@ -21,7 +21,8 @@
     "studio:windows": "start https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/gatsby/graphql",
     "ci-check": "yarn test&&yarn test:e2e&&yarn build",
     "schema": "yarn offline",
-    "mocha": "mocha --timeout 10000"
+    "mocha": "mocha --timeout 10000",
+    "postinstall": "node postinstall.js"
   },
   "repository": {
     "type": "git",
