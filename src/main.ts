@@ -12,6 +12,7 @@ async function bootstrap(): Promise<any> {
         logger: ['error', 'warn', 'log'],
         snapshot: true,
     });
+
     await app.init();
 
     app.enableCors({
@@ -19,6 +20,8 @@ async function bootstrap(): Promise<any> {
     })
 
     const expressApp = app.getHttpAdapter().getInstance();
+    expressApp.useBodyParser('json', { limit: '10mb' });
+    
     return serverlessExpress({app: expressApp});
 }
 
