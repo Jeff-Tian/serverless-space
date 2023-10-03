@@ -10,15 +10,17 @@ export class ZhihuController {
     }
 
     @Post()
-    async webhookOfSyncYuqueToZhihu(@Body() webhookPayload: any) {
-        this.logger.log(`Received webhook payload: ${JSON.stringify(webhookPayload)}`);
+    async webhookOfSyncYuqueToZhihu(@Body() buffer: Buffer) {
+        const stringFromBuffer = buffer.toString();
+        this.logger.log(`Received webhook payload: ${stringFromBuffer}`);
 
-        await this.zhihuService.syncYuqueToZhihu(webhookPayload.data.slug);
+        const payload = JSON.parse(stringFromBuffer);
+        await this.zhihuService.syncYuqueToZhihu(payload.data.slug);
         this.logger.log(`Triggered GitHub Action`);
 
-        await this.yuqueService.workflow(webhookPayload);
+        await this.yuqueService.workflow(payload);
         this.logger.log(`Triggered Yuque Action`);
 
-        return webhookPayload;
+        return payload;
     }
 }
