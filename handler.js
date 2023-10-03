@@ -31,8 +31,12 @@ module.exports.consumer = async (event) => {
             "Message Attribute: ",
             messageAttributes.AttributeName.stringValue
         );
-        console.log("Message Body: ", record.body);
+        console.log("Message Body: ", typeof record.body, ' ', record.body);
 
+        if (typeof record.body === 'string') {
+            record.body = JSON.parse(record.body);
+        }
+        
         const slug = record.body.data.slug;
         const title = record.body.data.title;
         const content = record.body.data.body;
