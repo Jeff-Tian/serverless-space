@@ -166,6 +166,7 @@ functions:
     timeout: 900
     layers:
       - { Ref: LibLambdaLayer }
+      - { Ref: GatsbypluginsLambdaLayer }
     events:
       - http:
           method: ANY
