@@ -111,18 +111,18 @@ constructs:
       environment:
         MP_APPID: ${env:MP_APPID}
         MP_SECRET: ${env:MP_SECRET}
-      vpc:
-        securityGroupIds:
-          - Fn::GetAtt: [ VPCStaticIP, DefaultSecurityGroup ]
-        subnetIds:
-          - Ref: SubnetPrivate
-        iamRoleStatements:
-          - Effect: Allow
-            Action:
-              - ec2:CreateNetworkInterface
-              - ec2:DeleteNetworkInterface
-              - ec2:DescribeNetworkInterfaces
-            Resource: '*'
+#      vpc:
+#        securityGroupIds:
+#          - Fn::GetAtt: [ VPCStaticIP, DefaultSecurityGroup ]
+#        subnetIds:
+#          - Ref: SubnetPrivate
+#        iamRoleStatements:
+#          - Effect: Allow
+#            Action:
+#              - ec2:CreateNetworkInterface
+#              - ec2:DeleteNetworkInterface
+#              - ec2:DescribeNetworkInterfaces
+#            Resource: '*'
 
 functions:
   hello:
@@ -161,6 +161,38 @@ functions:
           cors: true
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
+  webhook:
+    handler: dist/webhook/main.handler
+    timeout: 900
+    layers:
+      - { Ref: LibLambdaLayer }
+    events:
+      - http:
+          method: ANY
+          path: webhook/
+          cors: true
+      - http:
+          method: ANY
+          path: stg/webhook/
+          cors: true
+      - http:
+          method: ANY
+          path: 'webhook/{proxy+}'
+          cors: true
+      - http:
+          method: ANY
+          path: 'stg/webhook/{proxy+}'
+          cors: true
+    environment:
+      SERVERLESS_EXPRESS_PLATFORM: aws
+      YUQUE_TOKEN: ${env:YUQUE_TOKEN}
+      YUQUE_PATH: /tmp/yuque.json
+      CACHE_URL: ${env:CACHE_URL}
+      GITHUB_TOKEN: ${env:GITHUB_TOKEN}
+      SYNC_GITHUB_PERSONAL_ACCESS_TOKEN: ${env:SYNC_GITHUB_PERSONAL_ACCESS_TOKEN}
+      ONLINE: true
+      QUEUE_URL: ${construct:jobs.queueUrl}
+      WECOM_NOTIFICATION_URL: ${env:WECOM_NOTIFICATION_URL}
   nest:
     handler: dist/main.handler
     timeout: 900

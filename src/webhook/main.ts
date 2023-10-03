@@ -1,18 +1,14 @@
 import {NestFactory} from '@nestjs/core';
 import serverlessExpress from '@vendia/serverless-express';
-import {AppModule} from './app.module';
-import {config} from 'dotenv'
-
-config()
+import {ZhihuModule} from "../zhihu/zhihu.module";
 
 let server;
 
 async function bootstrap(): Promise<any> {
-    const app = await NestFactory.create(AppModule, {
+    const app = await NestFactory.create(ZhihuModule, {
         logger: ['error', 'warn', 'log'],
-        snapshot: true,
+        bodyParser: false
     });
-
     await app.init();
 
     app.enableCors({
@@ -20,7 +16,6 @@ async function bootstrap(): Promise<any> {
     })
 
     const expressApp = app.getHttpAdapter().getInstance();
-
     return serverlessExpress({app: expressApp});
 }
 
