@@ -20,13 +20,13 @@ async function bootstrap(): Promise<any> {
         maxAge: 86400
     })
 
-    const expressApp = app.getHttpAdapter().getInstance();
+    const expressApp = app.getHttpAdapter();
+    expressApp.useBodyParser('json', false, {limit: 10240000});
+    expressApp.useBodyParser('raw', false, {limit: 10240000});
 
-    const serverlessExpressApp = serverlessExpress({app: expressApp});
-    serverlessExpressApp.use(bodyParser.json({limit: '10mb'}));
-    serverlessExpressApp.use(bodyParser.raw({limit: '10mb'}));
+    const instance = expressApp.getInstance();
 
-    return serverlessExpressApp;
+    return serverlessExpress({app: instance});
 }
 
 export const handler = async (
