@@ -2,6 +2,7 @@ import {NestFactory} from '@nestjs/core';
 import serverlessExpress from '@vendia/serverless-express';
 import {AppModule} from './app.module';
 import {config} from 'dotenv'
+import bodyParser from "body-parser";
 
 config()
 
@@ -20,8 +21,8 @@ async function bootstrap(): Promise<any> {
     })
 
     const expressApp = app.getHttpAdapter().getInstance();
-    expressApp.useBodyParser('json', { limit: '10mb' });
-    
+    expressApp.use(bodyParser.json({limit: '10mb'}));
+
     return serverlessExpress({app: expressApp});
 }
 
