@@ -51,6 +51,10 @@ provider:
         - "dynamodb:GetItem"
         - "dynamodb:UpdateTimeToLive"
       Resource: "arn:aws:dynamodb:us-east-1:443862765029:table/cache-table"
+    - Effect: Allow
+      Action:
+        - "ec2:CreateNetworkInterface"
+      Resource: "*"
 
   tracing:
     apiGateway: true
