@@ -7,7 +7,7 @@
     "prebuild": "rimraf dist",
     "start": "node index.js",
     "test": "mocha && jest",
-    "build": "nest build&&cp schema.gql dist/schema.gql&&cp src/babel-service/babel.min.js dist/babel-service/babel.min.js",
+    "build": "nest build&&cp \"schema.gql\" \"dist/schema.gql\"&&cp \"src/babel-service/babel.min.js\" \"dist/babel-service/babel.min.js\"",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
