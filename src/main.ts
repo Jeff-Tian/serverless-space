@@ -1,7 +1,8 @@
-import {NestFactory} from '@nestjs/core';
+import { NestFactory } from '@nestjs/core';
 import serverlessExpress from '@vendia/serverless-express';
-import {AppModule} from './app.module';
-import {config} from 'dotenv'
+import { AppModule } from './app.module';
+import { config } from 'dotenv'
+import getOrCreateHandler from './common/serverless/make-handler';
 
 config()
 
@@ -21,14 +22,7 @@ async function bootstrap(): Promise<any> {
 
     const expressApp = app.getHttpAdapter().getInstance();
 
-    return serverlessExpress({app: expressApp});
+    return serverlessExpress({ app: expressApp });
 }
 
-export const handler = async (
-    event: any,
-    context,
-    callback,
-) => {
-    server = server ?? (await bootstrap());
-    return server(event, context, callback);
-};
+export const handler = getOrCreateHandler(server, bootstrap);

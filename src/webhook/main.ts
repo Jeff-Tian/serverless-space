@@ -1,6 +1,7 @@
-import {NestFactory} from '@nestjs/core';
+import { NestFactory } from '@nestjs/core';
 import serverlessExpress from '@vendia/serverless-express';
-import {ZhihuModule} from "../zhihu/zhihu.module";
+import { ZhihuModule } from "../zhihu/zhihu.module";
+import getOrCreateHandler from 'src/common/serverless/make-handler';
 
 let server;
 
@@ -16,14 +17,7 @@ async function bootstrap(): Promise<any> {
     })
 
     const expressApp = app.getHttpAdapter().getInstance();
-    return serverlessExpress({app: expressApp});
+    return serverlessExpress({ app: expressApp });
 }
 
-export const handler = async (
-    event: any,
-    context,
-    callback,
-) => {
-    server = server ?? (await bootstrap());
-    return server(event, context, callback);
-};
+export const handler = getOrCreateHandler(server, bootstrap);
