@@ -13,11 +13,11 @@ async function bootstrap(): Promise<any> {
         snapshot: true,
     });
 
-    await app.init();
-
     app.enableCors({
         maxAge: 86400
     })
+
+    await app.init();
 
     const expressApp = app.getHttpAdapter().getInstance();
 
