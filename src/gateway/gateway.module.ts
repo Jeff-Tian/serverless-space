@@ -11,7 +11,6 @@ import { AuthenticatedDataSource } from "./authenticated.data.source";
             server: {
                 // ... Apollo server options
                 path: '/stg/gateway',
-                cors: true
             },
             gateway: {
                 supergraphSdl: new IntrospectAndCompose({

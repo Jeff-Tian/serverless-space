@@ -8,6 +8,12 @@ async function bootstrap(): Promise<any> {
     const app = await NestFactory.create(GatewayModule, {
         logger: ['error', 'warn', 'log']
     });
+    app.use((req, res, next) => {
+        res.header('X-Custom-Header', 'jeff-tian');
+        res.header('access-control-allow-origin', '*');
+        res.header('access-control-allow-credentials', 'true');
+        next();
+    })
     await app.init();
 
     app.enableCors({
