@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import serverlessExpress from '@vendia/serverless-express';
 import { GatewayModule } from "./gateway.module";
-import getOrCreateHandler from 'src/common/serverless/make-handler';
+import getOrCreateHandler from '../common/serverless/make-handler';
 
 let server;
 
