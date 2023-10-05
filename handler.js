@@ -36,10 +36,10 @@ module.exports.consumer = async (event) => {
         if (typeof record.body === 'string') {
             record.body = JSON.parse(record.body);
         }
-        
+
         const slug = record.body.data.slug;
         const title = record.body.data.title;
-        const content = record.body.data.body;
+        const content = record.body.data.body_html;
 
         const res = await mp.addDraft({
             title,

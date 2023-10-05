@@ -36,6 +36,7 @@ provider:
     APOLLO_GRAPH_REF: Serverless-Space@current
     APOLLO_KEY: ${env:APOLLO_KEY}
   apiGateway:
+    cors: true
     binaryMediaTypes:
       - 'multipart/form-data'
 
