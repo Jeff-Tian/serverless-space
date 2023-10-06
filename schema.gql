@@ -28,17 +28,12 @@ type Mutation {
   copyToClipboard(clipboard: ClipboardInput!): ClipboardModel!
   draftColumnArticle: Zhihu!
   removeRecipe(id: String!): Boolean!
-  syncYuqueToZhihu(slug: String!): PartialYuqueModel!
 }
 
 input NewRecipeInput {
   description: String
   ingredients: [String!]!
   title: String!
-}
-
-type PartialYuqueModel {
-  slug: String!
 }
 
 type Query {

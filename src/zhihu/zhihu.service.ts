@@ -72,6 +72,8 @@ export class ZhihuService {
                     }
                 }).toPromise()
             ])
+
+            return res;
         } catch (ex) {
             console.error('ex = ', ex.message);
             throw ex
