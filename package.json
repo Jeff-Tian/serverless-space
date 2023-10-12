@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "start": "node index.js",
-    "test": "mocha && jest",
+    "test": "mocha 'test/**/*.test.js' --recursive && jest",
     "build": "nest build&&cp \"schema.gql\" \"dist/schema.gql\"&&cp \"src/babel-service/babel.min.js\" \"dist/babel-service/babel.min.js\"",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
@@ -82,6 +82,7 @@
     "jest-diff": "^29.6.2",
     "js-yaml": "^4.1.0",
     "lock": "^1.1.0",
+    "markdown-it": "^13.0.2",
     "mime": "3.0.0",
     "mitt": "^3.0.1",
     "prettier": "^3.0.0",

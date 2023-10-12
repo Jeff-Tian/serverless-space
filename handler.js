@@ -2,6 +2,7 @@
 const handler = require('serverless-express/handler')
 const app = require('./index.js')
 const mp = require('./wechat/mp')
+const {convertToHtml} = require("./wechat/markdown");
 
 module.exports.api = handler(app)
 
@@ -40,6 +41,7 @@ module.exports.consumer = async (event) => {
         const slug = record.body.data.slug;
         const title = record.body.data.title;
         const content = record.body.data.body_html;
+        const markdownContent = record.body.data.body;
 
         const res = await mp.addDraft({
             title,
@@ -47,6 +49,13 @@ module.exports.consumer = async (event) => {
             content_source_url: `https://jeff-tian.jiwai.win/posts/${slug}/`
         });
         console.log('add draft res = ', res.data);
+
+        const res2 = await mp.addDraft({
+            title,
+            content: convertToHtml(markdownContent),
+            content_source_url: `https://jeff-tian.jiwai.win/posts/${slug}/`
+        });
+        console.log('add draft2 res = ', res2.data);
     }
 
     console.log('consumed event');

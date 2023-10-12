@@ -1,7 +1,7 @@
 const assert = require('assert')
 const nock = require('nock')
 
-const mp = require('../wechat/mp')
+const mp = require('../../wechat/mp')
 
 describe("mp features", () => {
     const mockTokenRes = {
