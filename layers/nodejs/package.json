@@ -41,6 +41,7 @@
     "@nestjs/core": "10.2.7",
     "@nestjs/graphql": "11.0.0",
     "@nestjs/platform-express": "10.2.7",
+    "@nestjs/swagger": "^7.1.13",
     "@vendia/serverless-express": "4.10.4",
     "@apollo/server": "^4.9.0",
     "apollo-server-cache-redis": "^3.2.0",
