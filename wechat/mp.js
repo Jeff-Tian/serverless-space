@@ -2,6 +2,7 @@ const axios = require('axios')
 const fs = require('fs')
 const path = require('path')
 const FormData = require('form-data')
+const {convertToHtml} = require("./markdown");
 
 module.exports.getAccessToken = async () => {
     console.log('getting access token with ', process.env.MP_APPID)
@@ -79,4 +80,39 @@ module.exports.addDraft = async ({title, content, content_source_url}) => {
             }
         ]
     });
+}
+
+module.exports.addDrafts = async ({title, html, markdown, content_source_url}) => {
+    const token = await module.exports.getAccessToken();
+
+    console.log('token result = ', token.data);
+
+    const mediaRes = await module.exports.addPersistedImage(token.data.access_token);
+
+    console.log('mediaRes= ', mediaRes.data.media_id);
+
+    return Promise.all([
+        axios.post(`https://api.weixin.qq.com/cgi-bin/draft/add?access_token=${token.data.access_token}`, {
+            articles: [
+                {
+                    title,
+                    content: html,
+                    content_source_url,
+                    need_open_comment: 1,
+                    thumb_media_id: mediaRes.data.media_id
+                }
+            ]
+        }),
+        axios.post(`https://api.weixin.qq.com/cgi-bin/draft/add?access_token=${token.data.access_token}`, {
+            articles: [
+                {
+                    title: `哈德韦：${title}`,
+                    content: convertToHtml(markdown),
+                    content_source_url,
+                    need_open_comment: 1,
+                    thumb_media_id: mediaRes.data.media_id
+                }
+            ]
+        })
+    ]);
 }

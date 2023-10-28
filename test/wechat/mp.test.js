@@ -83,4 +83,40 @@ describe("mp features", () => {
             "media_id": "H3tPf5wuG9Gu8tD8v7bpjWB8seLdmWdiF_LpGF0-wQzCU8XBbfiwOYgRxd8qzGqu"
         });
     })
+
+
+    it('adds drafts', async () => {
+        nock('https://api.weixin.qq.com').post('/cgi-bin/stable_token', {
+            grant_type: 'client_credential',
+            appid: /.+/,
+            secret: /.+/,
+            force_refresh: false
+        }).reply(200, mockTokenRes)
+
+        nock('https://api.weixin.qq.com')
+            .filteringRequestBody(/.*/, '*')
+            .post(`/cgi-bin/material/add_material?access_token=${mockTokenRes.access_token}&type=image`, '*')
+            .reply(200, {})
+
+        nock('https://api.weixin.qq.com')
+            .filteringRequestBody(/.*/, '*')
+            .post(`/cgi-bin/draft/add?access_token=${mockTokenRes.access_token}`)
+            .reply(200, {
+                "item": [],
+                "media_id": "H3tPf5wuG9Gu8tD8v7bpjWB8seLdmWdiF_LpGF0-wQzCU8XBbfiwOYgRxd8qzGqu"
+            })
+
+        const res = await mp.addDraft({
+            title: 'title',
+            html: 'content',
+            markdown: 'markdown',
+            need_open_comment: 1
+        });
+
+        assert.ok(res);
+        assert.deepEqual(res.data, {
+            "item": [],
+            "media_id": "H3tPf5wuG9Gu8tD8v7bpjWB8seLdmWdiF_LpGF0-wQzCU8XBbfiwOYgRxd8qzGqu"
+        });
+    })
 })
