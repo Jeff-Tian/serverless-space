@@ -96,17 +96,6 @@ module.exports.addDrafts = async ({title, html, markdown, content_source_url}) =
             articles: [
                 {
                     title,
-                    content: html,
-                    content_source_url,
-                    need_open_comment: 1,
-                    thumb_media_id: mediaRes.data.media_id
-                }
-            ]
-        }),
-        axios.post(`https://api.weixin.qq.com/cgi-bin/draft/add?access_token=${token.data.access_token}`, {
-            articles: [
-                {
-                    title: `哈德韦：${title}`,
                     content: convertToHtml(markdown),
                     content_source_url,
                     need_open_comment: 1,
