@@ -46,7 +46,8 @@ module.exports.consumer = async (event) => {
             title,
             html: content,
             markdown: markdownContent,
-            content_source_url: `https://jeff-tian.jiwai.win/posts/${slug}/`
+            content_source_url: `https://jeff-tian.jiwai.win/posts/${slug}/`,
+            mini_program_path: `pages/yuque/article?slug=${slug}`,
         });
         console.log('add draft res = ', res.data);
     }
