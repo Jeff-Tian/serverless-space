@@ -118,13 +118,17 @@ module.exports.addDrafts = async ({title, html, markdown, content_source_url, mi
     const miniprogramCoverImageRes = await module.exports.addPersistedBlogImage(token.data.access_token);
     console.log('miniprogramCoverImageRes = ', miniprogramCoverImageRes.data);
 
+    const content = `${convertToHtml(markdown)}<mp-miniprogram data-miniprogram-appid="wx8c777d630f2b78e3" data-miniprogram-path="${mini_program_path}" data-miniprogram-title="在小程序中查看本文" data-miniprogram-imageurl="${miniprogramCoverImageRes.data.url}"></mp-miniprogram>`;
+
+    console.log('content sent to wechat mp: ', content);
+
     return await Promise.all([
         axios.post(`https://api.weixin.qq.com/cgi-bin/draft/add?access_token=${token.data.access_token}`, {
             articles: [
                 {
                     title,
                     author: '哈德韦',
-                    content: `${convertToHtml(markdown)}<mp-miniprogram data-miniprogram-appid="wx8c777d630f2b78e3" data-miniprogram-path="${mini_program_path}" data-miniprogram-title="在小程序中查看本文" data-miniprogram-imageurl="${miniprogramCoverImageRes.data.url}"></mp-miniprogram>`,
+                    content,
                     content_source_url,
                     need_open_comment: 1,
                     thumb_media_id: mediaRes.data.media_id

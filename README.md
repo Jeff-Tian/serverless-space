@@ -119,7 +119,7 @@ All kinds of contributions are welcome!
 
 ## 中文说明
 
-这是我利用 AWS 免费资源构建一个 SFF 的实验场地，用于验证一些 Serverless 的想法。AWS 一共有 200 多个服务，目前这里使用的仅仅是一些 VPC 之外的服务。
+这是我利用 AWS 免费资源构建一个 SFF 的实验场地，用于验证一些 Serverless 的想法。AWS 一共有 200 多个服务，~~目前这里使用的仅仅是一些 VPC 之外的服务~~^[除了 VPC 之外的服务，还在调用微信接口时将 Lambda 绑定到了 VPC 固定的 IP 地址，以通过微信服务的白名单校验，参见：《[通过关联 VPC 让 AWS lambda 拥有固定出口 IP 地址 - Jeff Tian的文章 - 知乎](https://zhuanlan.zhihu.com/p/659452589)》]。
 
 ### 架构图
 
