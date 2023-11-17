@@ -107,6 +107,7 @@ constructs:
     type: queue
     worker:
       handler: handler.consumer
+      timeout: 900
       layers:
         - { Ref: LibLambdaLayer }
       environment:
