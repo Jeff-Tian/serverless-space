@@ -49,7 +49,7 @@ module.exports.consumer = async (event) => {
             content_source_url: `https://jeff-tian.jiwai.win/posts/${slug}/`,
             mini_program_path: `pages/yuque/article?slug=${slug}`,
         });
-        console.log('add draft res = ', res.data);
+        console.log('add draft res = ', res.map(x => x.data));
     }
 
     console.log('consumed event');
