@@ -1,8 +1,8 @@
 import {NestFactory} from '@nestjs/core';
 import serverlessExpress from '@vendia/serverless-express';
-import {ZhihuModule} from "../zhihu/zhihu.module";
 import getOrCreateHandler from '../common/serverless/make-handler';
 import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
+import {WebhookModule} from "./webhook.module";
 
 async function setupSwagger(app) {
     const options = new DocumentBuilder()
@@ -19,7 +19,7 @@ async function setupSwagger(app) {
 let server;
 
 async function bootstrap(): Promise<any> {
-    const app = await NestFactory.create(ZhihuModule, {
+    const app = await NestFactory.create(WebhookModule, {
         logger: ['error', 'warn', 'log'],
         bodyParser: false
     });
