@@ -1,10 +1,11 @@
 import {Body, Controller, Logger, Query, Post} from "@nestjs/common";
+import {WebhookService} from "./webhook.service";
 
 @Controller('webhook')
 export class WebhookController {
     private readonly logger = new Logger(WebhookController.name);
 
-    constructor() {
+    constructor(private readonly WebhookService: WebhookService) {
     }
 
     @Post()
@@ -14,6 +15,8 @@ export class WebhookController {
         this.logger.log(`Received webhook payload: ${stringFromBuffer}`);
 
         const payload = JSON.parse(stringFromBuffer);
+
+        await this.WebhookService.workflow(payload, target);
 
         return payload;
     }
