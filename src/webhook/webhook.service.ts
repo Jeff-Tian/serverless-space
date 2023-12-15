@@ -19,8 +19,8 @@ export class WebhookService {
                     news: {
                         articles: [
                             {
-                                title: payload.entry.title,
-                                description: payload.entry.content,
+                                title: payload.entry.Title,
+                                description: payload.entry.Content,
                                 url: 'https://taro.jefftian.dev/pages/subpages/brickverse/post?id=' + payload.entry.id,
                                 picurl: 'https://brickverse-strapi-v2.s3.us-east-1.amazonaws.com/71018_Bag_Rocket_Boy_1_74727593ba_2c3e9235ad.png'
                             }
