@@ -45,7 +45,7 @@
     "@vendia/serverless-express": "4.10.4",
     "@apollo/server": "^4.9.3",
     "apollo-server-cache-redis": "^3.2.0",
-    "apollo-server-express": "^3.5.0",
+    "apollo-server-express": "^3.13.0",
     "axios": "^1.6.0",
     "better-queue": "^3.8.12",
     "class-validator": "^0.14.0",
