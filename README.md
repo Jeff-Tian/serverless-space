@@ -11,14 +11,43 @@
 
 ## Online GraphQL Studio
 
-- With CDN: https://sls.pa-ca.me/nest/graphql
-- Without CDN:
-    - dev: https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/graphql
-    - stg: https://zcjk76jr21.execute-api.us-east-1.amazonaws.com/stg/nest/graphql
-- Apollo Studio: https://studio.apollographql.com/graph/Serverless-Space/explorer?variant=current
-    - Dashboard: https://studio.apollographql.com/public/Serverless-Space/variant/current
-- GraphCDN: https://graphcdn.pa-ca.me/
-    - [Dashboard](https://stellate.co/app/jeff-tian/demo-productive-steel/settings/dev-portal)
+<table>
+  <tr>
+    <th>Type</th>
+    <th>URL</th>
+  </tr>
+  <tr>
+    <td>With CDN</td>
+    <td><a href="https://sls.pa-ca.me/nest/graphql">https://sls.pa-ca.me/nest/graphql</a></td>
+  </tr>
+  <tr>
+    <td rowspan="2">Without CDN</td>
+    <td><a href="https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/nest/graphql">dev</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://zcjk76jr21.execute-api.us-east-1.amazonaws.com/stg/nest/graphql">stg</a></td>
+  </tr>
+  <tr>
+    <td rowspan="2">Apollo Studio</td>
+    <td><a href="https://studio.apollographql.com/graph/Serverless-Space/explorer?variant=current">https://studio.apollographql.com/graph/Serverless-Space/explorer?variant=current</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://studio.apollographql.com/public/Serverless-Space/variant=current">Dashboard</a></td>
+  </tr>
+  <tr>
+    <td rowspan="2">GraphCDN</td>
+    <td><a href="https://graphcdn.pa-ca.me/">https://graphcdn.pa-ca.me/</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://stellate.co/app/jeff-tian/demo-productive-steel/settings/dev-portal">Dashboard</a></td>
+  </tr>
+</table>
+
+## Restful API (Swagger docs)
+
+| App     | Self hosted Swagger                                                        | Swagger IO                                           | Localhost                                     |
+|---------|----------------------------------------------------------------------------|------------------------------------------------------|-----------------------------------------------|
+| Webhook | https://zcjk76jr21.execute-api.us-east-1.amazonaws.com/stg/webhook/swagger | https://app.swaggerhub.com/apis/UniHeart/webhook/1.0 | http://localhost:3000/stg/stg/webhook/swagger |
 
 ## Why
 
