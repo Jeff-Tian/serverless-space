@@ -64,5 +64,4 @@ const allPossibleFederatableSubGraphs = [
         }),
     ],
 })
-export class GatewayModule {
-}
+export class GatewayModule {}

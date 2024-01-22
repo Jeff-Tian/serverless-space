@@ -52,7 +52,6 @@
     "gatsby-core-utils": "4.5.0"
   },
   "devDependencies": {
-    "gatsby-recipes": "0.9.3"
   },
   "jest": {
     "moduleFileExtensions": [

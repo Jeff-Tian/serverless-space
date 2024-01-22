@@ -1,18 +1,4 @@
-import * as Joi from "@hapi/joi"
 import { sourceAllNodes, sourceNode, sourceNodes } from "@jeff-tian/gatsby-source-yuque/dist/gatsby-node"
-
-const schema = {
-    id: Joi.number(),
-    title: Joi.string(),
-    description: Joi.string(),
-    custom_description: Joi.string(),
-    updated_at: Joi.string(),
-    created_at: Joi.string(),
-    slug: Joi.string(),
-    word_count: Joi.number(),
-    cover: Joi.string(),
-    body: Joi.string(),
-}
 
 let articles = null
 
@@ -56,4 +42,4 @@ const readBySlug = async (slug) => {
     return sourceNode(context, pluginOptions, slug)
 }
 
-export { schema, read, all, readBySlug, context, sourceAllNodes, pluginOptions, sourceNodes }
+export { read, all, readBySlug, context, sourceAllNodes, pluginOptions, sourceNodes }
