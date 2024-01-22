@@ -46,6 +46,7 @@
     "@hapi/hoek": "^11.0.2",
     "@hapi/joi": "15.1.1",
     "@jeff-tian/gatsby-source-yuque": "3.0.3",
+    "@jeff-tian/graphql-transform-federation": "^3.0.1",
     "@nestjs/apollo": "11.0.0",
     "@nestjs/axios": "^3.0.0",
     "@nestjs/common": "10.2.7",

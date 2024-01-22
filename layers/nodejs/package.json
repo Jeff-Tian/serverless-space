@@ -82,7 +82,8 @@
     "@nestjs/apollo": "11.0.0",
     "@apollo/subgraph": "2.5.1",
     "js-yaml": "^4.1.0",
-    "markdown-it": "^13.0.2"
+    "markdown-it": "^13.0.2",
+    "@jeff-tian/graphql-transform-federation": "^3.0.1"
   },
   "devDependencies": {
     "@nestjs/cli": "10.1.18",

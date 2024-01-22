@@ -1,10 +1,11 @@
-import {IntrospectAndCompose} from '@apollo/gateway';
+import {IntrospectAndCompose, LocalGraphQLDataSource} from '@apollo/gateway';
 import {ApolloGatewayDriver, ApolloGatewayDriverConfig} from '@nestjs/apollo';
 import {Module} from '@nestjs/common';
 import {GraphQLModule} from '@nestjs/graphql';
 import {AuthenticatedDataSource} from "./authenticated.data.source";
+import getStrapiSchema from './strapi/strapi.service';
 
-const allPossibleGraphs = [
+const allPossibleFederatableSubGraphs = [
     {name: 'orders', url: 'https://uni-orders-jeff-tian.cloud.okteto.net/graphql'},
     {name: 'face-swap', url: 'https://face-swap-jeff-tian.cloud.okteto.net/graphql'},
     {name: 'sls', url: 'https://zcjk76jr21.execute-api.us-east-1.amazonaws.com/stg/nest/graphql'},
@@ -19,7 +20,7 @@ const allPossibleGraphs = [
         GraphQLModule.forRootAsync<ApolloGatewayDriverConfig>({
             driver: ApolloGatewayDriver,
             useFactory: async () => {
-                const aliveGraphs = await Promise.all(allPossibleGraphs.map(async (graph) => {
+                const aliveGraphs = await Promise.all(allPossibleFederatableSubGraphs.map(async (graph) => {
                     try {
                         const response = await fetch(graph.url);
                         console.log(`Checking ${graph.url}...  ${response.status}`);
@@ -30,6 +31,14 @@ const allPossibleGraphs = [
                     }
                 })).then(graphs => graphs.filter(Boolean));
 
+                let strapiSchema = null;
+                try {
+                    strapiSchema = await getStrapiSchema();
+                } catch (e) {
+                    console.error('Error when fetching strapi schema', e);
+                    strapiSchema = null;
+                }
+
                 return ({
                     server: {
                         // ... Apollo server options
@@ -37,10 +46,16 @@ const allPossibleGraphs = [
                     },
                     gateway: {
                         supergraphSdl: new IntrospectAndCompose({
-                            subgraphs: aliveGraphs,
+                            subgraphs: aliveGraphs.concat(strapiSchema === null ? [] : [
+                                {name: 'strapi', url: 'http://strapi'}
+                            ]),
                             subgraphHealthCheck: false,
                         }),
                         buildService: ({name, url}) => {
+                            if (url === 'http://strapi') {
+                                return new LocalGraphQLDataSource(strapiSchema);
+                            }
+
                             return new AuthenticatedDataSource({url})
                         }
                     },
