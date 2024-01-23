@@ -15,7 +15,7 @@
     "offline": "yarn build && cross-env NODE_ENV=local serverless offline",
     "deploy": "serverless deploy --verbose&&(./smoke || sh smoke.sh)",
     "deploy-from-local": "AWS_SHARED_CREDENTIALS_FILE=~/.aws/config AWS_PROFILE=lambda-doc-rotary serverless deploy",
-    "pre-deploy": "cd layers/nodejs && npm i --omit=dev --legacy-peer-deps&&cd ../../gatsby-plugins/nodejs&&(npm i --omit=dev --legacy-peer-deps && npm v gatsby dist.tarball | xargs curl | tar -xz&&(mv package node_modules/gatsby || echo 'mv skipped'))",
+    "pre-deploy": "cd layers/nodejs && npm i --omit=dev --legacy-peer-deps&&cd ../../jefftian/nodejs && npm i --omit=dev --legacy-peer-deps&&cd ../../gatsby-plugins/nodejs&&(npm i --omit=dev --legacy-peer-deps && npm v gatsby dist.tarball | xargs curl | tar -xz&&(mv package node_modules/gatsby || echo 'mv skipped'))",
     "aws-console": "open https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
     "aws-console:windows": "start https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
     "studio:windows": "start https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/gatsby/graphql",
