@@ -19,7 +19,7 @@
     "aws-console:windows": "start https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions",
     "studio:windows": "start https://jqp5j170i6.execute-api.us-east-1.amazonaws.com/dev/gatsby/graphql",
     "install": "exit 0 && npm v gatsby dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby",
-    "postinstall": "npm run install-source-yuque&&npm run install-gatsby-source-filesystem&&npm run install-valid-url&&npm run install-pretty-bytes&&npm run install-md5-file&&npm run install-queue&&npm run install-dayjs&&npm run install-html-entities&&npm run install-gray-matter&&npm run install-section-matter&&npm run install-kind-of&&npm run install-extend-shallow&&npm run install-is-extendable&&npm run install-is-plain-object&&npm run install-assign-symbols&&npm run install-strip-bom-string&&npm run install-fs-extra",
+    "postinstall": "npm run install-source-yuque&&npm run install-gatsby-source-filesystem&&npm run install-valid-url&&npm run install-pretty-bytes&&npm run install-md5-file&&npm run install-queue&&npm run install-dayjs&&npm run install-html-entities&&npm run install-gray-matter&&npm run install-section-matter&&npm run install-kind-of&&npm run install-extend-shallow&&npm run install-is-extendable&&npm run install-is-plain-object&&npm run install-assign-symbols&&npm run install-strip-bom-string&&npm run install-fs-extra&&npm run install-jsonfile",
     "i": "exit 0",
     "install-source-yuque": "npm v @jeff-tian/gatsby-source-yuque@3.0.3 dist.tarball | xargs curl | tar -xz&&mkdir -p node_modules/@jeff-tian&&mv package node_modules/@jeff-tian/gatsby-source-yuque",
     "install-gatsby-source-filesystem": "npm v gatsby-source-filesystem dist.tarball | xargs curl | tar -xz&&mv package node_modules/gatsby-source-filesystem",
@@ -37,7 +37,8 @@
     "install-is-plain-object": "npm v is-plain-object dist.tarball | xargs curl | tar -xz&&mv package node_modules/is-plain-object",
     "install-assign-symbols": "npm v assign-symbols dist.tarball | xargs curl | tar -xz&&mv package node_modules/assign-symbols",
     "install-strip-bom-string": "npm v strip-bom-string dist.tarball | xargs curl | tar -xz&&mv package node_modules/strip-bom-string",
-    "install-fs-extra": "npm v fs-extra dist.tarball | xargs curl | tar -xz&&mv package node_modules/fs-extra"
+    "install-fs-extra": "npm v fs-extra dist.tarball | xargs curl | tar -xz&&mv package node_modules/fs-extra",
+    "install-jsonfile": "npm v jsonfile dist.tarball | xargs curl | tar -xz&&mv package node_modules/jsonfile"
   },
   "repository": {
     "type": "git",
