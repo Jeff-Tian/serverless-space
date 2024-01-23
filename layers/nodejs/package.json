@@ -56,7 +56,6 @@
     "@apollo/gateway": "^2.7.0",
     "@nestjs/apollo": "12.0.11",
     "@apollo/subgraph": "2.7.0",
-    "@apollo/utils.keyvaluecache": "3.1.0",
     "markdown-it": "^13.0.2"
   },
   "devDependencies": {

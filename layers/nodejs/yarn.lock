@@ -185,29 +185,16 @@
 
 "@apollo/utils.keyvaluecache@^2.1.0":
   "integrity" "sha512-qVo5PvUUMD8oB9oYvq4ViCjYAMWnZ5zZwEjNF37L2m1u528x5mueMlU+Cr1UinupCgdB78g+egA1G98rbJ03Vw=="
-  "resolved" "https://registry.npmjs.org/@apollo/utils.keyvaluecache/-/utils.keyvaluecache-2.1.1.tgz"
+  "resolved" "https://registry.npmmirror.com/@apollo/utils.keyvaluecache/-/utils.keyvaluecache-2.1.1.tgz"
   "version" "2.1.1"
   dependencies:
     "@apollo/utils.logger" "^2.0.1"
     "lru-cache" "^7.14.1"
 
-"@apollo/utils.keyvaluecache@3.1.0":
-  "integrity" "sha512-MM/DKIqpQQbuNG1gNPAlGc45THdWkroTmN8o/J09merFwf/LlZ7+lAfcHFDXIYIknwKmUjJrOMS3OxYbjrz2hA=="
-  "resolved" "https://registry.npmjs.org/@apollo/utils.keyvaluecache/-/utils.keyvaluecache-3.1.0.tgz"
-  "version" "3.1.0"
-  dependencies:
-    "@apollo/utils.logger" "^3.0.0"
-    "lru-cache" "^10.0.0"
-
 "@apollo/utils.logger@^2.0.0", "@apollo/utils.logger@^2.0.1":
   "integrity" "sha512-YuplwLHaHf1oviidB7MxnCXAdHp3IqYV8n0momZ3JfLniae92eYqMIx+j5qJFX6WKJPs6q7bczmV4lXIsTu5Pg=="
   "resolved" "https://registry.npmmirror.com/@apollo/utils.logger/-/utils.logger-2.0.1.tgz"
   "version" "2.0.1"
-
-"@apollo/utils.logger@^3.0.0":
-  "integrity" "sha512-M8V8JOTH0F2qEi+ktPfw4RL7MvUycDfKp7aEap2eWXfL5SqWHN6jTLbj5f5fj1cceHpyaUSOZlvlaaryaxZAmg=="
-  "resolved" "https://registry.npmjs.org/@apollo/utils.logger/-/utils.logger-3.0.0.tgz"
-  "version" "3.0.0"
 
 "@apollo/utils.printwithreducedwhitespace@^2.0.1":
   "integrity" "sha512-9M4LUXV/fQBh8vZWlLvb/HyyhjJ77/I5ZKu+NBWV/BmYGyRmoEP9EVAy7LCVoY3t8BDcyCAGfxJaLFCSuQkPUg=="
@@ -2227,11 +2214,6 @@
   "version" "1.4.0"
   dependencies:
     "js-tokens" "^3.0.0 || ^4.0.0"
-
-"lru-cache@^10.0.0":
-  "integrity" "sha512-/1clY/ui8CzjKFyjdvwPWJUYKiFVXG2I2cY0ssG7h4+hwk+XOIX7ZSG9Q7TW8TW3Kp3BUSqgFWBLgL4PJ+Blag=="
-  "resolved" "https://registry.npmjs.org/lru-cache/-/lru-cache-10.1.0.tgz"
-  "version" "10.1.0"
 
 "lru-cache@^5.1.1":
   "integrity" "sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w=="
