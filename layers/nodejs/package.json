@@ -78,7 +78,7 @@
     "rimraf": "^5.0.1",
     "serverless": "^3.33.0",
     "serverless-dotenv-plugin": "^6.0.0",
-    "serverless-offline": "^12.0.4",
+    "serverless-offline": "13.3.0",
     "serverless-plugin-layer-manager": "^1.1.1",
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.1"
