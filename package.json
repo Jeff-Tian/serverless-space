@@ -36,7 +36,7 @@
   "homepage": "https://github.com/Jeff-Tian/serverless-space#readme",
   "dependencies": {
     "@apollo/gateway": "^2.7.0",
-    "@apollo/server": "^4.9.0",
+    "@apollo/server": "^4.10.0",
     "@apollo/subgraph": "^2.7.0",
     "@aws-sdk/client-dynamodb": "^3.421.0",
     "@aws-sdk/client-sqs": "^3.421.0",
