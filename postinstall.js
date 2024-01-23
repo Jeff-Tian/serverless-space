@@ -24,4 +24,3 @@ function patchFile(patch) {
 }
 
 patchFile('node_modules/raw-body/index.js');
-patchFile('node_modules/@nestjs/platform-express/node_modules/raw-body/index.js');

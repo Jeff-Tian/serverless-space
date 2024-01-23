@@ -1,6 +1,6 @@
 import {transformSchemaFederation} from "@jeff-tian/graphql-transform-federation";
 import {print} from "graphql";
-import {wrapSchema, introspectSchema} from "@graphql-tools/wrap";
+import {introspectSchema, wrapSchema} from "@graphql-tools/wrap";
 
 const executor = async ({document, variables}) => {
     const query = print(document);
