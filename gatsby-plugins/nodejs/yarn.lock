@@ -9,16 +9,6 @@
   dependencies:
     "regenerator-runtime" "^0.13.11"
 
-"@lmdb/lmdb-win32-x64@2.5.3":
-  "integrity" "sha512-cK+Elf3RjEzrm3SerAhrFWL5oQAsZSJ/LmjL1joIpTfEP1etJJ9CTRvdaV6XLYAxaEkfdhk/9hOvHLbR9yIhCA=="
-  "resolved" "https://registry.npmmirror.com/@lmdb/lmdb-win32-x64/-/lmdb-win32-x64-2.5.3.tgz"
-  "version" "2.5.3"
-
-"@msgpackr-extract/msgpackr-extract-win32-x64@3.0.2":
-  "integrity" "sha512-O+6Gs8UeDbyFpbSh2CPEz/UOrrdWPTBYNblZK5CxxLisYt4kGX3Sc+czffFonyjiGSq3jWLwJS/CCJc7tBr4sQ=="
-  "resolved" "https://registry.npmmirror.com/@msgpackr-extract/msgpackr-extract-win32-x64/-/msgpackr-extract-win32-x64-3.0.2.tgz"
-  "version" "3.0.2"
-
 "@sindresorhus/is@^4.0.0":
   "integrity" "sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw=="
   "resolved" "https://registry.npmmirror.com/@sindresorhus/is/-/is-4.6.0.tgz"
