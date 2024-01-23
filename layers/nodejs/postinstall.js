@@ -23,3 +23,25 @@ fs.readFile(vuePatch, 'utf8', (err, data) => {
     });
 });
 
+const inMemoryLRUCache = 'node_modules/@apollo/utils.keyvaluecache/dist/InMemoryLRUCache.js';
+fs.readFile(inMemoryLRUCache, 'utf8', (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+
+    console.log('data = ', data)
+    const modifiedData = data.replace(
+        /this\.cache\.clear\(\);/g,
+        "console.log('fake cleared all cache.');"
+    );
+
+    fs.writeFile(inMemoryLRUCache, modifiedData, 'utf8', (err) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+
+        console.log(`File modified successfully! ${inMemoryLRUCache}`);
+    });
+});
