@@ -1,7 +1,6 @@
 import {Module} from '@nestjs/common'
 import {GraphQLModule} from '@nestjs/graphql'
 import {CatsModule} from "./cats/cats.module"
-import {RecipesModule} from "./recipes/recipes.module"
 import {YuqueModule} from './yuque/yuque.module'
 import {BaseRedisCache} from 'apollo-server-cache-redis'
 import Redis from 'ioredis'
@@ -64,7 +63,6 @@ if (cacheRedisUrl && cacheRedisUrl !== 'undefined') {
         YuqueModule,
         ClipboardModule,
         CatsModule,
-        RecipesModule,
         ZhihuModule,
         ICloudModule,
         BabelModule,

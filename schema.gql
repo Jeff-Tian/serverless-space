@@ -16,24 +16,13 @@ type ClipboardModel {
   value: String!
 }
 
-"""Date custom scalar type"""
-scalar Date
-
 type ICloudModel {
   downloadURL: String!
 }
 
 type Mutation {
-  addRecipe(newRecipeData: NewRecipeInput!): Recipe!
   copyToClipboard(clipboard: ClipboardInput!): ClipboardModel!
   draftColumnArticle: Zhihu!
-  removeRecipe(id: String!): Boolean!
-}
-
-input NewRecipeInput {
-  description: String
-  ingredients: [String!]!
-  title: String!
 }
 
 type Query {
@@ -42,22 +31,8 @@ type Query {
   downloadUrlOfICloudSharing(shortGUID: String!): ICloudModel!
   getVideoInfoByUrl(zvideoUrl: String!): ZhihuVideoInfo!
   paginatedYuque(skip: Float = 0, take: Float = 5): [YuQue!]!
-  recipe(id: String!): Recipe!
-  recipes(skip: Int! = 0, take: Int! = 25): [Recipe!]!
   transform(extra: String, presets: [String!], sourceCode: String, url: String): BabelResult!
   yuque(id: String, slug: String): YuQue!
-}
-
-type Recipe {
-  creationDate: Date!
-  description: String
-  id: ID!
-  ingredients: [String!]!
-  title: String!
-}
-
-type Subscription {
-  recipeAdded: Recipe!
 }
 
 type YuQue {
