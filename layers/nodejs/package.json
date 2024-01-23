@@ -36,7 +36,7 @@
     "@nestjs/axios": "^3.0.0",
     "@nestjs/common": "10.2.7",
     "@nestjs/core": "10.2.7",
-    "@nestjs/graphql": "11.0.0",
+    "@nestjs/graphql": "12.0.11",
     "@nestjs/platform-express": "10.2.7",
     "@nestjs/swagger": "^7.1.13",
     "@vendia/serverless-express": "4.10.4",
@@ -54,10 +54,9 @@
     "serverless-express": "2.0.12",
     "dotenv": "^16.3.1",
     "@apollo/gateway": "2.5.1",
-    "@nestjs/apollo": "11.0.0",
+    "@nestjs/apollo": "12.0.11",
     "@apollo/subgraph": "2.5.1",
-    "markdown-it": "^13.0.2",
-    "@jeff-tian/graphql-transform-federation": "^3.0.2"
+    "markdown-it": "^13.0.2"
   },
   "devDependencies": {
     "@nestjs/cli": "10.1.18",

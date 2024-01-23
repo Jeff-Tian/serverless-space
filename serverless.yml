@@ -110,6 +110,7 @@ constructs:
       timeout: 900
       layers:
         - { Ref: LibLambdaLayer }
+        - { Ref: JefftianLambdaLayer }
       environment:
         MP_APPID: ${env:MP_APPID}
         MP_SECRET: ${env:MP_SECRET}
@@ -131,6 +132,7 @@ functions:
     handler: handler.hello
     layers:
       - { Ref: LibLambdaLayer }
+      - { Ref: JefftianLambdaLayer }
     events:
       - http:
           path: users/create
@@ -144,6 +146,7 @@ functions:
     handler: handler.api
     layers:
       - { Ref: LibLambdaLayer }
+      - { Ref: JefftianLambdaLayer }
     events:
       - http:
           path: api/
@@ -168,6 +171,7 @@ functions:
     timeout: 900
     layers:
       - { Ref: LibLambdaLayer }
+      - { Ref: JefftianLambdaLayer }
       - { Ref: GatsbypluginsLambdaLayer }
     events:
       - http:
@@ -201,6 +205,7 @@ functions:
     timeout: 900
     layers:
       - { Ref: LibLambdaLayer }
+      - { Ref: JefftianLambdaLayer }
       - { Ref: GatsbypluginsLambdaLayer }
     events:
       - http:
@@ -235,6 +240,7 @@ functions:
     timeout: 900
     layers:
       - { Ref: LibLambdaLayer }
+      - { Ref: JefftianLambdaLayer }
     events:
       - http:
           method: ANY
@@ -260,6 +266,7 @@ functions:
     timeout: 30
     layers:
       - { Ref: LibLambdaLayer }
+      - { Ref: JefftianLambdaLayer }
       - { Ref: GatsbypluginsLambdaLayer }
     events:
       - http:
@@ -299,6 +306,11 @@ layers:
     path: layers
     name: space-lib
     description: My dependencies
+    retain: true
+  jefftian:
+    path: jefftian
+    name: jefftian-lib
+    description: jefftian dependencies
     retain: true
   gatsbyplugins:
     path: gatsby-plugins
