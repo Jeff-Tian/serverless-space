@@ -130,7 +130,7 @@
     js-levenshtein "^1.1.6"
     uuid "^9.0.0"
 
-"@apollo/gateway@^2.7.0":
+"@apollo/gateway@2.7.0":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@apollo/gateway/-/gateway-2.7.0.tgz#d11ea6792a6c4cf27567ccb5979dbd8cca7f8f50"
   integrity sha512-28Ik1XX4hIiuM7lilUmVuhnF0DiOISzR18q8YU9MyKhzwodQ3tRxynHCaBczsxOXNigVZrbx1/Nxk6qkF9qivA==
@@ -211,7 +211,7 @@
   dependencies:
     "@apollographql/graphql-playground-html" "1.6.29"
 
-"@apollo/server@^4.10.0":
+"@apollo/server@4.10.0":
   version "4.10.0"
   resolved "https://registry.yarnpkg.com/@apollo/server/-/server-4.10.0.tgz#fd3c003149b0774903c15a0cfef38e20d05aa096"
   integrity sha512-pLx//lZ/pvUfWL9G8Np8+y3ujc0pYc8U7dwD6ztt9FAw8NmCPzPaDzlXLBAjGU6WnkqVBOnz8b3dOwRNjLYSUA==
@@ -242,7 +242,7 @@
     uuid "^9.0.0"
     whatwg-mimetype "^3.0.0"
 
-"@apollo/subgraph@^2.7.0":
+"@apollo/subgraph@2.7.0", "@apollo/subgraph@^2.7.0":
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@apollo/subgraph/-/subgraph-2.7.0.tgz#db5e3c19d93ddbaf77c552a91715ff99d8458035"
   integrity sha512-6u/bDF7gorXdNNRIi03B5JlTZqP1lOerQ8F1WJ2af/Tydf80GXOBDyo841kmJWyGveYYdLqC0GMwaiuSy/Hubw==
@@ -2515,6 +2515,11 @@
   resolved "https://registry.npmmirror.com/@builder.io/partytown/-/partytown-0.7.6.tgz#697acea6b552167a4dd43ddd4827018aa42e0364"
   integrity sha512-snXIGNiZpqjno3XYQN2lbBB+05hsQR/LSttbtIW1c0gmZ7Kh/DIo0YrxlDxCDulAMFPFM8J+4voLwvYepSj3sw==
 
+"@codegenie/serverless-express@^4.12.5":
+  version "4.13.0"
+  resolved "https://registry.yarnpkg.com/@codegenie/serverless-express/-/serverless-express-4.13.0.tgz#ab382d69d71b3afa2a620a808a47a161543c3dd3"
+  integrity sha512-xjTotGExm+2j45T6XTvDuTJO1105jKLf152j9nXXeJboYH3dwd8Ted6guv+jDFNouf0uKOO7AhGRQdCTpLVIiw==
+
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
@@ -2841,7 +2846,7 @@
   dependencies:
     tslib "^2.4.0"
 
-"@graphql-tools/wrap@^9.0.1":
+"@graphql-tools/wrap@9.4.2":
   version "9.4.2"
   resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-9.4.2.tgz#30835587c4c73be1780908a7cb077d8013aa2703"
   integrity sha512-DFcd9r51lmcEKn0JW43CWkkI2D6T9XI1juW/Yo86i04v43O9w2/k4/nx2XTJv4Yv+iXwUw7Ok81PGltwGJSDSA==
@@ -3908,19 +3913,19 @@
     webpack "5.88.2"
     webpack-node-externals "3.0.0"
 
-"@nestjs/common@10.2.7":
-  version "10.2.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-10.2.7.tgz#339db2efa33d3822dd81d2993bd44b538a7451b6"
-  integrity sha512-cUtCRXiUstDmh4bSBhVbq4cI439Gngp4LgLGLBmd5dqFQodfXKnSD441ldYfFiLz4rbUsnoMJz/8ZjuIEI+B7A==
+"@nestjs/common@10.3.0":
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-10.3.0.tgz#d78f0ff2062d1d53c79c170a79c12a1548e2e598"
+  integrity sha512-DGv34UHsZBxCM3H5QGE2XE/+oLJzz5+714JQjBhjD9VccFlQs3LRxo/epso4l7nJIiNlZkPyIUC8WzfU/5RTsQ==
   dependencies:
     uid "2.0.2"
     iterare "1.2.1"
     tslib "2.6.2"
 
-"@nestjs/core@10.2.7":
-  version "10.2.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-10.2.7.tgz#26ca5cc63504b54a08c4cdc6da9300c9b8904fde"
-  integrity sha512-5GSu53QUUcwX17sNmlJPa1I0wIeAZOKbedyVuQx0ZAwWVa9g0wJBbsNP+R4EJ+j5Dkdzt/8xkiZvnKt8RFRR8g==
+"@nestjs/core@10.3.0":
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-10.3.0.tgz#d5c6b26d6d9280664910d5481153d25c5da4ec00"
+  integrity sha512-N06P5ncknW/Pm8bj964WvLIZn2gNhHliCBoAO1LeBvNImYkecqKcrmLbY49Fa1rmMfEM3MuBHeDys3edeuYAOA==
   dependencies:
     uid "2.0.2"
     "@nuxtjs/opencollective" "0.3.2"
@@ -3954,10 +3959,15 @@
   resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-2.0.2.tgz#c8a090a8d22145b85ed977414c158534210f2e4f"
   integrity sha512-V0izw6tWs6fTp9+KiiPUbGHWALy563Frn8X6Bm87ANLRuE46iuBMD5acKBDP5lKL/75QFvrzSJT7HkCbB0jTpg==
 
-"@nestjs/platform-express@10.2.7":
-  version "10.2.7"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-10.2.7.tgz#b2ef2df01c0c757a3d356659460563a5246e7d0f"
-  integrity sha512-p+kp6aJtkgAdVpUrCVmM6MKtOvjsbt7QofBiZMidjYesZkMeG5gZ1D2SK8XzvQ8VXHJfFgEdY2xcKGB+wJLOYQ==
+"@nestjs/mapped-types@2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-2.0.4.tgz#97280b06bf85d34ea9bad1e847e5e3cbaca8f04f"
+  integrity sha512-xl+gUSp0B+ln1VSNoUftlglk8dfpUes3DHGxKZ5knuBxS5g2H/8p9/DSBOYWUfO5f4u9s6ffBPZ71WO+tbe5SA==
+
+"@nestjs/platform-express@10.3.0":
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-10.3.0.tgz#ea69b048ef90b78b1001eb1c6b02d9d798f5f3af"
+  integrity sha512-E4hUW48bYv8OHbP9XQg6deefmXb0pDSSuE38SdhA0mJ37zGY7C5EqqBUdlQk4ttfD+OdnbIgJ1zOokT6dd2d7A==
   dependencies:
     body-parser "1.20.2"
     cors "2.8.5"
@@ -3976,16 +3986,16 @@
     jsonc-parser "3.2.0"
     pluralize "8.0.0"
 
-"@nestjs/swagger@^7.1.13":
-  version "7.1.13"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-7.1.13.tgz#5fe1127b159780315f6e827d746b68db7f323e38"
-  integrity sha512-aHfW0rDZZKTuPVSkxutBCB16lBy5vrsHVoRF5RvPtH7U2cm4Vf+OnfhxKKuG2g2Xocn9sDL+JAyVlY2VN3ytTw==
+"@nestjs/swagger@7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-7.2.0.tgz#a449ab0a2319eca8e695cf3892f4e63bbd8a916d"
+  integrity sha512-W7WPq561/79w27ZEgViXS7c5hqPwT7QXhsLsSeu2jeBROUhMM825QKDFKbMmtb643IW5dznJ4PjherlZZgtMvg==
   dependencies:
-    "@nestjs/mapped-types" "2.0.2"
+    "@nestjs/mapped-types" "2.0.4"
     js-yaml "4.1.0"
     lodash "4.17.21"
     path-to-regexp "3.2.0"
-    swagger-ui-dist "5.9.0"
+    swagger-ui-dist "5.11.0"
 
 "@nestjs/testing@10.2.7":
   version "10.2.7"
@@ -6147,10 +6157,12 @@
     "@typescript-eslint/types" "5.62.0"
     eslint-visitor-keys "^3.3.0"
 
-"@vendia/serverless-express@4.10.4":
-  version "4.10.4"
-  resolved "https://registry.npmmirror.com/@vendia/serverless-express/-/serverless-express-4.10.4.tgz#041c04cf47a8053392299dee244283fdfe84766e"
-  integrity sha512-OH2cX+LqtrayCIkHAkShiLnvrgqGDvwIQEex5dHc/uJitBQjIz3q7dZtfU7cZ5vcR9Vkide5xJQDBEMbXoWLeA==
+"@vendia/serverless-express@4.12.6":
+  version "4.12.6"
+  resolved "https://registry.yarnpkg.com/@vendia/serverless-express/-/serverless-express-4.12.6.tgz#332a3c3e2c07069dbb8d3e95d69b23de2fe6dec2"
+  integrity sha512-ePsIPk3VQwgm5nh/JGBtTKQs5ZOF7REjHxC+PKk/CHvhlKQkJuUU365uPOlxuLJhC+BAefDznDRReWxpnKjmYg==
+  dependencies:
+    "@codegenie/serverless-express" "^4.12.5"
 
 "@vendia/serverless-express@^3.4.0":
   version "3.4.0"
@@ -6546,7 +6558,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apollo-server-cache-redis@^3.2.0:
+apollo-server-cache-redis@3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/apollo-server-cache-redis/-/apollo-server-cache-redis-3.3.1.tgz#fb2e7f243a624179dce9e2b93a559313c78dea72"
   integrity sha512-z+WX74PKM8Epsyd+cjRq789b2RtgARcdQ/u8acs+T5nf32Qt7eYhumKemUZf7lkwnKfh0nCNf81+e1Ll4xckAA==
@@ -11025,9 +11037,9 @@ graphql-http@^1.18.0:
   resolved "https://registry.yarnpkg.com/graphql-http/-/graphql-http-1.22.0.tgz#967bad279747ba5e1c9dd85b644c6b4f3dfa88f2"
   integrity sha512-9RBUlGJWBFqz9LwfpmAbjJL/8j/HCNkZwPBU5+Bfmwez+1Ay43DocMNQYpIWsWqH0Ftv6PTNAh2aRnnMCBJgLw==
 
-graphql-query-complexity@^0.12.0:
+graphql-query-complexity@0.12.0:
   version "0.12.0"
-  resolved "https://registry.npmmirror.com/graphql-query-complexity/-/graphql-query-complexity-0.12.0.tgz#5f636ccc54da82225f31e898e7f27192fe074b4c"
+  resolved "https://registry.yarnpkg.com/graphql-query-complexity/-/graphql-query-complexity-0.12.0.tgz#5f636ccc54da82225f31e898e7f27192fe074b4c"
   integrity sha512-fWEyuSL6g/+nSiIRgIipfI6UXTI7bAxrpPlCY1c0+V3pAEUo1ybaKmSBgNr1ed2r+agm1plJww8Loig9y6s2dw==
   dependencies:
     lodash.get "^4.4.2"
@@ -16975,10 +16987,10 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-swagger-ui-dist@5.9.0:
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.9.0.tgz#d52b6cf52fd0a8e6930866c402aaa793fe4e3f76"
-  integrity sha512-NUHSYoe5XRTk/Are8jPJ6phzBh3l9l33nEyXosM17QInoV95/jng8+PuSGtbD407QoPf93MH3Bkh773OgesJpA==
+swagger-ui-dist@5.11.0:
+  version "5.11.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.11.0.tgz#9bcfd75278b1fa9c36fe52f206f8fc611470547c"
+  integrity sha512-j0PIATqQSEFGOLmiJOJZj1X1Jt6bFIur3JpY7+ghliUnfZs0fpWDdHEkn9q7QUlBtKbkn6TepvSxTqnE8l3s0A==
 
 swap-case@^2.0.2:
   version "2.0.2"
