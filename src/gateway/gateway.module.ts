@@ -4,6 +4,7 @@ import {Module} from '@nestjs/common';
 import {GraphQLModule} from '@nestjs/graphql';
 import {AuthenticatedDataSource} from "./authenticated.data.source";
 import getStrapiSchema from './strapi/strapi.service';
+import {ExtendedRemoteGraphQLDataSource} from "./extended.remote.graphql.datasource";
 
 const allPossibleFederatableSubGraphs = [
     {name: 'orders', url: 'https://uni-orders-jeff-tian.cloud.okteto.net/graphql'},
@@ -47,13 +48,13 @@ const allPossibleFederatableSubGraphs = [
                     gateway: {
                         supergraphSdl: new IntrospectAndCompose({
                             subgraphs: aliveGraphs.concat(strapiSchema === null ? [] : [
-                                {name: 'strapi', url: 'http://strapi'}
+                                {name: 'strapi', url: 'https://strapi.brickverse.dev/graphql'}
                             ]),
                             subgraphHealthCheck: false,
                         }),
                         buildService: ({name, url}) => {
-                            if (url === 'http://strapi') {
-                                return new LocalGraphQLDataSource(strapiSchema);
+                            if (name === 'strapi' || url === 'https://strapi.brickverse.dev/graphql') {
+                                return new ExtendedRemoteGraphQLDataSource(strapiSchema, url, `Bearer ${process.env.STRAPI_API_KEY}`);
                             }
 
                             return new AuthenticatedDataSource({url})
@@ -64,4 +65,5 @@ const allPossibleFederatableSubGraphs = [
         }),
     ],
 })
-export class GatewayModule {}
+export class GatewayModule {
+}

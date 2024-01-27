@@ -260,6 +260,7 @@ functions:
           cors: true
     environment:
       SERVERLESS_EXPRESS_PLATFORM: aws
+      STRAPI_API_KEY: ${env:STRAPI_API_KEY}
 
   gatsby:
     handler: dist/gatsby.handler
