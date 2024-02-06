@@ -360,129 +360,131 @@ layers:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-resources:
- Resources: # Resources created according to blog post:
-   # http://techblog.financialengines.com/2016/09/26/aws-lambdas-with-a-static-outgoing-ip/
+# 有点费钱，暂时删除
+#resources:
+# Resources: # Resources created according to blog post:
+#   # http://techblog.financialengines.com/2016/09/26/aws-lambdas-with-a-static-outgoing-ip/
+#
+#   # Step 1: Create a new VPC
+#   VPCStaticIP:
+#     Type: AWS::EC2::VPC
+#     Properties:
+#       CidrBlock: 11.0.0.0/16
+#       Tags:
+#         - Key: Name
+#           Value: ${self:service}-${self:provider.stage}-vpc
+#
+#   # Step 2: Create 2 Subnets
+#   SubnetPublic:
+#     Type: AWS::EC2::Subnet
+#     Properties:
+#       AvailabilityZone: ${self:provider.region}b
+#       CidrBlock: 11.0.0.0/24
+#       Tags:
+#         - Key: Name
+#           Value: ${self:service}-${self:provider.stage}-public-subnet
+#       VpcId:
+#         Ref: VPCStaticIP
+#
+#   SubnetPrivate:
+#     Type: AWS::EC2::Subnet
+#     Properties:
+#       AvailabilityZone: ${self:provider.region}b
+#       CidrBlock: 11.0.1.0/24
+#       Tags:
+#         - Key: Name
+#           Value: ${self:service}-${self:provider.stage}-private-subnet
+#       VpcId:
+#         Ref: VPCStaticIP
+#
+#   # Step 3: Create an Internet Gateway
+#   InternetGateway:
+#     Type: AWS::EC2::InternetGateway
+#     Properties:
+#       Tags:
+#         - Key: Name
+#           Value: ${self:service}-${self:provider.stage}-igw
+#
+#   # Attach Internet Gateway to VPC
+#   VPCGatewayAttachment:
+#     Type: AWS::EC2::VPCGatewayAttachment
+#     Properties:
+#       InternetGatewayId:
+#         Ref: InternetGateway
+#       VpcId:
+#         Ref: VPCStaticIP
+#
+#   # Step 4: Create a public Route Table and Assign it to our public route
+#   RouteTablePublic:
+#     Type: AWS::EC2::RouteTable
+#     Properties:
+#       VpcId:
+#         Ref: VPCStaticIP
+#       Tags:
+#         - Key: Name
+#           Value: ${self:service}-${self:provider.stage}-public-route
+#
+#   RoutePublic:
+#     Type: AWS::EC2::Route
+#     Properties:
+#       DestinationCidrBlock: 0.0.0.0/0
+#       GatewayId:
+#         Ref: InternetGateway
+#       RouteTableId:
+#         Ref: RouteTablePublic
+#
+#   SubnetRouteTableAssociationPublic:
+#     Type: AWS::EC2::SubnetRouteTableAssociation
+#     Properties:
+#       RouteTableId:
+#         Ref: RouteTablePublic
+#       SubnetId:
+#         Ref: SubnetPublic
+#
+#   # Step 5: Create a NAT Gateway
+#   # Before creating NAT Gateway, we need to create Elastic IP with vpc scope
+#   EIP:
+#     Type: AWS::EC2::EIP
+#     Properties:
+#       Domain: vpc
+#
+#   NatGateway:
+#     Type: AWS::EC2::NatGateway
+#     Properties:
+#       AllocationId:
+#         Fn::GetAtt: [ EIP, AllocationId ]
+#       SubnetId:
+#         Ref: SubnetPublic
+#
+#   # In tutorial NAT Gateway is attached as default route 0.0.0.0/0 in main Route Table.
+#   # Main Route Table is created implicitely during VPC creation and CloudFormation
+#   # has no access to its ID. To overcome this limitation we create additional Route Table.
+#   RouteTablePrivate:
+#     Type: AWS::EC2::RouteTable
+#     Properties:
+#       VpcId:
+#         Ref: VPCStaticIP
+#       Tags:
+#         - Key: Name
+#           Value: ${self:service}-${self:provider.stage}-private-route
+#
+#   RoutePrivate:
+#     Type: AWS::EC2::Route
+#     Properties:
+#       DestinationCidrBlock: 0.0.0.0/0
+#       NatGatewayId:
+#         Ref: NatGateway
+#       RouteTableId:
+#         Ref: RouteTablePrivate
+#
+#   SubnetRouteTableMainAssociationPrivate:
+#     Type: AWS::EC2::SubnetRouteTableAssociation
+#     Properties:
+#       RouteTableId:
+#         Ref: RouteTablePrivate
+#       SubnetId:
+#         Ref: SubnetPrivate
 
-   # Step 1: Create a new VPC
-   VPCStaticIP:
-     Type: AWS::EC2::VPC
-     Properties:
-       CidrBlock: 11.0.0.0/16
-       Tags:
-         - Key: Name
-           Value: ${self:service}-${self:provider.stage}-vpc
-
-   # Step 2: Create 2 Subnets
-   SubnetPublic:
-     Type: AWS::EC2::Subnet
-     Properties:
-       AvailabilityZone: ${self:provider.region}b
-       CidrBlock: 11.0.0.0/24
-       Tags:
-         - Key: Name
-           Value: ${self:service}-${self:provider.stage}-public-subnet
-       VpcId:
-         Ref: VPCStaticIP
-
-   SubnetPrivate:
-     Type: AWS::EC2::Subnet
-     Properties:
-       AvailabilityZone: ${self:provider.region}b
-       CidrBlock: 11.0.1.0/24
-       Tags:
-         - Key: Name
-           Value: ${self:service}-${self:provider.stage}-private-subnet
-       VpcId:
-         Ref: VPCStaticIP
-
-   # Step 3: Create an Internet Gateway
-   InternetGateway:
-     Type: AWS::EC2::InternetGateway
-     Properties:
-       Tags:
-         - Key: Name
-           Value: ${self:service}-${self:provider.stage}-igw
-
-   # Attach Internet Gateway to VPC
-   VPCGatewayAttachment:
-     Type: AWS::EC2::VPCGatewayAttachment
-     Properties:
-       InternetGatewayId:
-         Ref: InternetGateway
-       VpcId:
-         Ref: VPCStaticIP
-
-   # Step 4: Create a public Route Table and Assign it to our public route
-   RouteTablePublic:
-     Type: AWS::EC2::RouteTable
-     Properties:
-       VpcId:
-         Ref: VPCStaticIP
-       Tags:
-         - Key: Name
-           Value: ${self:service}-${self:provider.stage}-public-route
-
-   RoutePublic:
-     Type: AWS::EC2::Route
-     Properties:
-       DestinationCidrBlock: 0.0.0.0/0
-       GatewayId:
-         Ref: InternetGateway
-       RouteTableId:
-         Ref: RouteTablePublic
-
-   SubnetRouteTableAssociationPublic:
-     Type: AWS::EC2::SubnetRouteTableAssociation
-     Properties:
-       RouteTableId:
-         Ref: RouteTablePublic
-       SubnetId:
-         Ref: SubnetPublic
-
-   # Step 5: Create a NAT Gateway
-   # Before creating NAT Gateway, we need to create Elastic IP with vpc scope
-   EIP:
-     Type: AWS::EC2::EIP
-     Properties:
-       Domain: vpc
-
-   NatGateway:
-     Type: AWS::EC2::NatGateway
-     Properties:
-       AllocationId:
-         Fn::GetAtt: [ EIP, AllocationId ]
-       SubnetId:
-         Ref: SubnetPublic
-
-   # In tutorial NAT Gateway is attached as default route 0.0.0.0/0 in main Route Table.
-   # Main Route Table is created implicitely during VPC creation and CloudFormation
-   # has no access to its ID. To overcome this limitation we create additional Route Table.
-   RouteTablePrivate:
-     Type: AWS::EC2::RouteTable
-     Properties:
-       VpcId:
-         Ref: VPCStaticIP
-       Tags:
-         - Key: Name
-           Value: ${self:service}-${self:provider.stage}-private-route
-
-   RoutePrivate:
-     Type: AWS::EC2::Route
-     Properties:
-       DestinationCidrBlock: 0.0.0.0/0
-       NatGatewayId:
-         Ref: NatGateway
-       RouteTableId:
-         Ref: RouteTablePrivate
-
-   SubnetRouteTableMainAssociationPrivate:
-     Type: AWS::EC2::SubnetRouteTableAssociation
-     Properties:
-       RouteTableId:
-         Ref: RouteTablePrivate
-       SubnetId:
-         Ref: SubnetPrivate
 #  Outputs:
 #     NewOutput:
 #       Description: "Description for the output"
