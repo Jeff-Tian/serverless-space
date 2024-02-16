@@ -114,18 +114,18 @@ constructs:
       environment:
         MP_APPID: ${env:MP_APPID}
         MP_SECRET: ${env:MP_SECRET}
-      vpc:
-        securityGroupIds:
-          - Fn::GetAtt: [ VPCStaticIP, DefaultSecurityGroup ]
-        subnetIds:
-          - Ref: SubnetPrivate
-        iamRoleStatements:
-          - Effect: Allow
-            Action:
-              - ec2:CreateNetworkInterface
-              - ec2:DeleteNetworkInterface
-              - ec2:DescribeNetworkInterfaces
-            Resource: '*'
+#      vpc:
+#        securityGroupIds:
+#          - Fn::GetAtt: [ VPCStaticIP, DefaultSecurityGroup ]
+#        subnetIds:
+#          - Ref: SubnetPrivate
+#        iamRoleStatements:
+#          - Effect: Allow
+#            Action:
+#              - ec2:CreateNetworkInterface
+#              - ec2:DeleteNetworkInterface
+#              - ec2:DescribeNetworkInterfaces
+#            Resource: '*'
 
 functions:
   hello:
